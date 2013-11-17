@@ -1,0 +1,19 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "coffee-script":">=1.6.3",
+    "connect-memcached": ">=0.0.3",
+    "source-map-support": ">=0.1.2",
+    "fibrous": ">=0.3.0",
+    "express": ">=3.4.4",
+    "jade": ">=0.28.2",
+    "cors": ">=2.1.0",
+    "sqlite3": "*",
+    "alipay":"*"
+  }
+}
