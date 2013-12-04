@@ -1,8 +1,24 @@
+.clear-fix:after {
+  display: block;
+  visibility: hidden;
+  content: '\0020';
+  line-height: 0;
+  clear: both;
+}
 .social-media {
   text-align: right;
+  height: 20px;
+  line-height: 20px;
 }
 
 .social-media a {
-  display: inline-block;
-  padding: 2px;
+  margin: 2px;
+}
+
+.homepage {
+  margin-top: -20px;
+}
+
+.navbar-item {
+  text-align: center;
 }
