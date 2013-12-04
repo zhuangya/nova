@@ -13,7 +13,14 @@
     "express": ">=3.4.4",
     "jade": ">=0.28.2",
     "cors": ">=2.1.0",
+    "underscore":"*",
+    "js-yaml":"*",
+    "imagemagick":"*",
     "sqlite3": "*",
-    "alipay":"*"
+    "ejs":"*",
+    "restify":"*",
+    "mustache":"*",
+    "alipay":"*",
+    "mkdirp":"*"
   }
 }

@@ -52,7 +52,9 @@ app.locals.config = config
 app.get '/', (req,resp) ->
   resp.render('index')
 
-app.use '/api', require './api'
+app.use '/api', (require './api')()
+app.use '/data', (require './data')()
+app.use '/photo', (require './photo')()
 
 host = config.httpd.bind or "127.0.0.1"
 port = process.env.PORT or config.httpd.port or 3000

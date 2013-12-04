@@ -1,0 +1,19 @@
+id: tees/pure_color
+name: Pure Color T-Shirts
+description: |
+    I am a T-Shirt
+    DO NOT typo as T-Shit
+variants:
+    white: White Tee
+    black: Black Tee
+price: 233.00
+inventory:
+    white: 
+        s:  0
+        m:  10
+        l:  2
+        xl: 20
+    black:
+        s:  0
+        m:  0
+        xl: 10
