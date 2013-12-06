@@ -24,19 +24,21 @@ TARGETS = $(TARGETS_src)
 #TARGETS += webroot/js/main.min.js
 
 all: node_modules $(TARGETS)
+	make -C frontend
+	
 
 lib/%.js: src/%.coffee
 	@mkdir -p $(shell dirname $@)
 	$(COFFEE) -c -m -o $(shell dirname $@) "$<"
 
-%.js: %.coffee
-	$(COFFEE) -c -m "$<"
+#%.js: %.coffee
+#	$(COFFEE) -c -m "$<"
 
-%.css: %.styl
-	$(STYLUS) < "$<" > "$@"
+#%.css: %.styl
+#	$(STYLUS) < "$<" > "$@"
 
-webroot/js/main.min.js: webroot/r.config.js $(TARGETS_webjs) $(WEBROOT_TEMPLATE)
-	$(RJS) -o "$<"
+#webroot/js/main.min.js: webroot/r.config.js $(TARGETS_webjs) $(WEBROOT_TEMPLATE)
+#	$(RJS) -o "$<"
 
 #%.html: %.jade
 #	$(JADE) < "$<" > "$@"
