@@ -13,3 +13,4 @@ test
 cache
 tmp
 src/*.js
+update.sh
