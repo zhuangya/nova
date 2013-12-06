@@ -1,8 +1,8 @@
 
-all: bower_components
+all: bower_components Gruntfile.js  karma.conf.js  karma-e2e.conf.js 
 	grunt build --force
 
-bower_components: bower.json  Gruntfile.js  karma.conf.js  karma-e2e.conf.js node_modules
+bower_components: bower.json  node_modules
 	bower install
 
 node_modules: package.json
