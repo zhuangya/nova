@@ -40,7 +40,7 @@ app.use express.session
   key: 'session_id'
   secret: config.httpd.session_key or "balabala"
   store : new MemcachedStore
-    hosts: config.memcached?.session or '127.0.0.1:11211'
+    hosts: config.memcached or '127.0.0.1:11211'
 
 app.use cors()
 app.use (req,resp,next) ->
