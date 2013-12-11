@@ -1,3 +1,19 @@
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-family: "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: transparent no-repeat center center fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
 @font-face {
     font-family: 'bebas';
     src: url('font/BebasNeue-webfont.eot');
@@ -7,6 +23,12 @@
          url('font/BebasNeue-webfont.svg#bebas_neueregular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+
+a {
+  color: #eee;
+  text-shadow: 0 -1px 0 #642;
+  text-decoration: none;
 }
 
 .clear-fix:after {
@@ -36,24 +58,13 @@
 
 /**** backgrounds ****/
 
-html {
-  min-height: 100%;
-}
-
-body {
-  min-height: 100%;
-  background: transparent no-repeat center center fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-}
 
 body.homepage {
   background-image: url(../images/bgs/homepage.jpg);
 }
 
 .global-navbar {
-  background-color: black;
+  background-color: #030303;
   height: 200px;
 }
 
