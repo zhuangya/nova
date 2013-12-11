@@ -22,3 +22,21 @@
 .navbar-item {
   text-align: center;
 }
+
+/**** backgrounds ****/
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: transparent no-repeat center center fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+body.homepage {
+  background-image: url(../images/bgs/homepage.jpg);
+}
