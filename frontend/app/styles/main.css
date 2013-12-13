@@ -45,11 +45,8 @@ a {
 }
 
 .social-media a {
+  font-size: 16px;
   margin: 2px;
-}
-
-.homepage {
-  margin-top: -20px;
 }
 
 .navbar-item {
@@ -69,6 +66,7 @@ a {
   color: white;
   font-size: 48px;
   line-height: 1.1;
+  padding-top: 0;
 }
 
 .logo-lg a {
@@ -77,7 +75,14 @@ a {
   font-size: 64px;
 }
 
+.logo-lg sup {
+  vertical-align: top;
+  text-indent: 0.2em;
+  font-size: 0.5em;
+}
+
 .view-wrapper {
+  margin-top: -20px;
   min-height: 100%;
   background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
   background-size: cover;
