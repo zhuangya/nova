@@ -59,13 +59,9 @@ a {
 /**** backgrounds ****/
 
 
-body.homepage {
-  background-image: url(../images/bgs/homepage.jpg);
-}
-
 .global-navbar {
   background-color: #030303;
-  height: 200px;
+  padding-bottom: 20px;
 }
 
 .logo-lg {
@@ -79,4 +75,10 @@ body.homepage {
   color: #eee;
   text-shadow: 0 0 1px rgba(233, 233, 233, .9);
   font-size: 64px;
+}
+
+.view-wrapper {
+  min-height: 100%;
+  background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
