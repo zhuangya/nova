@@ -90,3 +90,10 @@ a {
 .homepage .view-wrapper {
   background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
 }
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+}
