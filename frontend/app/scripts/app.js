@@ -45,3 +45,5 @@ angular.module('frontendApp', [
       $rootScope.pageClass = current.$$route.pageClass || '';
     });
   });
+
+angular.module('frontendApp').constant('YOUKU_KEY', 'f8c97cdf52e7a346');
