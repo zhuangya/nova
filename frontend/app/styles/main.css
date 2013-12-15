@@ -78,12 +78,15 @@ a {
 .logo-lg sup {
   vertical-align: top;
   text-indent: 0.2em;
-  font-size: 0.5em;
+  font-size: 0.4em;
 }
 
 .view-wrapper {
   margin-top: -20px;
   min-height: 100%;
-  background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
   background-size: cover;
+}
+
+.homepage .view-wrapper {
+  background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
 }
