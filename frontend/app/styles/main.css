@@ -72,12 +72,17 @@ a:hover {
   font-size: 48px;
   line-height: 1.1;
   padding-top: 0;
+  margin: 0;
 }
 
 .logo-lg a {
   color: #eee;
-  text-shadow: 0 0 1px rgba(233, 233, 233, .9);
+  background: transparent url(../images/logo.png) no-repeat center center;
   font-size: 64px;
+  text-indent: -9999px;
+  width: 170px;
+  height: 55px;
+  float: left;
 }
 
 .logo-lg sup {
@@ -91,11 +96,11 @@ a:hover {
   min-height: 100%;
   background-size: cover;
   width: 960px;
-  outline: 1px solid red;
   margin: 0 auto;
 }
 
 body {
+  padding-top: 20px;
   background-size: cover;
   background-color: transparent;
   background-repeat: no-repeat;
