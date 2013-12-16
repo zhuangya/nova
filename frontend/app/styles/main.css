@@ -26,9 +26,13 @@ body {
 }
 
 a {
-  color: #eee;
+  color: #fff;
   text-shadow: 0 -1px 0 #642;
   text-decoration: none;
+}
+
+a:hover {
+  color: #ffe400;
 }
 
 .clear-fix:after {
@@ -62,6 +66,7 @@ a {
 }
 
 .logo-lg {
+  font-weight: normal;
   font-family: bebas, sans-serif;
   color: white;
   font-size: 48px;
@@ -85,15 +90,16 @@ a {
   margin-top: -20px;
   min-height: 100%;
   background-size: cover;
+  width: 960px;
+  outline: 1px solid red;
+  margin: 0 auto;
 }
 
-.homepage .view-wrapper {
-  background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
-}
-
-body.new {
-  background: transparent url(../images/bgs/new.jpg) no-repeat center center fixed;
+body {
   background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: fixed;
 }
 
 .clean-list {

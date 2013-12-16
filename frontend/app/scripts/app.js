@@ -19,22 +19,27 @@ angular.module('frontendApp', [
         controller: 'NewCtrl'
       })
       .when('/look', {
+        pageClass: 'look',
         templateUrl: 'views/look.html',
         controller: 'LookCtrl'
       })
       .when('/v', {
+        pageClass: 'v',
         templateUrl: 'views/v.html',
         controller: 'VCtrl'
       })
       .when('/c', {
+        pageClass: 'c',
         templateUrl: 'views/c.html',
         controller: 'CCtrl'
       })
       .when('/order', {
+        pageClass: 'order',
         templateUrl: 'views/order.html',
         controller: 'OrderCtrl'
       })
       .when('/me', {
+        pageClass: 'me',
         templateUrl: 'views/me.html',
         controller: 'MeCtrl'
       })
