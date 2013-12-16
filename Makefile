@@ -23,9 +23,10 @@ TARGETS = $(TARGETS_src)
 #TARGETS +=$(TARGETS_jade)
 #TARGETS += webroot/js/main.min.js
 
+build: $(TARGETS)
+
 all: node_modules $(TARGETS)
 	make -C frontend
-	
 
 lib/%.js: src/%.coffee
 	@mkdir -p $(shell dirname $@)
@@ -51,10 +52,10 @@ clean:
 	find webroot -name \*.map -delete
 	rm -rf $(TARGETS)
 
-run: all
+run: $(TARGETS)
 	$(NODE) lib/main
 
 watch:
 	nodemon -w src --exec ./build_and_run lib/main.js
 
-.PHONY: all clean run watch
+.PHONY: all clean run watch build

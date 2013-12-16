@@ -9,21 +9,21 @@ Schema
 
 item (in cart): `[:categlogy]/[:name]/[:variant]/[:size]`
 
-eg.: `tees/pure_color/white/xxl`
+eg.: `tee/pure_color/white/xxl`
 
 ---------
 
-meatdata (json): `/data/[:categlogy]/[:name]`
+metadata (json): `/data/[:categlogy]/[:name]`
 
-meatdata (yaml): `/data/[:categlogy]/[:name]/meatdata.yml`
+metadata (yaml): `/data/[:categlogy]/[:name]/metadata.yml`
 
-eg.: `/data/tees/pure_color` 
+eg.: `/data/tee/pure_color` 
 
 ---------
 
 picture: `/photo/[:categlogy]/[:name]/[:variant]_[:filename](?schema=[:schema])`
 
-eg.: `/photo/tees/pure_color/white_main.jpg?schema=cover120`
+eg.: `/photo/tee/pure_color/white_main.jpg?schema=cover120`
 
 ---------
 
@@ -59,7 +59,7 @@ cart
 [
 	name: tees/pure_color/white/xxl
 	quantity: 1
-	price: 100.0
+	unit_price: 100.0
 ]
 ```
 
