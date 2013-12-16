@@ -3,11 +3,10 @@ class Cart
   @load: (req) =>
     cart = req.session.cart
     return new @(cart) if cart
-    req.session.cart = new @({})
+    new @(req.session.cart = {})
 
   @get: (req,resp) =>
     resp.json @load req
-    resp.end
 
   @update: (req, resp) =>
     items = req.body
