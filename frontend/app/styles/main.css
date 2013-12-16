@@ -1,3 +1,36 @@
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-family: "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: transparent no-repeat center center fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+@font-face {
+    font-family: 'bebas';
+    src: url('font/BebasNeue-webfont.eot');
+    src: url('font/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/BebasNeue-webfont.woff') format('woff'),
+         url('font/BebasNeue-webfont.ttf') format('truetype'),
+         url('font/BebasNeue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+  color: #eee;
+  text-shadow: 0 -1px 0 #642;
+  text-decoration: none;
+}
+
 .clear-fix:after {
   display: block;
   visibility: hidden;
@@ -12,13 +45,83 @@
 }
 
 .social-media a {
+  font-size: 16px;
   margin: 2px;
-}
-
-.homepage {
-  margin-top: -20px;
 }
 
 .navbar-item {
   text-align: center;
+}
+
+/**** backgrounds ****/
+
+
+.global-navbar {
+  background-color: #030303;
+  padding-bottom: 20px;
+}
+
+.logo-lg {
+  font-family: bebas, sans-serif;
+  color: white;
+  font-size: 48px;
+  line-height: 1.1;
+  padding-top: 0;
+}
+
+.logo-lg a {
+  color: #eee;
+  text-shadow: 0 0 1px rgba(233, 233, 233, .9);
+  font-size: 64px;
+}
+
+.logo-lg sup {
+  vertical-align: top;
+  text-indent: 0.2em;
+  font-size: 0.4em;
+}
+
+.view-wrapper {
+  margin-top: -20px;
+  min-height: 100%;
+  background-size: cover;
+}
+
+.homepage .view-wrapper {
+  background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
+}
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+}
+
+.usercard {
+  text-align: center;
+  outline: 1px solid pink;
+  line-height: 2;
+  width: 150px;
+}
+
+.usercard .avatar {
+  position: relative;
+}
+
+.usercard .avatar img {
+  border-radius: 50%;
+}
+
+.usercard .avatar:before {
+  content: '\0020';
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50% 50% 0 0;
+  background-image: linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, .2) 45%, rgba(255, 255, 255, .8));
+  transform-origin: bottom center;
+  transform: rotate(-45deg);
 }

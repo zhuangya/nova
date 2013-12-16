@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
-  <body ng-app="frontendApp">
+  <body ng-app="frontendApp" ng-class="pageClass">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- Add your site or application content here -->
-    <div ng-view=""></div>
+    <div class="view-wrapper" ng-class="vw-class" ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -48,9 +48,12 @@
     </script>
 
 
-    <script src="bower_components/angular/angular.js"></script>
 
         <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/jquery/jquery.min.js"></script>
+        <script src="bower_components/gumby/gumby.min.js"></script>
         <script src="bower_components/gumby/js/main.js"></script>
         <script src="bower_components/gumby/js/plugins.js"></script>
         <!-- endbuild -->
@@ -71,6 +74,8 @@
         <script src="scripts/controllers/c.js"></script>
         <script src="scripts/controllers/order.js"></script>
         <script src="scripts/controllers/me.js"></script>
+        <script src="scripts/directives/navbar.js"></script>
+        <script src="scripts/directives/usercard.js"></script>
         <!-- endbuild -->
 </body>
 </html>

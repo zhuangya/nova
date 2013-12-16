@@ -7,4 +7,7 @@ angular.module('frontendApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.nos = {
+      avatar: 'http://placekitten.com/128/128'
+    };
   });

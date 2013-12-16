@@ -9,6 +9,7 @@ angular.module('frontendApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
+        pageClass: 'homepage',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -39,4 +40,8 @@ angular.module('frontendApp', [
       .otherwise({
         redirectTo: '/'
       });
+  }).run(function($route, $rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function(event, current) {
+      $rootScope.pageClass = current.$$route.pageClass || '';
+    });
   });
