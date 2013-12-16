@@ -14,6 +14,7 @@ angular.module('frontendApp', [
         controller: 'MainCtrl'
       })
       .when('/new', {
+        pageClass: 'new',
         templateUrl: 'views/new.html',
         controller: 'NewCtrl'
       })

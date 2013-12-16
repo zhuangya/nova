@@ -91,6 +91,11 @@ a {
   background: black url(../images/bgs/homepage.jpg) no-repeat center center fixed;
 }
 
+body.new {
+  background: transparent url(../images/bgs/new.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 .clean-list {
   margin: 0;
   padding: 0;
