@@ -1,7 +1,7 @@
 Test API
 ===
 
-http://nova.icybear.net/
+http://benzex.com/api
 
 
 Schema
