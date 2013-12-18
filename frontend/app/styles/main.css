@@ -75,6 +75,12 @@ a:hover {
   width: 100%;
 }
 
+.corner {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .logo-lg {
   font-weight: normal;
   font-family: bebas, sans-serif;
@@ -109,9 +115,8 @@ a:hover {
   margin: 0 auto;
 }
 
-.container {
-  width: 960px;
-  margin: auto;
+.horizontal-navbar {
+  padding-top: 30px;
 }
 
 body {
