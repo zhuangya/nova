@@ -27,7 +27,7 @@ body {
 
 a {
   color: #fff;
-  text-shadow: 0 -1px 0 #642;
+  text-shadow: 0 1px 0 #999;
   text-decoration: none;
 }
 
@@ -75,6 +75,10 @@ a:hover {
   width: 100%;
 }
 
+.global-navbar .container {
+  position: relative;
+}
+
 .corner {
   position: absolute;
   right: 0;
@@ -111,7 +115,6 @@ a:hover {
   margin-top: -20px;
   min-height: 100%;
   background-size: cover;
-  width: 960px;
   margin: 0 auto;
 }
 
@@ -160,4 +163,13 @@ body {
   background-image: linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, .2) 45%, rgba(255, 255, 255, .8));
   transform-origin: bottom center;
   transform: rotate(-45deg);
+}
+
+.new-header {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.new-gallery {
+  background-color: #f8f8f8;
+  min-height: 300px;
 }
