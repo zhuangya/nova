@@ -111,6 +111,11 @@ a:hover {
   font-size: 0.4em;
 }
 
+.logo-md {
+  text-align: center;
+  color: white;
+}
+
 .view-wrapper {
   margin-top: -20px;
   min-height: 100%;
@@ -137,9 +142,13 @@ body {
   list-style-type: none;
 }
 
+.vertical-list {
+  font-size: 12px;
+}
+
 .usercard {
+  font-size: 12px;
   text-align: center;
-  outline: 1px solid pink;
   line-height: 2;
   width: 150px;
 }

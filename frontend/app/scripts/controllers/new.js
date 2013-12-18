@@ -8,6 +8,6 @@ angular.module('frontendApp')
       'Karma'
     ];
     $scope.nos = {
-      avatar: 'http://placekitten.com/128/128'
+      avatar: 'http://placekitten.com/64/64'
     };
   });
