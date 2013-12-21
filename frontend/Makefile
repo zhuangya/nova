@@ -1,15 +1,5 @@
 
-all: bower_components Gruntfile.js  karma.conf.js  karma-e2e.conf.js 
-	grunt build --force
-
-bower_components: bower.json  node_modules
+all:
 	bower install
+	grunt build
 
-node_modules: package.json
-	npm install
-
-clean:
-	rm -rf dist
-
-dist-clean: clean
-	rm -rf bower_components node_modules
