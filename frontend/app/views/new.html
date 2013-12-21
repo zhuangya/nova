@@ -10,8 +10,8 @@
       </div>
       <div class="new-gallery">
         <div ng-repeat="good in goods">
-          <img ng-src="{{good.image}}">
-          <a class="btn btn-primary" ng-repeat="size in good.size">{{size}}</a>
+          <a ng-href="/#/detail/{{good.id}}"><img ng-src="{{good.image}}"></a>
+          <span class="btn btn-primary" ng-repeat="size in good.size">{{size}}</span>
         </div>
       </div>
     </div>

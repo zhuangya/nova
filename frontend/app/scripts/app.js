@@ -43,6 +43,11 @@ angular.module('frontendApp', [
         templateUrl: 'views/me.html',
         controller: 'MeCtrl'
       })
+      .when('/detail/:detailId', {
+        pageClass: 'new',
+        templateUrl: 'views/detail.html',
+        controller: 'DetailCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
