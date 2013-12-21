@@ -201,3 +201,8 @@ body {
   position: absolute;
   outline: 1px solid yellow;
 }
+
+.goods {
+  border: 1px solid rgb(233, 233, 233);
+  border: 1px solid rgba(233, 233, 233, .2);
+}

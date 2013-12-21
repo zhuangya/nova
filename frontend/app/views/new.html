@@ -3,15 +3,14 @@
     <div class="col-xs-1">
       <div navbar orientation="vertical"></div>
     </div>
-    <div class="col-xs-10 clear-fix">
-      <div class="new-header clear-fix">
+    <div class="col-xs-10 new-header clear-fix">
+      <div class="clear-fix">
         <h2 class="logo-md">benzex</h2>
         <div class="pull-right" usercard who="nos"></div>
       </div>
-      <div class="new-gallery">
-        <div ng-repeat="good in goods">
-          <a ng-href="/#/detail/{{good.id}}"><img ng-src="{{good.image}}"></a>
-          <span class="btn btn-primary" ng-repeat="size in good.size">{{size}}</span>
+      <div class="row new-gallery">
+        <div class="col-xs-4 goods" ng-repeat="good in goods">
+          <a ng-href="/#/detail/{{good.id}}"><img width="100%" ng-src="{{good.image}}"></a>
         </div>
       </div>
     </div>

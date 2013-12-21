@@ -12,11 +12,31 @@ angular.module('frontendApp')
     };
     $scope.goods = [{
       id: 1,
-      image: 'http://placekitten.com/300/300',
+      image: 'images/tees/1.jpg',
       size: ['XL', 'L', 'M', 'S']
     }, {
       id: 2,
-      image: 'http://placekitten.com/400/340',
+      image: 'images/tees/2.jpg',
+      size: ['XL', 'L', 'M']
+    }, {
+      id: 3,
+      image: 'images/tees/3.jpg',
+      size: ['XL', 'L', 'M']
+    }, {
+      id: 4,
+      image: 'images/tees/4.jpg',
+      size: ['XL', 'L', 'M']
+    }, {
+      id: 5,
+      image: 'images/tees/5.jpg',
+      size: ['XL', 'L', 'M']
+    }, {
+      id: 6,
+      image: 'images/tees/6.jpg',
+      size: ['XL', 'L', 'M']
+    }, {
+      id: 7,
+      image: 'images/tees/7.jpg',
       size: ['XL', 'L', 'M']
     }]
   });
