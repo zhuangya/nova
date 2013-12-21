@@ -6,10 +6,10 @@
     <div class="col-xs-10 clear-fix">
       <div class="detail-wrapper row">
         <div class="col-xs-6">
-          {{detailId}}
+          <img ng-src="{{clothes.image}}">
         </div>
         <div class="col-xs-6">
-          hell, yeah
+          <span class="btn btn-default" ng-repeat="size in clothes.size">{{size}}</span>
         </div>
       </div>
     </div>
