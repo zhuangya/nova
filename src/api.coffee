@@ -1,14 +1,20 @@
 auth = require './auth'
 express = require 'express'
 fibrous = require 'fibrous'
+_ = require 'underscore'
 
 app = express()
 
 #app.use auth.checkHeader
 cart = require './cart'
 
-app.get '/user', (req,resp) ->
-  resp.json req.user
+app.get '/user', fibrous.middleware, (req,resp) ->
+  if req.user
+    obj = req.user.toJSON()
+    obj.profile = _.omit req.oauthProfile.toJSON(), ['_id','__v','token','_user']
+    resp.json obj
+  else
+    resp.send 403,'Login Required'
 
 app.get '/cart', fibrous.middleware, cart.get
 

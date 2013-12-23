@@ -56,11 +56,11 @@ inventory:
 cart
 ---
 ```
-[
+[{
 	name: tees/pure_color/white/xxl
 	quantity: 1
 	unit_price: 100.0
-]
+}]
 ```
 
 
@@ -80,11 +80,26 @@ phone: 18600000000
 API
 ===
 
-
-GET /data/[:id]
+GET /auth/weibo[?url=/some/where#you_want]
 ---
-get product data
+login with weibo OAuth, redir to url after success, defaults to '/'
 
+GET /api/user
+---
+returns current user information
+
+GET /data
+---
+returns an array of all products
+page with offset & count param.
+
+GET /data/[:categlogy]
+---
+get product data of an categlogy
+
+GET /data/[:categlogy]/[:name]
+---
+get detailed product data, including inventory.
 
 GET /api/cart
 ---

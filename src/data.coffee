@@ -6,7 +6,10 @@ url = require 'url'
 path = require 'path'
 events = require 'events'
 mkdirp = require 'mkdirp'
-yaml = require 'js-yaml'
+YAML = require 'js-yaml'
+YAML.parse = (str) ->
+  str = str.toString() if Buffer.isBuffer(str)
+  @safeLoad str
 
 config = require '../config'
 
@@ -30,20 +33,21 @@ module.exports = (options) ->
     sourceFn = metaFilename realFilename decodeURI q.pathname
     if fs.existsSync sourceFn
       content = fs.readFileSync sourceFn
-      obj = yaml.safeLoad content.toString()
+      obj = YAML.parse content
       resp.json obj
     else
       next()
 
   app.get '/', (req,resp) ->
-    resp.json loadJSONCache realFilename 'index.json'
+    console.info req.param
+    resp.json loadYAMLCache realFilename 'index.json'
 
   app.use express.static options.basePath, {redirect:false}
   return app
 
 
 _cache = {}
-loadJSONCache = (name) ->
+loadYAMLCache = (name) ->
   console.info name
   stat = fs.statSync name
   time = stat.mtime.getTime()
@@ -52,7 +56,7 @@ loadJSONCache = (name) ->
     return entry.obj
   else
     entry =
-      obj: JSON.parse fs.readFileSync name
+      obj: YAML.parse fs.readFileSync name
       time: time
 
     _cache[name] = entry
