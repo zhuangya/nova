@@ -1,0 +1,11 @@
+id: hat/pure_color
+name: Pure Color Hats
+description: |
+    Put your head in it.    
+variants:
+    red: Red
+    yellow: Yellow
+price: 233.00
+inventory:
+    red: 0
+    yellow: 1

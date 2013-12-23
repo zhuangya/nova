@@ -21,6 +21,17 @@
     "restify":"*",
     "mustache":"*",
     "alipay":"*",
+    "commander":"*",
+    "lazy.js":"*",
+    "passport": ">=0.1.16",
+    "passport-oauth": ">=0.1.14",
+    "passport-twitter": ">=0.1.4",
+    "passport-google-oauth": ">=0.1.5",
+    "passport-local": ">=0.1.6",
+    "passport-facebook": ">=0.1.5", 
+    "passport-weibo": ">=0.0.1", 
+    "mongoose":"*",
+    "mongoose-timestamp":"*",
     "mkdirp":"*"
   }
 }

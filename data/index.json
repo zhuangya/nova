@@ -1,0 +1,46 @@
+[
+  {
+    "id": "hat/pure_color",
+    "name": "Pure Color Hats",
+    "description": "\nPut your head in it.    \n",
+    "variants": {
+      "red": "Red",
+      "yellow": "Yellow"
+    },
+    "price": 233,
+    "cover_name": "red_cover.jpg",
+    "cover_size": {
+      "width": 225,
+      "height": 225
+    }
+  },
+  {
+    "id": "hat/with_cat_ear",
+    "name": "Hat with cat ear",
+    "description": "\nMoew ^_^\n",
+    "variants": {
+      "black": "Black"
+    },
+    "price": 233,
+    "cover_name": "black_cover.jpg",
+    "cover_size": {
+      "width": 225,
+      "height": 225
+    }
+  },
+  {
+    "id": "tee/pure_color",
+    "name": "Pure Color T-Shirts",
+    "description": "\nI am a T-Shirt\nDO NOT typo as T-Shit\n",
+    "variants": {
+      "white": "White Tee",
+      "black": "Black Tee"
+    },
+    "price": 233,
+    "cover_name": "white_cover.jpg",
+    "cover_size": {
+      "width": 225,
+      "height": 225
+    }
+  }
+]

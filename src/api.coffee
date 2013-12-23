@@ -7,6 +7,9 @@ app = express()
 #app.use auth.checkHeader
 cart = require './cart'
 
+app.get '/user', (req,resp) ->
+  resp.json req.user
+
 app.get '/cart', fibrous.middleware, cart.get
 
 app.post '/cart', fibrous.middleware, cart.update

@@ -2,10 +2,16 @@
   "version": "1305261437",
   "baseDir": ".",
   "debug": false,
-  "db": "mongodb://localhost:27017/ffdb",
+  "db": "mongodb://localhost:27017/nova",
   "hostname": "localhost:3000",
   "httpd": {
     "bind": "127.0.0.1",
     "port": 3000
+  },
+  "auth":{
+    "weibo":{
+        "key":"2183595474",
+        "secret":"673be511d2b039a5e2deea6ccefeddc6"
+    }
   }
 }

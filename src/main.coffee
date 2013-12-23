@@ -52,6 +52,7 @@ app.locals.config = config
 app.get '/', (req,resp) ->
   resp.render('index')
 
+(require './auth')(app)
 app.use '/api', (require './api')()
 app.use '/data', (require './data')()
 app.use '/photo', (require './photo')()

@@ -8,8 +8,10 @@ events = require 'events'
 mkdirp = require 'mkdirp'
 yaml = require 'js-yaml'
 
+config = require '../config'
+
 defaultConfig =
-  basePath: './data'
+  basePath: path.join config.baseDir, 'data'
 
 module.exports = (options) ->
   options or= {}
@@ -25,16 +27,34 @@ module.exports = (options) ->
   app.use (req,resp,next) ->
     return next() unless req.accepts('json')
     q = req._parsedUrl or url.parse req.url
-    sourceFn = realFilename decodeURI q.pathname
-    stat = fs.statSync sourceFn
-    if stat.isDirectory()
-      sourceFn = metaFilename sourceFn
-      #console.info sourceFn
+    sourceFn = metaFilename realFilename decodeURI q.pathname
+    if fs.existsSync sourceFn
       content = fs.readFileSync sourceFn
       obj = yaml.safeLoad content.toString()
       resp.json obj
     else
       next()
 
-  app.use express.static options.basePath, {redirect:false, index:"metadata.yml"}
+  app.get '/', (req,resp) ->
+    resp.json loadJSONCache realFilename 'index.json'
+
+  app.use express.static options.basePath, {redirect:false}
   return app
+
+
+_cache = {}
+loadJSONCache = (name) ->
+  console.info name
+  stat = fs.statSync name
+  time = stat.mtime.getTime()
+  entry = _cache[name]
+  if entry?.time is time
+    return entry.obj
+  else
+    entry =
+      obj: JSON.parse fs.readFileSync name
+      time: time
+
+    _cache[name] = entry
+    return entry.obj
+
