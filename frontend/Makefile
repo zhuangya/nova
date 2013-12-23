@@ -1,5 +1,5 @@
 
 all:
 	bower install
-	grunt build
+	grunt build --force
 
