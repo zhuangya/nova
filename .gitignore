@@ -5,10 +5,10 @@
 .idea
 lib
 node_modules
-.DS_Store
+**/.DS_Store
 config.js
 test
 cache
 tmp
-src/*.js
+src/**/*.js
 update.sh
