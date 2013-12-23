@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('frontendApp')
-  .controller('DetailCtrl', function ($scope, $routeParams) {
-    $scope.detailId = $routeParams.detailId;
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DetailCtrl', function ($scope, $routeParams, CLOTHES) {
+    $scope.detailId = +$routeParams.detailId;
+    console.log($scope.detailId);
+    $scope.clothes = _.find(CLOTHES, {
+      'id': $scope.detailId
+    });
+
   });
