@@ -2,7 +2,7 @@ passport = require 'passport'
 Twitter = (require 'passport-twitter').Strategy
 Google  = (require 'passport-google-oauth').OAuth2Strategy
 Facebook = (require 'passport-facebook').Strategy
-Weibo = (require 'passport-weibo').Strategy
+Weibo = (require 'passport-weibo-2').Strategy
 LocalStrategy = require('passport-local').Strategy
 
 {auth,hostname} = (require '../config')

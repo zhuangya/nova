@@ -29,7 +29,7 @@
     "passport-google-oauth": ">=0.1.5",
     "passport-local": ">=0.1.6",
     "passport-facebook": ">=0.1.5", 
-    "passport-weibo": ">=0.0.1", 
+    "passport-weibo-2": ">=0.0.1", 
     "mongoose":"*",
     "mongoose-timestamp":"*",
     "mkdirp":"*"
