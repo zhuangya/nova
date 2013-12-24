@@ -1,7 +1,28 @@
-<ul>
-  <li ng-repeat="video in videoList">
-    <a target="_blank" ng-href="{{video.url}}">
-      {{video.name}}
-    </a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-6">
+    <form role="form" ng-init="video={}">
+      <div class="from-group">
+        <label for="videoTitle">视频标题</label>
+        <input ng-model="video.name" class="form-control" type="text" placeholder="视频标题">
+      </div>
+      <div class="form-group">
+        <label for="videoUrl">视频地址</label>
+        <input ng-model="video.url" class="form-control" type="text" placeholder="视频地址">
+      </div>
+      <div class="form-group">
+        <input ng-click="addVideo()" class="btn btn-primary pull-right" type="submit" value="增加">
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li ng-repeat="video in videoList">
+      <a target="_blank" ng-href="{{video.url}}">
+        {{video.name}}
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+

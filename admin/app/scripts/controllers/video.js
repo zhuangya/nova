@@ -11,4 +11,8 @@ angular.module('adminApp')
       url: 'http://v.youku.com/v_show/id_XNjUwNjIxNDA0.html'
     }];
 
+    $scope.addVideo = function() {
+      console.log($scope.video);
+    };
+
   });
