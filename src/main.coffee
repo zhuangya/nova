@@ -49,10 +49,10 @@ app.use (req,resp,next) ->
 
 app.locals.config = config
 
-app.get '/', (req,resp) ->
-  resp.render('index')
+db = require './db'
 
 (require './auth')(app)
+
 app.use '/api', (require './api')()
 app.use '/data', (require './data')()
 app.use '/photo', (require './photo')()

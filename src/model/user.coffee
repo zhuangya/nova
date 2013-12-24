@@ -14,7 +14,7 @@ schema = db.Schema
     unique: true
   email: #email address
     type: String
-    required: true
+    #required: true
     unique: true
   password:
     type: String
@@ -28,21 +28,8 @@ schema = db.Schema
     index: true
     #unique: true
   points: Number
-  descr: String
+  #descr: String
   _icon_url: String
-  counter:
-    projects:
-      type: Number
-      default: 0
-    ideas:
-      type: Number
-      default: 0
-    comments:
-      type: Number
-      default: 0
-    likes:
-      type: Number
-      default: 0
 
 schema.plugin(timestamps)
 
@@ -57,12 +44,7 @@ schema.statics.findByName = (name,cb) ->
 
 schema.statics.hashPasswd = utils.genHash
 
-schema.statics.updateCounter = fibrous (id,name,val = 1) ->
-  console.info "update counter #{name}"
-  op = $inc: {}
-  op.$inc[name] = val
-  @sync.findByIdAndUpdate id, op
-
+###
 schema.virtual('icon_url').get ->
   @_icon_url or gravatar.url @email,
     d:"http://#{config.hostname}/images/avatar11.png"
@@ -75,6 +57,7 @@ schema.virtual('icon_url_large').get ->
     d:"http://#{config.hostname}/images/avatar11.png"
     s:100
 
+###
 schema.methods.genToken = utils.genToken -> @id
 schema.methods.verifyToken = utils.verifyToken (id) ->
   throw new Error 'id mismatch' unless id == @id
@@ -113,30 +96,6 @@ schema.methods.getLikedIdeas = fibrous (options) ->
     db.model('Idea').future.findById l.object.id
   )
 
-schema.methods.getOwnIdeas = fibrous (options) ->
-  db.model('Idea').sync.find(
-    ownner: @_id
-    class: 'article'
-  ,null,options)
-
-schema.methods.isFirstView = fibrous (project) ->
-  log = db.model('ActionLog').sync.findOne({
-    user: @_id
-    action: 'project.view'
-    'object.id': project._id
-  })
-  return false if log
-  db.model('ActionLog').sync.write
-    user: @_id
-    action: 'project.view'
-    object: id: project._id
-  return true
-
-schema.methods.updateCounter = fibrous (name,val = 1) ->
-  op = $inc: {}
-  op.$inc[name] = val
-  @sync.update op
-
 schema.methods.toJSON = ->
   id: @_id
   name: @name
@@ -144,9 +103,8 @@ schema.methods.toJSON = ->
   icon_url: @icon_url
   icon_url_large: @icon_url_large
   alias: @alias
-  points: @points
-  descr: @descr
-  counter: @counter
+  #points: @points
+  #descr: @descr
   flags: @flags
 
 module.exports = db.model 'User', schema

@@ -23,7 +23,7 @@ schema = db.Schema
 schema.plugin(timestamps)
 
 schema.statics.createOrUpdate = (profile,cb) ->
-  condition = id: "#{profile.provider}/#{profile.id}"
+  condition = id: "#{profile.provider}_#{profile.id}"
   @findOne condition,(err,obj)=>
     return cb err,null if err
     obj = obj or new this(condition)

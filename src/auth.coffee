@@ -2,8 +2,9 @@ passport = require 'passport'
 Twitter = (require 'passport-twitter').Strategy
 Google  = (require 'passport-google-oauth').OAuth2Strategy
 Facebook = (require 'passport-facebook').Strategy
-Weibo = (require 'passport-weibo').Strategy
+Weibo = (require 'passport-weibo-2').Strategy
 LocalStrategy = require('passport-local').Strategy
+fibrous = require 'fibrous'
 
 {auth,hostname} = (require '../config')
 
@@ -100,8 +101,6 @@ auth = (app)->
 
   app.use (req,res,_next) ->
 
-    res.cookie 'preview', 'true', maxAge: TOKEN_TTL unless req.cookies.preview
-
     next = (err)->
       if !err and req.user and !req.cookies.token
         res.cookie 'token', req.user.genToken(TOKEN_TTL), maxAge: TOKEN_TTL
@@ -173,44 +172,59 @@ auth = (app)->
     failureRedirect: '/login'
     passReqToCallback: true
 
-  app.get  '/auth/checkProfile', (req,resp) ->
+  app.get  '/auth/checkProfile', fibrous.middleware, (req,resp) ->
     #console.info req.user
     if not req.oauthProfile
       return resp.redirect '/login'
+
+    done = ->
+      url = req.session._url || '/'
+      req.session._url = null
+      resp.redirect url
+
     if req.user
       #add oauth asscoation
       uid = req.oauthProfile._user
       if not uid
         req.user.alias.push req.oauthProfile.id
-        req.user.save (err)->
-          resp.send 500,err if err
-          req.oauthProfile._user = req.user._id
-          req.oauthProfile.save (err)->
-            resp.send 500,err if err
-            resp.redirect '/'
+        req.user.sync.save()
+
+        req.oauthProfile._user = req.user._id
+        req.oauthProfile.save()
+
+        done()
 
       else if uid.equals req.user._id
         #Normal login
-        url = req.session._url || '/'
-        req.session._url = null
-        return resp.redirect url
+        done()
       else
         resp.send 500,'OAuth account already used'
+
     else #not registered
-      resp.redirect '/register'
+      #resp.redirect '/register'
+      user = new User
+        name: req.oauthProfile.id
+        alias: [req.oauthProfile.id]
+      user.sync.save()
+      
+      req.oauthProfile._user = user._id
+      req.oauthProfile.sync.save()
+      req.session.user = user._id
+
+      done()
 
   app.get '/login', (req,resp) ->
     if req.user
       return resp.redirect '/'
     resp.render 'login'
   
-  app.post '/login', (req,resp,next) ->
+  app.post '/login', fibrous.middleware, (req,resp,next) ->
     (passport.authenticate 'local', (err,user,info) ->
       #console.info arguments
       if user
         req.account = user
-        req.logIn user,{}, ()->
-          resp.redirect req.query.url || '/'
+        req.sync.logIn user,{}
+        resp.redirect req.query.url || '/'
       else
         req.info = info
         return resp.render 'login'
@@ -347,7 +361,7 @@ auth = (app)->
   app.get '/auth/verify_email', (req,resp) ->
     return resp.redirect '/' unless req.user
     return resp.redirect '/' if 'email_verified' in req.user.flags
-    console.info req.session
+    #console.info req.session
     req.user.sendVerifyEmail(req.session._url)
     resp.render 'verify_email'
 
