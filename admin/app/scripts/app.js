@@ -17,6 +17,11 @@ angular.module('adminApp', [
         templateUrl: 'views/video.html',
         controller: 'VideoCtrl'
       })
+      .when('/clothes', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes.html',
+        controller: 'ClothesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
