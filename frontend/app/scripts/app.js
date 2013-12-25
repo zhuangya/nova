@@ -18,6 +18,11 @@ angular.module('frontendApp', [
         templateUrl: 'views/new.html',
         controller: 'NewCtrl'
       })
+      .when('/detail/:detailId', {
+        pageClass: 'detail',
+        templateUrl: 'views/detail.html',
+        controller: 'DetailCtrl'
+      })
       .when('/look', {
         pageClass: 'look',
         templateUrl: 'views/look.html',
@@ -42,11 +47,6 @@ angular.module('frontendApp', [
         pageClass: 'me',
         templateUrl: 'views/me.html',
         controller: 'MeCtrl'
-      })
-      .when('/detail/:detailId', {
-        pageClass: 'new',
-        templateUrl: 'views/detail.html',
-        controller: 'DetailCtrl'
       })
       .otherwise({
         redirectTo: '/'
