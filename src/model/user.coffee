@@ -15,7 +15,7 @@ schema = db.Schema
   email: #email address
     type: String
     #required: true
-    unique: true
+    #unique: true
   password:
     type: String
     required: false

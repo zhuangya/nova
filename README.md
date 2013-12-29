@@ -101,6 +101,10 @@ GET /data/[:categlogy]/[:name]
 ---
 get detailed product data, including inventory.
 
+GET /data/video
+---
+return slice of /data/video.json
+
 GET /api/cart
 ---
 get cart
@@ -126,7 +130,11 @@ GET /api/order
 get orders of user
 
 
-POST /api/authorize
----
-login
+admin api
+===
 
+POST /api/admin/video
+---
+update /data/video.json
+
+```{"name":"hello","url":"world"}```
