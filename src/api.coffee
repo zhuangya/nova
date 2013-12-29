@@ -7,6 +7,7 @@ app = express()
 
 #app.use auth.checkHeader
 cart = require './cart'
+admin = require './admin'
 
 app.get '/user', fibrous.middleware, (req,resp) ->
   if req.user
@@ -22,13 +23,11 @@ app.post '/cart', fibrous.middleware, cart.update
 
 app.delete '/cart', fibrous.middleware, cart.remove
 
-###
-app.get '/order', fibrous.middleware, order.get
+#app.get '/order', fibrous.middleware, order.get
 
-app.post '/order', fibrous.middleware, order.create
-###
+#app.post '/order', fibrous.middleware, order.create
 
-#app.post '/photo/profileIcon', fibrous.middleware, ctrl.photo.createProfileIcon
+app.use '/admin', admin
 
 app.all '/test', (req,resp) ->
   resp.send method: req.method
