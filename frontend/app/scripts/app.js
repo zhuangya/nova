@@ -53,7 +53,7 @@ angular.module('frontendApp', [
       });
   }).run(function($route, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function(event, current) {
-      $rootScope.pageClass = current.$$route.pageClass || '';
+      $rootScope.pageClass = current.$$route.pageClass || 'blank';
     });
   });
 
