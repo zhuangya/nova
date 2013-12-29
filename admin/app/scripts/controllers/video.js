@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('adminApp')
-  .controller('VideoCtrl', function ($scope) {
-    //TODO: fetch a video list from api.
+  .controller('VideoCtrl', function ($scope, bxVideo) {
 
+    bxVideo.query(function(resp) {
+    });
 
     // so this is just a mock.
     $scope.videoList = [{
