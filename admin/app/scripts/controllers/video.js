@@ -14,4 +14,8 @@ angular.module('adminApp')
       $scope.video = {};
     };
 
+    $scope.deleteVideo = function(video) {
+      console.log(video);
+    };
+
   });
