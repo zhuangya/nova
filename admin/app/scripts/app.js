@@ -34,4 +34,5 @@ angular.module('adminApp')
     });
   });
 
-angular.module('adminApp').constant('APIBASE', 'http://api.benzex.com/api');
+
+angular.module('adminApp').constant('APIBASE', 'http://benzex.com');

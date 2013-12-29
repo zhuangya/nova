@@ -1,19 +1,17 @@
 'use strict';
 
 angular.module('adminApp')
-  .controller('VideoCtrl', function ($scope, bxVideo) {
+  .controller('VideoCtrl', function ($scope, $http, $q, APIBASE) {
 
-    bxVideo.query(function(resp) {
+    $http.get(APIBASE + '/data/video').success(function(videos) {
+      $scope.videoList = videos;
     });
 
-    // so this is just a mock.
-    $scope.videoList = [{
-      name: 'mac pro 开箱',
-      url: 'http://v.youku.com/v_show/id_XNjUwNjIxNDA0.html'
-    }];
-
     $scope.addVideo = function() {
-      console.log($scope.video);
+      $http.post(APIBASE + '/api/admin/video', $scope.video).success(function(videos) {
+        $scope.videoList = videos;
+      });
+      $scope.video = {};
     };
 
   });
