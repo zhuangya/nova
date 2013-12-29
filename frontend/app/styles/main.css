@@ -27,7 +27,6 @@ body {
 
 a {
   color: #fff;
-  text-shadow: 0 1px 0 #999;
   text-decoration: none;
 }
 
@@ -41,6 +40,10 @@ a:hover {
   content: '\0020';
   line-height: 0;
   clear: both;
+}
+
+.social-account a {
+  padding-left: 4px;
 }
 
 .social-media {
@@ -145,6 +148,7 @@ body {
 
 .vertical-list {
   font-size: 12px;
+  line-height: 1.8;
 }
 
 .usercard {
