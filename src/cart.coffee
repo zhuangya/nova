@@ -1,4 +1,6 @@
 Product = require './product'
+_ = require 'underscore'
+
 class Cart
   @load: (req) =>
     cart = req.session.cart
@@ -30,6 +32,12 @@ class Cart
   toJSON: ->
     @items[name] for name of @items
 
+  getTotalPrice: ->
+    _.chain @items
+     .map (item)->
+       product = Product.loadItem item.name
+       product.getPrice() * item.count
+     .reduce ((a,b)->a+b),0
 
 module.exports=Cart
 

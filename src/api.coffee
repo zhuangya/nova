@@ -7,6 +7,7 @@ app = express()
 
 #app.use auth.checkHeader
 cart = require './cart'
+order = require './order'
 admin = require './admin'
 
 app.get '/user', fibrous.middleware, (req,resp) ->
@@ -17,15 +18,17 @@ app.get '/user', fibrous.middleware, (req,resp) ->
   else
     resp.send 403,'Login Required'
 
-app.get '/cart', fibrous.middleware, cart.get
-
-app.post '/cart', fibrous.middleware, cart.update
-
+app.get    '/cart', fibrous.middleware, cart.get
+app.post   '/cart', fibrous.middleware, cart.update
 app.delete '/cart', fibrous.middleware, cart.remove
 
-#app.get '/order', fibrous.middleware, order.get
+app.get    '/order', fibrous.middleware, order.list
+app.post   '/order', fibrous.middleware, order.create
 
-#app.post '/order', fibrous.middleware, order.create
+app.get    '/order/:id', fibrous.middleware, order.get
+app.post   '/order/:id', fibrous.middleware, order.update
+app.delete '/order/:id', fibrous.middleware, order.remove
+
 
 app.use '/admin', admin
 
