@@ -3,6 +3,7 @@ module.exports =
 
   User : require './user'
   OAuthProfile : require './oauth_profile'
+  Order : require './order'
 
   ObjectId : (x) ->
     try
