@@ -1,0 +1,16 @@
+<div class="dir-clothes-price clear-fix">
+  <div class="thumb">
+    <img ng-src="{{clothes.thumbnail}}">
+  </div>
+  <div class="detail">
+    <div class="name">
+      <p><i class="fa fa-tags"></i> {{clothes.name || '服装名称'}}</p>
+    </div>
+    <div class="misc">
+      <span class="price">349</span>
+      <ul class="size">
+        <li ng-repeat="size in clothes.sizes" ng-class="size.available">{{size.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -212,7 +212,6 @@ body {
 
 .clothes-meta {
   float:right;
-  outline: 1px solid skyblue;
   width: 50%;
 }
 
@@ -230,13 +229,11 @@ body {
 
 .clothes-price {
   width: 33.3333333%;
-  outline: 1px solid red;
   float: left;
 }
 
 .clothes-misc {
   width: 66.666667%;
-  outline: 1px solid green;
   float: left;
 }
 
@@ -253,7 +250,6 @@ body {
 #waterfall .shot {
   width: 25%;
   position: absolute;
-  outline: 1px solid yellow;
 }
 
 .goods {
@@ -267,3 +263,45 @@ body {
   padding: 20px;
   box-sizing: border-box;
 }
+
+
+.dir-clothes-price .thumb {
+  width: 64px;
+  height: 64px;
+  float: left;
+}
+
+.dir-clothes-price .thumb img {
+  display: block;
+}
+
+.dir-clothes-price .detail {
+  float: left;
+}
+
+.dir-clothes-price .name {
+  height: 32px;
+  line-height: 32px;
+  font-size: 18px;
+}
+
+.dir-clothes-price .misc {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+}
+
+.dir-clothes-price .size {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+
+.dir-clothes-price .size li {
+  display: inline-block;
+  margin: 0 8px;
+}
+
