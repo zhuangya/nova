@@ -8,23 +8,27 @@
         <div class="col-xs-12 clothes-image clear-fix">
           <img ng-src="{{clothes.image}}">
         </div>
-        <div class="gradient-bg clear-fix">
-          <div class="col-xs-12">
-            <p class="clothes-name"><i class="fa fa-tags"></i>{{clothes.name || 'GoodFellas T恤'}}</p>
-          </div>
-          <div class="col-xs-12">
-            <div class="clothes-meta">
-              <div class="clothes-price">
-                {{clothes.price || 349}}
-              </div>
-              <div class="clothes-misc">
-                <li>sizes
-                <li>next
-              </div>
+        
+      </div>
+
+      <div id="gradient-bg" class="row clear-fix">
+        <div class="col-xs-12">
+          <p class="clothes-name"><i class="fa fa-tags"></i>{{clothes.name || 'GoodFellas T恤'}}</p>
+        </div>
+        <div class="col-xs-12">
+          <div class="clothes-meta">
+            <div class="clothes-price">
+              {{clothes.price || 349}}
+            </div>
+            <div class="clothes-misc">
+              <li>sizes
+              <li>next
             </div>
           </div>
         </div>
       </div>
+
+
     </div>
     <div class="col-xs-1">
       <div class="pull-right" social-account></div>

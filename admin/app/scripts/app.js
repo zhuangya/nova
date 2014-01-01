@@ -33,3 +33,6 @@ angular.module('adminApp')
       $scope.pageName = current.$$route.pageName || '';
     });
   });
+
+
+angular.module('adminApp').constant('APIBASE', 'http://benzex.com');
