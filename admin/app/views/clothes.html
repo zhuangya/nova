@@ -1,5 +1,5 @@
 <div class="row">
-  <form role="form">
+  <form ng-if="action=='add'" role="form">
     <div class="form-group">
       <label for="clothes-name">名称</label>
       <input id="clothes-name" class="form-control" ng-model="clothes.name" placeholder="名称">
@@ -19,4 +19,7 @@
 
     <button class="pull-right btn btn-primary" ng-click="addClothes()">增加</button>
   </form>
+  <div ng-if="action=='list'">
+    ng-repeat = clothe in clothes
+  </div>
 </div>
