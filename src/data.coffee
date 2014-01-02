@@ -35,7 +35,7 @@ loadYAMLCache = (name) ->
 class Data
   constructor: (options={}) ->
     @options = _.defaults options,defaultConfig
-    
+
     app = express()
     app.use (req,resp,next) ->
       resp.sendSlice = (array) ->
@@ -51,7 +51,7 @@ class Data
 
     app.get '/video', (req, resp) =>
       resp.sendSlice @load 'video.json'
-    
+
     app.get /^\/(\w+\/\w+)\/?$/, (req,resp) =>
       p = Product.loadProduct req.params[0]
       resp.send p
@@ -67,6 +67,10 @@ class Data
     try
       loadYAMLCache @realFilename name
     catch
+      try
+        fs.openSync(@realFilename(name), 'w') if _error.errno is 34
+      catch
+        console.info 'can not create file'
       console.info _error
       undefined
 
