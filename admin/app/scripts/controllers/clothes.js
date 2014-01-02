@@ -2,9 +2,7 @@
 
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.addClothes = function() {
+      console.log($scope.clothes);
+    };
   });
