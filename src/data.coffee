@@ -68,6 +68,7 @@ class Data
       loadYAMLCache @realFilename name
     catch
       try
+        # touch the file if it's not existed, ErrNo 34: no such file or directory
         fs.openSync(@realFilename(name), 'w') if _error.errno is 34
       catch
         console.info 'can not create file'
