@@ -17,9 +17,17 @@
       <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.quantity">
     </div>
 
-    <button class="pull-right btn btn-primary" ng-click="addClothes()">增加</button>
+    <div class="pull-right btn-group">
+      <button class="btn btn-default" ng-click="cancel()">返回</button>
+      <button class="btn btn-primary" ng-click="addClothes()">增加</button>
+    </div>
   </form>
   <div ng-if="action=='list'">
-    ng-repeat = clothe in clothes
+    <div class="col-xs-12">
+      <a class="pull-right btn btn-primary" href="/#/clothes/add">增加</a>
+    </div>
+    <div class="col-xs-12">
+      <p> ng-repeat = clothe in clothes </p>
+    </div>
   </div>
 </div>
