@@ -137,4 +137,73 @@ POST /api/admin/video
 ---
 update /data/video.json
 
-```{"name":"hello","url":"world"}```
+```
+{"name":"hello","url":"world"}
+```
+
+to delete a video, post an object with only name and leave url undefined.
+
+POST /api/admin/data
+---
+create new product
+
+```
+id: tees/pure_color
+name: Pure Color T-Shirts
+description: |
+	I am a T-Shirt
+	DO NOT typo as T-Shit
+variants:
+	white: White Tee
+	black: Black Tee
+price:
+	white: 133.22
+	black: 122.34
+inventory:
+	white: 
+		s:0
+		m:10
+		l:2
+		xl:20
+	black:
+		s:0
+		m:0
+		xl:10
+```
+
+POST /api/admin/data/:id
+---
+update product data
+post fileds you need to update:
+
+```
+name: Changed Name
+price: 100000000.0
+inventory: 100
+
+```
+
+POST /api/admin/data/:id/upload
+---
+upload photos to /data/:id/:name
+
+```
+<input name='name' value='cover.jpg'>
+<input name='payload' type='file'>
+```
+
+POST /api/admin/data/reload
+---
+regenerate cache
+
+GET /api/admin/order
+---
+return all orders
+
+GET /api/admin/order/:id
+---
+return order info
+
+POST /api/admin/order/:id
+---
+update order

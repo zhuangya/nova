@@ -20,6 +20,17 @@ schema.statics.findByUser = (uid, cb) ->
   #console.info projectId
   @find {'ownner': uid},cb
 
+schema.methods.updateInventory = ->
+  _.chain @content
+    .map (item) ->
+      p = Product.loadItem item.name
+      if p.getInventory() < item.count
+        throw "Out of stock: #{item.name}"
+      else
+        p.updateInventory(-item.count)
+      p
+    .invoke 'save'
+
 module.exports = db.model 'Order', schema
 
 

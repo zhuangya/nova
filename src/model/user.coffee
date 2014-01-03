@@ -86,25 +86,13 @@ schema.methods.sendRstPwdEmail = ->
     user: this
     link: "http://#{config.hostname}/auth/reset_password/#{email}/#{token}"
 
-schema.methods.getLikedIdeas = fibrous (options) ->
-  fibrous.wait db.model('ActionLog').sync.find({
-    user: @_id
-    action: 'fav.create'
-  },{
-    object:1
-  },options).map( (l) ->
-    db.model('Idea').future.findById l.object.id
-  )
-
 schema.methods.toJSON = ->
   id: @_id
   name: @name
-  #email: @email
+  email: @email
   icon_url: @icon_url
   icon_url_large: @icon_url_large
   alias: @alias
-  #points: @points
-  #descr: @descr
   flags: @flags
 
 module.exports = db.model 'User', schema

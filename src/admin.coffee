@@ -14,4 +14,30 @@ app.post '/video', (req,resp) ->
   videos.push v
   Data.writeJSON 'video.json', videos
   resp.send videos
+
+app.post '/data', (req,resp) ->
+  product = new Product req.body
+  product.validate()
+  product.save()
+  resp.json product
+
+app.post '/data/reload', (req,resp) ->
+
+app.post '/data/:id', (req,resp) ->
+  product = Product.load req.params.id
+  for name,value in req.body
+    product[name] = value
+  product.validate()
+  product.save()
+  resp.json product
+
+app.post '/data/:id/upload', (req,resp) ->
+  
+app.get '/order', (req,resp) ->
+
+app.get '/order/:id', (req,resp) ->
+
+app.post '/order/:id', (req,resp) ->
+  
+
 module.exports = app

@@ -19,6 +19,7 @@ class OrderManager
       status: 'new'
       address: req.body.address
 
+    order.updateInventory()
     resp.json order.sync.save()
 
   update: (req,resp)->

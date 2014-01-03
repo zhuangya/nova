@@ -3,25 +3,24 @@ yaml = require 'js-yaml'
 path = require 'path'
 image = require 'imagemagick'
 fibrous = require 'fibrous'
+mkdirp = require 'mkdirp'
 _ = require 'underscore'
 
 config = require '../config'
 
 class Product
-  @getMetadataPath: (id) ->
+  @getMetadataPath: (id) =>
     path.join config.baseDir, 'data', id, 'metadata.yml'
 
-  @loadMetadata: (id) ->
+  @loadMetadata: (id) =>
     content = fs.readFileSync(@getMetadataPath(id))
     yaml.safeLoad content.toString()
   
-  @loadProduct: (id) ->
+  @loadProduct: (id) =>
     obj = @loadMetadata(id)
-    #obj.constructor = this
-    obj.__proto__ = @prototype
-    return obj
+    return new @(obj)
 
-  @loadItem: (name) ->
+  @loadItem: (name) =>
     match = /(\w+\/\w+)\/(\w+)\/(\w+)/.exec name
     throw message:"malformed item name", code:400 unless match
     id = match[1]
@@ -33,15 +32,37 @@ class Product
     obj.size = size
     return obj
 
+  constructor: (obj) ->
+    obj.__proto__ = @prototype
+    return obj
+
   dumpMetadata: ->
-    yaml.dump this
+    yaml.dump _.pick this, [
+      'id',
+      'name',
+      'description',
+      'variants',
+      'price',
+      'inventory',
+    ]
 
   save: ->
-    fs.writeFileSync getMetadataPath(@id), @dumpMetadata()
+    mkdirp.sync path.dirname Product.getMetadataPath(@id)
+    fs.writeFileSync Product.getMetadataPath(@id), @dumpMetadata()
 
   getPrice: (variant=@variant) ->
     return @price if typeof @price is 'number'
     return @price[variant]
+
+  getInventory: (variant=@variant) ->
+    return @inventory if typeof @inventory is 'number'
+    return @inventory[variant]
+
+  updateInventory: (count,variant=@variant) ->
+    if typeof @inventory is 'number'
+      @inventory += count
+    else
+      @inventory[variant] += count
 
   getPath: (x) ->
     path.join config.baseDir, 'data', @id, x
@@ -67,6 +88,7 @@ class Product
     throw "Missing desciption field: #{id}" unless @description
     throw "Missing variants field: #{id}"   unless @variants instanceof Object
     throw "Missing price field: #{id}"      unless typeof @price is 'number' or @price instanceof Object
+    throw "Missing inventory field: #{id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
 
     @getImagePath 'cover.jpg'
     @getImagePath 'main.jpg'
