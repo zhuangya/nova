@@ -18,7 +18,7 @@ class Product
   
   @loadProduct: (id) =>
     obj = @loadMetadata(id)
-    return new @(obj)
+    return @(obj)
 
   @loadItem: (name) =>
     match = /(\w+\/\w+)\/(\w+)\/(\w+)/.exec name
@@ -33,7 +33,7 @@ class Product
     return obj
 
   constructor: (obj) ->
-    obj.__proto__ = @prototype
+    obj.__proto__ = Product.prototype
     return obj
 
   dumpMetadata: ->
@@ -73,25 +73,27 @@ class Product
     return p if fs.existsSync @getPath p
 
     #2. add prefix of first variant name
-    variant_name = Object.keys(@variants).shift()
-    p = variant_name + "_" + name
-    return p if fs.existsSync @getPath p
+    if @variants
+      variant_name = Object.keys(@variants).shift()
+      p = variant_name + "_" + name
+      return p if fs.existsSync @getPath p
 
     #nothing? throw
     throw "Image not found for #{@id}: #{name}"
 
-  validate: (id=@id) ->
+  validate: (id=@id,with_image=true) ->
     
     throw "Id mismatch: '#{@id}', should be '#{id}'" unless id is @id
     
-    throw "Missing name field: #{id}"       unless @name
-    throw "Missing desciption field: #{id}" unless @description
-    throw "Missing variants field: #{id}"   unless @variants instanceof Object
-    throw "Missing price field: #{id}"      unless typeof @price is 'number' or @price instanceof Object
-    throw "Missing inventory field: #{id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
+    throw "Missing name field: #{@id}"       unless @name
+    throw "Missing desciption field: #{@id}" unless @description
+    #throw "Missing variants field: #{@id}"   unless @variants instanceof Object
+    throw "Missing price field: #{@id}"      unless typeof @price is 'number' or @price instanceof Object
+    throw "Missing inventory field: #{@id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
 
-    @getImagePath 'cover.jpg'
-    @getImagePath 'main.jpg'
+    if with_image
+      @getImagePath 'cover.jpg'
+      @getImagePath 'main.jpg'
 
     true
 

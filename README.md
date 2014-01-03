@@ -196,6 +196,8 @@ POST /api/admin/data/reload
 ---
 regenerate cache
 
+call this after create/update product data, and after all images were uploaded.
+
 GET /api/admin/order
 ---
 return all orders

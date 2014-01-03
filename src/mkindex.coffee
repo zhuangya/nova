@@ -11,7 +11,12 @@ notNull = (x) -> !!x
 
 loadData = (name) ->
   product = Product.loadProduct(name)
-  product.validate()
+  #console.info product
+  try
+    product.validate(name)
+  catch
+    console.error "Error: "+_error
+    process.exit(-1)
   #console.info product
   product.toCachedObject()
   #product
@@ -30,9 +35,7 @@ rl.on 'line', (line) ->
     name = parseName line
     return unless notNull name
     console.warn "Processing #{name} ..."
-    x = loadData name
-    x.validate(name)
-    x.toCachedObject()
+    loadData name
 
 rl.on 'close', ->
   fibrous.run ->

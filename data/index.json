@@ -2,7 +2,7 @@
   {
     "id": "hat/pure_color",
     "name": "Pure Color Hats",
-    "description": "\nPut your head in it.    \n",
+    "description": "Put your head in it.    \n",
     "variants": {
       "red": "Red",
       "yellow": "Yellow"
@@ -17,7 +17,7 @@
   {
     "id": "hat/with_cat_ear",
     "name": "Hat with cat ear",
-    "description": "\nMoew ^_^\n",
+    "description": "Moew ^_^\n",
     "variants": {
       "black": "Black"
     },
@@ -31,7 +31,7 @@
   {
     "id": "tee/pure_color",
     "name": "Pure Color T-Shirts",
-    "description": "\nI am a T-Shirt\nDO NOT typo as T-Shit\n",
+    "description": "I am a T-Shirt\nDO NOT typo as T-Shit\n",
     "variants": {
       "white": "White Tee",
       "black": "Black Tee"

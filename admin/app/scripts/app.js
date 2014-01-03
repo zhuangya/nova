@@ -22,6 +22,11 @@ angular.module('adminApp', [
         templateUrl: 'views/clothes.html',
         controller: 'ClothesCtrl'
       })
+      .when('/clothes/:action', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes.html',
+        controller: 'ClothesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
