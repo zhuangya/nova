@@ -1,5 +1,17 @@
 <div class="row">
   <form ng-if="action=='add'" role="form">
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="clothes-category">category</label>
+        <input id="clothes-category" class="form-control" type="text" ng-model="clothes.category" placeholder="category">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clothes-slug">slug</label>
+        <input id="clothes-slug" class="form-control" type="text" ng-model="clothes.slug" placeholder="slug">
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="clothes-name">名称</label>
       <input id="clothes-name" class="form-control" ng-model="clothes.name" placeholder="名称">
@@ -8,13 +20,20 @@
       <input type="file">
       upload picture here.
     </div>
-    <div class="form-group">
-      <label for="clothes-price">价格</label>
-      <input id="clothes-price" class="form-control" ng-model="clothes.price" placeholder="价格">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="clothes-price">价格</label>
+        <input type="number" id="clothes-price" class="form-control" ng-model="clothes.price" placeholder="价格">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clothes-quantity">数量</label>
+        <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.inventory">
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="clothes-quantity">数量</label>
-      <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.quantity">
+      <label for="clothes-description">描述</label>
+      <textarea ng-model="clothes.description" class="form-control"></textarea>
     </div>
 
     <div class="pull-right btn-group">

@@ -33,7 +33,7 @@ angular.module('adminApp', [
   });
 
 angular.module('adminApp')
-  .controller('HeaderCtrl', function($scope, $route) {
+  .controller('HeaderCtrl', function($scope) {
     $scope.$on('$routeChangeSuccess', function(scope, current) {
       $scope.pageName = current.$$route.pageName || '';
     });
