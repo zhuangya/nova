@@ -44,7 +44,7 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('uploadCtrl', function($scope, $routeParams, $upload, APIBASE) {
+  .controller('uploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
     var _id = $routeParams.id || '';
     _id = _id.replace(/\|/, '/');
     var url = APIBASE + '/api/admin/data/' + _id + '/upload';
@@ -53,13 +53,18 @@ angular.module('adminApp')
         $scope.upload = $upload.upload({
           url: url,
           method: 'POST',
-          file: file
+          file: file,
+          data: {
+            name: name
+          },
+          fileFormDataName: 'payload'
         }).progress(function(event) {
           console.log('percent: %s', parseInt(100.0 * event.loaded / event.total));
         }).success(function(resp) {
           console.log(resp);
-        }).then(function() {
-          console.log('now you know what to do');
+          $http.post(APIBASE + '/api/admin/data/reload').success(function(resp) {
+            console.log(resp);
+          });
         });
       });
     };

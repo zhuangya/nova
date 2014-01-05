@@ -55,7 +55,7 @@ app.post '/data/:cat/:id', (req,resp) ->
   product.save()
   resp.json product
 
-app.post '/data/upload', (req,resp) ->
+app.post '/data/:cat/:id/upload', (req,resp) ->
   return resp.send 400,"missing payload" unless req.files.payload
   return resp.send 400,"missing name" unless req.body.name
 
