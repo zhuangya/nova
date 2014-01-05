@@ -1,6 +1,7 @@
 program = require 'commander'
 lazy = require 'lazy.js'
 fibrous = require 'fibrous'
+_ = require 'underscore'
 
 Product = require './product'
 
