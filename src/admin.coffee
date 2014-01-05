@@ -51,7 +51,7 @@ app.post '/data/:cat/:id', (req,resp) ->
   product = Product.loadProduct id
   for name,value of req.body
     product[name] = value
-  product.validate()
+  product.validate(product.id,false)
   product.save()
   resp.json product
 
