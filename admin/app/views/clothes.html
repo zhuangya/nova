@@ -40,19 +40,17 @@
   </form>
   <div ng-if="action=='upload'">
     <div class="row">
-      <div class="col-md-6" id="images">
-        <form ng-controller="uploadCtrl" action="{{url}}" ng-upload="completed(content)">
-          <input class="jpg" type="file" name="cover.jpg">
-          <input class="jpg" type="file" name="main.jpg">
-          <button upload-submit>upload with ngUpload</button>
-        </form>
+      <div class="col-md-6" id="images" ng-controller="uploadCtrl">
+
+        <input name="cover.jpg" type="file" ng-file-select="onFileSelect($files, 'cover.jpg')">
+        <input name="main.jpg" type="file" ng-file-select="onFileSelect($files, 'main.jpg')">
+
+        <button upload-submit>upload with ngUpload</button>
       </div>
       <div class="col-md-6">
         upload main
       </div>
     </div>
-    <input ng-init="upload={}" type="text" ng-model="upload.name">
-    <button ng-click="uploadPicture(upload.name)">upload</button>
   </div>
   <div ng-if="action=='list'">
     <div class="col-xs-12">
