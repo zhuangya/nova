@@ -28,9 +28,9 @@
     <div class="container" ng-controller="HeaderCtrl">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a ng-href="#">Home</a></li>
-          <li><a ng-href="/#/video">Video</a></li>
-          <li><a ng-href="/#/clothes">Clothes</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#/video">Video</a></li>
+          <li><a href="#/clothes">Clothes</a></li>
         </ul>
         <h3 class="text-muted"><span ng-if="pageName">{{pageName}} / </span>Benzex Admin</h3>
       </div>
@@ -58,7 +58,7 @@
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/ngUpload/ng-upload.min.js"></script>
+        <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
