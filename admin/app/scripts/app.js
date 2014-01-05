@@ -4,7 +4,8 @@ angular.module('adminApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngUpload'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -23,6 +24,11 @@ angular.module('adminApp', [
         controller: 'ClothesCtrl'
       })
       .when('/clothes/:action', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes.html',
+        controller: 'ClothesCtrl'
+      })
+      .when('/clothes/:id/:action', {
         pageName: 'clothes',
         templateUrl: 'views/clothes.html',
         controller: 'ClothesCtrl'
