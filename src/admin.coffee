@@ -59,8 +59,7 @@ app.post '/data/upload', (req,resp) ->
   return resp.send 400,"missing payload" unless req.files.payload
   return resp.send 400,"missing name" unless req.body.name
 
-  #id = req.params.cat + "/" + req.params.id
-  id = req.body.id
+  id = req.params.cat + "/" + req.params.id
   product = Product.loadProduct id
   payload = req.files.payload
   name = req.body.name
