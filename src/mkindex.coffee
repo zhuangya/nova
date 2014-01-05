@@ -12,11 +12,7 @@ notNull = (x) -> !!x
 loadData = (name) ->
   product = Product.loadProduct(name)
   #console.info product
-  try
-    product.validate(name)
-  catch
-    console.error "Error: "+_error
-    process.exit(-1)
+  product.validate(name)
   #console.info product
   product.toCachedObject()
   #product
@@ -24,6 +20,7 @@ loadData = (name) ->
 readline = require('readline')
 
 waits = []
+result = []
 
 rl = readline.createInterface
   input: process.stdin,
@@ -34,10 +31,23 @@ rl.on 'line', (line) ->
   waits.push fibrous.run ->
     name = parseName line
     return unless notNull name
-    console.warn "Processing #{name} ..."
-    loadData name
+    #console.warn "Processing #{name} ..."
+    try
+      data = loadData name
+      result.push
+        id: name
+        status: "OK"
+      return data
+    catch
+      result.push
+        id: name
+        error: _error
+      return null
+
 
 rl.on 'close', ->
   fibrous.run ->
     data = fibrous.wait waits
+    data = _.filter data, notNull
     console.info JSON.stringify data,false,'  '
+    console.warn JSON.stringify result,false,'  '
