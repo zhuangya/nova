@@ -1,20 +1,36 @@
 <div class="row">
   <form ng-if="action=='add'" role="form">
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="clothes-category">category</label>
+        <input id="clothes-category" class="form-control" type="text" ng-model="clothes.category" placeholder="category">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clothes-slug">slug</label>
+        <input id="clothes-slug" class="form-control" type="text" ng-model="clothes.slug" placeholder="slug">
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="clothes-name">名称</label>
       <input id="clothes-name" class="form-control" ng-model="clothes.name" placeholder="名称">
     </div>
-    <div class="form-group">
-      <input type="file">
-      upload picture here.
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="clothes-price">价格</label>
+        <input type="number" id="clothes-price" class="form-control" ng-model="clothes.price" placeholder="价格">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="clothes-quantity">数量</label>
+        <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.inventory">
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="clothes-price">价格</label>
-      <input id="clothes-price" class="form-control" ng-model="clothes.price" placeholder="价格">
-    </div>
-    <div class="form-group">
-      <label for="clothes-quantity">数量</label>
-      <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.quantity">
+      <label for="clothes-description">描述</label>
+      <textarea ng-model="clothes.description" class="form-control"></textarea>
     </div>
 
     <div class="pull-right btn-group">
@@ -22,12 +38,31 @@
       <button class="btn btn-primary" ng-click="addClothes()">增加</button>
     </div>
   </form>
+  <div ng-if="action=='upload'">
+    <div class="row">
+      <div class="col-md-6" id="images">
+        <form ng-controller="uploadCtrl" action="{{url}}" ng-upload="completed(content)">
+          <input class="jpg" type="file" name="cover.jpg">
+          <input class="jpg" type="file" name="main.jpg">
+          <button upload-submit>upload with ngUpload</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        upload main
+      </div>
+    </div>
+    <input ng-init="upload={}" type="text" ng-model="upload.name">
+    <button ng-click="uploadPicture(upload.name)">upload</button>
+  </div>
   <div ng-if="action=='list'">
     <div class="col-xs-12">
       <a class="pull-right btn btn-primary" href="/#/clothes/add">增加</a>
     </div>
     <div class="col-xs-12">
-      <p> ng-repeat = clothe in clothes </p>
+      <div ng-repeat="product in products">
+        {{product.name}}
+        <hr/>
+      </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,8 @@ angular.module('adminApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngUpload'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -27,13 +28,18 @@ angular.module('adminApp', [
         templateUrl: 'views/clothes.html',
         controller: 'ClothesCtrl'
       })
+      .when('/clothes/:id/:action', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes.html',
+        controller: 'ClothesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
 
 angular.module('adminApp')
-  .controller('HeaderCtrl', function($scope, $route) {
+  .controller('HeaderCtrl', function($scope) {
     $scope.$on('$routeChangeSuccess', function(scope, current) {
       $scope.pageName = current.$$route.pageName || '';
     });
