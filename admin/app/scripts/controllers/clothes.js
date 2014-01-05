@@ -47,16 +47,12 @@ angular.module('adminApp')
   .controller('uploadCtrl', function($scope, $routeParams, $upload, APIBASE) {
     var _id = $routeParams.id || '';
     _id = _id.replace(/\|/, '/');
-    var url = APIBASE + '/admin/data/upload';
+    var url = APIBASE + '/api/admin/data/' + _id + '/upload';
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
         $scope.upload = $upload.upload({
           url: url,
           method: 'POST',
-          data: {
-            id: _id,
-            name: name
-          },
           file: file
         }).progress(function(event) {
           console.log('percent: %s', parseInt(100.0 * event.loaded / event.total));
