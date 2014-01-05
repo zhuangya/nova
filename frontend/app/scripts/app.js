@@ -18,7 +18,7 @@ angular.module('frontendApp', [
         templateUrl: 'views/new.html',
         controller: 'NewCtrl'
       })
-      .when('/detail/:detailId', {
+      .when('/detail/:category/:slug', {
         pageClass: 'detail',
         templateUrl: 'views/detail.html',
         controller: 'DetailCtrl'
@@ -56,6 +56,8 @@ angular.module('frontendApp', [
       $rootScope.pageClass = current.$$route.pageClass || 'blank';
     });
   });
+
+angular.module('frontendApp').constant('APIBASE', 'http://benzex.com');
 
 angular.module('frontendApp').value('CLOTHES', [{
       id: 1,
