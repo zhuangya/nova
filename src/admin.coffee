@@ -51,15 +51,16 @@ app.post '/data/:cat/:id', (req,resp) ->
   product = Product.loadProduct id
   for name,value of req.body
     product[name] = value
-  product.validate()
+  product.validate(product.id,false)
   product.save()
   resp.json product
 
 app.post '/data/:cat/:id/upload', (req,resp) ->
-  return resp.send 400,"missing payload" unless req.files.payload
+  return resp.send 400,"missing payload" unless req.files?.payload
   return resp.send 400,"missing name" unless req.body.name
 
   id = req.params.cat + "/" + req.params.id
+  #id = req.body.id
   product = Product.loadProduct id
   payload = req.files.payload
   name = req.body.name
