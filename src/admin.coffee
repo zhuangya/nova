@@ -55,11 +55,12 @@ app.post '/data/:cat/:id', (req,resp) ->
   product.save()
   resp.json product
 
-app.post '/data/:cat/:id/upload', (req,resp) ->
+app.post '/data/upload', (req,resp) ->
   return resp.send 400,"missing payload" unless req.files.payload
   return resp.send 400,"missing name" unless req.body.name
 
-  id = req.params.cat + "/" + req.params.id
+  #id = req.params.cat + "/" + req.params.id
+  id = req.body.id
   product = Product.loadProduct id
   payload = req.files.payload
   name = req.body.name
@@ -70,11 +71,11 @@ app.post '/data/:cat/:id/upload', (req,resp) ->
       resp.json
         path: "/#{product.id}/#{name}"
     ).pipe fs.createWriteStream dst
-  
+
 app.get '/order', (req,resp) ->
 
 app.get '/order/:id', (req,resp) ->
 
 app.post '/order/:id', (req,resp) ->
-  
+
 module.exports = app

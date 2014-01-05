@@ -3,7 +3,6 @@
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams, APIBASE) {
     $scope.clothes = {};
-    $scope.upload = {};
 
     $scope.action = $routeParams.action || 'list';
     var _id = $routeParams.id || '';
@@ -45,12 +44,27 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('uploadCtrl', function($scope, $routeParams, APIBASE) {
+  .controller('uploadCtrl', function($scope, $routeParams, $upload, APIBASE) {
     var _id = $routeParams.id || '';
-    var url = APIBASE + '/admin/data/' + _id + '/upload';
-
-    $scope.completed = function(content) {
-      console.log(content);
+    _id = _id.replace(/\|/, '/');
+    var url = APIBASE + '/admin/data/upload';
+    $scope.onFileSelect = function($files, name) {
+      angular.forEach($files, function(file) {
+        $scope.upload = $upload.upload({
+          url: url,
+          method: 'POST',
+          data: {
+            id: _id,
+            name: name
+          },
+          file: file
+        }).progress(function(event) {
+          console.log('percent: %s', parseInt(100.0 * event.loaded / event.total));
+        }).success(function(resp) {
+          console.log(resp);
+        }).then(function() {
+          console.log('now you know what to do');
+        });
+      });
     };
-
   });

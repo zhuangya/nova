@@ -5,7 +5,7 @@ angular.module('adminApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngUpload'
+  'angularFileUpload'
 ])
   .config(function ($routeProvider) {
     $routeProvider
