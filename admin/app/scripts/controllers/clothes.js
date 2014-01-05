@@ -47,7 +47,7 @@ angular.module('adminApp')
   .controller('uploadCtrl', function($scope, $routeParams, $upload, APIBASE) {
     var _id = $routeParams.id || '';
     _id = _id.replace(/\|/, '/');
-    var url = APIBASE + '/admin/data/upload';
+    var url = APIBASE + '/api/admin/data/upload';
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
         $scope.upload = $upload.upload({
