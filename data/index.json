@@ -12,6 +12,11 @@
     "cover_size": {
       "width": 225,
       "height": 225
+    },
+    "main_name": "red_main.jpg",
+    "main_size": {
+      "width": 394,
+      "height": 128
     }
   },
   {
@@ -26,6 +31,11 @@
     "cover_size": {
       "width": 225,
       "height": 225
+    },
+    "main_name": "black_main.jpg",
+    "main_size": {
+      "width": 252,
+      "height": 200
     }
   },
   {
@@ -41,6 +51,11 @@
     "cover_size": {
       "width": 225,
       "height": 225
+    },
+    "main_name": "white_main.jpg",
+    "main_size": {
+      "width": 196,
+      "height": 257
     }
   }
 ]

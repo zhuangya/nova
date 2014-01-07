@@ -5,6 +5,7 @@ fs = require 'fs'
 url = require 'url'
 path = require 'path'
 events = require 'events'
+fibrous = require 'fibrous'
 mkdirp = require 'mkdirp'
 YAML = require 'js-yaml'
 YAML.parse = (str) ->
@@ -52,9 +53,9 @@ class Data
     app.get '/video', (req, resp) =>
       resp.sendSlice @load 'video.json'
 
-    app.get /^\/(\w+\/\w+)\/?$/, (req,resp) =>
+    app.get /^\/(\w+\/\w+)\/?$/,fibrous.middleware, (req,resp) =>
       p = Product.loadProduct req.params[0]
-      resp.send p
+      resp.send p.toObject()
 
     app.use express.static @options.basePath, {redirect:false}
     return app

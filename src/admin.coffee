@@ -34,6 +34,11 @@ app.post '/video/delete', (req,resp) ->
 
   resp.send videos
 
+app.get '/data', (req,resp) ->
+  exec("cd #{};find . -type d -print0", (err,sout) ->
+    resp.json sout.split('\0')
+  )
+
 app.post '/data', (req,resp) ->
   product = new Product req.body
   console.info product
@@ -54,6 +59,13 @@ app.post '/data/:cat/:id', (req,resp) ->
   product.validate(product.id,false)
   product.save()
   resp.json product
+
+app.post '/data/:cat/:id/delete', (req,resp) ->
+  id = req.params.cat + "/" + req.params.id
+  product = Product.loadProduct id
+  exec("cd #{config.baseDir}/data; rm -rf #{id}", (err) ->
+    resp.json product
+  )
 
 app.post '/data/:cat/:id/upload', (req,resp) ->
   return resp.send 400,"missing payload" unless req.files?.payload

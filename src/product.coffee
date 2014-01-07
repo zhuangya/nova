@@ -97,13 +97,23 @@ class Product
 
     true
 
-  toCachedObject: ->
-    name =  @getImagePath 'cover.jpg'
-    info = image.sync.identify @getPath name
-    @cover_name = name
+  toObject: ->
+    cover_name =  @getImagePath 'cover.jpg'
+    cover_info = image.sync.identify @getPath cover_name
+    main_name = @getImagePath 'main.jpg'
+    main_info = image.sync.identify @getPath main_name
+    @cover_name = cover_name
     @cover_size =
-      width: info.width
-      height: info.height
-    _.omit this,'inventory'
+      width: cover_info.width
+      height: cover_info.height
+    @main_name = main_name
+    @main_size =
+      width: main_info.width
+      height: main_info.height
+
+    return this
+
+  toCachedObject: ->
+    _.omit @toObject(),'inventory'
 
 module.exports = Product
