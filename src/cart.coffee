@@ -18,7 +18,10 @@ class Cart
       product = Product.loadItem item.name
       item.unit_price = product.getPrice()
       console.info item
-      cart.items[item.name] = item
+      if item.count
+        cart.items[item.name] = item
+      else
+        delete cart.items[item.name]
     resp.json cart
 
   @remove: (req, resp) =>
