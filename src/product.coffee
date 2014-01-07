@@ -28,8 +28,8 @@ class Product
     size = match[3]
     obj = @loadProduct id
     throw message:"product not found", code:404 unless obj
-    obj.variant = variant
-    obj.size = size
+    obj._variant = variant
+    obj._size = size
     return obj
 
   constructor: (obj) ->
@@ -50,19 +50,27 @@ class Product
     mkdirp.sync path.dirname Product.getMetadataPath(@id)
     fs.writeFileSync Product.getMetadataPath(@id), @dumpMetadata()
 
-  getPrice: (variant=@variant) ->
+  getPrice: (variant=@_variant,size=@_size) ->
     return @price if typeof @price is 'number'
-    return @price[variant]
+    return @price[size] if typeof @price[size] is 'number'
+    return @price[variant] if typeof @price[variant] is 'number'
+    return @price[variant][size] || throw "Unable to fetch price of #{@id}/#{variant}/#{size}"
 
-  getInventory: (variant=@variant) ->
+  getInventory: (variant=@_variant,size=@_size) ->
     return @inventory if typeof @inventory is 'number'
-    return @inventory[variant]
+    return @inventory[size] if typeof @inventory[size] is 'number'
+    return @inventory[variant] if typeof @inventory[variant] is 'number'
+    return @inventory[variant][size] || throw "Unable to fetch inventory of #{@id}/#{variant}/#{size}"
 
-  updateInventory: (count,variant=@variant) ->
+  updateInventory: (count,variant=@variant,size=@_size) ->
     if typeof @inventory is 'number'
       @inventory += count
-    else
+    else if typeof @inventory[size] is 'number'
+      @inventory[size] += count
+    else if typeof @inventory[variant] is 'number'
       @inventory[variant] += count
+    else
+      @inventory[variant][size] += count
 
   getPath: (x) ->
     path.join config.baseDir, 'data', @id, x
