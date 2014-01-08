@@ -15,7 +15,7 @@ class Product
   @loadMetadata: (id) =>
     content = fs.readFileSync(@getMetadataPath(id))
     yaml.safeLoad content.toString()
-  
+
   @loadProduct: (id) =>
     obj = @loadMetadata(id)
     return @(obj)
@@ -90,9 +90,11 @@ class Product
     throw "Image not found for #{@id}: #{name}"
 
   validate: (id=@id,with_image=true) ->
-    
+
+    @price = +@price
+
     throw "Id mismatch: '#{@id}', should be '#{id}'" unless id is @id
-    
+
     throw "Missing name field: #{@id}"       unless @name
     throw "Missing desciption field: #{@id}" unless @description
     #throw "Missing variants field: #{@id}"   unless @variants instanceof Object
