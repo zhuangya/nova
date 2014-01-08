@@ -91,15 +91,12 @@ class Product
 
   validate: (id=@id,with_image=true) ->
 
-    @price = +@price
-
     throw "Id mismatch: '#{@id}', should be '#{id}'" unless id is @id
-
     throw "Missing name field: #{@id}"       unless @name
     throw "Missing desciption field: #{@id}" unless @description
     #throw "Missing variants field: #{@id}"   unless @variants instanceof Object
     throw "Missing price field: #{@id}"      unless typeof @price is 'number' or @price instanceof Object
-    throw "Missing inventory field: #{@id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
+    #throw "Missing inventory field: #{@id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
 
     if with_image
       @getImagePath 'cover.jpg'
