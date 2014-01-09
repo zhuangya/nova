@@ -8,7 +8,7 @@
         <div class="col-xs-12 clothes-image clear-fix">
           <img ng-src="{{clothes.image}}">
         </div>
-        
+
       </div>
 
       <div id="gradient-bg" class="row clear-fix">
@@ -18,11 +18,12 @@
         <div class="col-xs-12">
           <div class="clothes-meta">
             <div class="clothes-price">
-              {{clothes.price || 349}}
+              <p class="price">￥{{clothes.price || 349}}</p>
+              <p class="label">TOTAL/ITEM</p>
             </div>
             <div class="clothes-misc">
               <li>sizes
-              <li>next
+              <li><a ng-click="addToCart(clothes)">加入购物车</a>
             </div>
           </div>
         </div>

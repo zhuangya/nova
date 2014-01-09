@@ -17,7 +17,7 @@ metadata (json): `/data/[:categlogy]/[:name]`
 
 metadata (yaml): `/data/[:categlogy]/[:name]/metadata.yml`
 
-eg.: `/data/tee/pure_color` 
+eg.: `/data/tee/pure_color`
 
 ---------
 
@@ -42,7 +42,7 @@ price:
 	white: 133.22
 	black: 122.34
 inventory:
-	white: 
+	white:
 		s:0
 		m:10
 		l:2
@@ -69,7 +69,7 @@ order
 ```
 id: 1234567
 alipay_txid: 890123456
-items: 
+items:
 	[<cart>]
 status: processing
 shipping: "123456789”
@@ -160,7 +160,7 @@ price:
 	white: 133.22
 	black: 122.34
 inventory:
-	white: 
+	white:
 		s:0
 		m:10
 		l:2
@@ -209,3 +209,15 @@ return order info
 POST /api/admin/order/:id
 ---
 update order
+
+
+
+MISC
+---
+
+**关于metadata中的 price 和 ivventory 字段定义如下**
+
+1. 如果值是一个数字，则所有分类/尺寸共享一个值，
+1. 如果对应的 size值存在 则所有分类共享这个值
+1. 如果对应的 variant值存在，并且是一个数字，则此分类下的所有尺寸共享这个值
+1. 最后是用 [variant][size] 进行最精确的匹配

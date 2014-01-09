@@ -305,3 +305,19 @@ body {
   margin: 0 8px;
 }
 
+.clothes-price {
+  outline: 1px solid pink
+  text-align: center;
+}
+
+.clothes-price .price {
+  color: #ffe00a;
+  margin: 0;
+  font-size: 36px;
+}
+
+.clothes-price .label {
+  color: #909090;
+  margin: 0;
+  font-size: 14px;
+}
