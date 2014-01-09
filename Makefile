@@ -27,6 +27,8 @@ build: $(TARGETS)
 
 all: node_modules $(TARGETS)
 	make -C frontend
+	make -C admin
+	ln -s $(PWD)/admin/dist frontend/dist/admin
 
 lib/%.js: src/%.coffee
 	@mkdir -p $(shell dirname $@)
