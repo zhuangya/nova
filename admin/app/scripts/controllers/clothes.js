@@ -4,17 +4,19 @@ angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams, APIBASE) {
     $scope.clothes = {};
 
-    $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
+    if ($routeParams.category && $routeParams.slug) {
+      $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
 
-    $scope.action = $routeParams.action || 'list';
-
-    if ($scope.action === 'edit') {
       $http.get(APIBASE + '/data/' + $scope.productId).success(function(clothes) {
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
+        console.log($scope.clothes);
       });
+
     }
+
+
 
     var _id = $routeParams.id || '';
 
@@ -68,7 +70,7 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('uploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
+  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
     var _id = $routeParams.id || '';
     _id = _id.replace(/\|/, '/');
     var url = APIBASE + '/api/admin/data/' + _id + '/upload';
@@ -93,3 +95,4 @@ angular.module('adminApp')
       });
     };
   });
+
