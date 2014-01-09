@@ -33,6 +33,11 @@ angular.module('adminApp', [
         templateUrl: 'views/clothes.html',
         controller: 'ClothesCtrl'
       })
+      .when('/clothes/:action/:category/:slug', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes.html',
+        controller: 'ClothesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

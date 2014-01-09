@@ -1,4 +1,4 @@
-  <form ng-if="action=='add'" role="form">
+  <form ng-if="action=='add' || 'edit'" role="form">
 
     <div class="form-group">
       <div class="input-group">
@@ -52,6 +52,7 @@
       <button class="btn btn-primary" ng-click="addClothes()">增加</button>
     </div>
   </form>
+
   <div ng-if="action=='upload'">
     <div class="row">
       <div class="col-md-6" id="images" ng-controller="uploadCtrl">
@@ -66,6 +67,7 @@
       </div>
     </div>
   </div>
+
   <div ng-if="action=='list'">
     <div class="col-md-12">
       <a class="pull-right btn btn-sm btn-primary" href="#/clothes/add">增加</a>
@@ -74,7 +76,7 @@
       <li ng-repeat="product in products" class="col-md-12 list-group-item">
       <p>{{product.name}}
       <span class="op pull-right">
-        <a class="btn btn-success btn-sm" ng-href="/#/clothes/{{product.id}}">Edit</a>
+        <a class="btn btn-success btn-sm" ng-href="/#/clothes/edit/{{product.id}}">Edit</a>
         <a class="btn btn-danger btn-sm" ng-click="deleteClothes(product)">delete</a>
       </span>
       </p>

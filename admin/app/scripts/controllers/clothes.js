@@ -4,7 +4,18 @@ angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams, APIBASE) {
     $scope.clothes = {};
 
+    $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
+
     $scope.action = $routeParams.action || 'list';
+
+    if ($scope.action === 'edit') {
+      $http.get(APIBASE + '/data/' + $scope.productId).success(function(clothes) {
+        $scope.clothes = clothes;
+        $scope.clothes.slug = $routeParams.slug;
+        $scope.clothes.category = $routeParams.category;
+      });
+    }
+
     var _id = $routeParams.id || '';
 
     _id = _id.replace(/\|/, '/');
