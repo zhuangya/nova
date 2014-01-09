@@ -41,6 +41,19 @@ angular.module('adminApp')
     $http.get(APIBASE + '/data').success(function(products) {
       $scope.products = products;
     });
+
+    $scope.variants = [];
+    $scope.addVariant = function() {
+
+      //TODO: send http request here.
+
+      $scope.variants.push({
+        variant: $scope.clothes.variant,
+        quantity: $scope.clothes.inventory
+      });
+
+      //TODO: clear the variant and inventory in the $http success callback.
+    };
   });
 
 angular.module('adminApp')
