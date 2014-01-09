@@ -104,11 +104,21 @@ class Product
 
     true
 
+  _getImageSize: (path,cb) ->
+    image.identify ['-format', '%wx%h', path], (err, str) ->
+      if err
+        cb err
+      else
+        str = str.split 'x'
+        cb null,
+          width: parseInt str[0]
+          height: parseInt str[1]
+
   toObject: ->
-    cover_name =  @getImagePath 'cover.jpg'
-    cover_info = image.sync.identify @getPath cover_name
-    main_name = @getImagePath 'main.jpg'
-    main_info = image.sync.identify @getPath main_name
+    cover_name = @getImagePath 'cover.jpg'
+    cover_info = @sync._getImageSize @getPath cover_name
+    main_name  = @getImagePath 'main.jpg'
+    main_info  = @sync._getImageSize @getPath main_name
     @cover_name = cover_name
     @cover_size =
       width: cover_info.width
