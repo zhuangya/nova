@@ -40,8 +40,7 @@ angular.module('adminApp')
       delete $scope.clothes.slug;
 
       $http.post(APIBASE + '/api/admin/data', $scope.clothes).success(function(wat) {
-        console.log(wat);
-        $location.path('clothes/' + wat.id.replace(/\//, '|') + '/upload');
+        $location.path('clothes/' + wat.id + '/upload');
       }).error(function(error) {
         console.error(error);
       });
@@ -71,9 +70,9 @@ angular.module('adminApp')
 
 angular.module('adminApp')
   .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
-    var _id = $routeParams.id || '';
-    _id = _id.replace(/\|/, '/');
+    var _id = [$routeParams.category, $routeParams.slug].join('/');
     var url = APIBASE + '/api/admin/data/' + _id + '/upload';
+    console.log(url);
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
         $scope.upload = $upload.upload({
