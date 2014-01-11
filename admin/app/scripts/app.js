@@ -51,4 +51,4 @@ angular.module('adminApp')
   });
 
 
-angular.module('adminApp').constant('APIBASE', 'http://benzex.com');
+angular.module('adminApp').constant('APIBASE', '/');
