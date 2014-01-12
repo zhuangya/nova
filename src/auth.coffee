@@ -305,7 +305,7 @@ auth = (app)->
 #    resp.render 'login',authorize: true
 
   #todo: logout url should be sceured with csrf key
-  app.get '/logout', (req, resp) ->
+  app.get '/auth/logout', (req, resp) ->
     req.logout()
     delete req.session.user
     req.session.regenerate ->
