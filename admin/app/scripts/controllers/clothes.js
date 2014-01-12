@@ -4,7 +4,20 @@ angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams, APIBASE) {
     $scope.clothes = {};
 
-    $scope.action = $routeParams.action || 'list';
+    if ($routeParams.category && $routeParams.slug) {
+      $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
+
+      $http.get(APIBASE + '/data/' + $scope.productId).success(function(clothes) {
+        $scope.clothes = clothes;
+        $scope.clothes.slug = $routeParams.slug;
+        $scope.clothes.category = $routeParams.category;
+        console.log($scope.clothes);
+      });
+
+    }
+
+
+
     var _id = $routeParams.id || '';
 
     _id = _id.replace(/\|/, '/');
@@ -27,8 +40,7 @@ angular.module('adminApp')
       delete $scope.clothes.slug;
 
       $http.post(APIBASE + '/api/admin/data', $scope.clothes).success(function(wat) {
-        console.log(wat);
-        $location.path('clothes/' + wat.id.replace(/\//, '|') + '/upload');
+        $location.path('clothes/' + wat.id + '/upload');
       }).error(function(error) {
         console.error(error);
       });
@@ -57,10 +69,10 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('uploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
-    var _id = $routeParams.id || '';
-    _id = _id.replace(/\|/, '/');
+  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
+    var _id = [$routeParams.category, $routeParams.slug].join('/');
     var url = APIBASE + '/api/admin/data/' + _id + '/upload';
+    console.log(url);
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
         $scope.upload = $upload.upload({
@@ -82,3 +94,4 @@ angular.module('adminApp')
       });
     };
   });
+

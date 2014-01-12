@@ -16,7 +16,9 @@ app.get '/user', fibrous.middleware, (req,resp) ->
     obj.profile = _.omit req.oauthProfile.toJSON(), ['_id','__v','token','_user']
     resp.json obj
   else
-    resp.send 403,'Login Required'
+    resp.send 403,
+      errno: 403,
+      errmsg: 'Login required'
 
 app.get    '/cart', fibrous.middleware, cart.get
 app.post   '/cart', fibrous.middleware, cart.update

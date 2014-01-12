@@ -23,15 +23,20 @@ angular.module('adminApp', [
         templateUrl: 'views/clothes.html',
         controller: 'ClothesCtrl'
       })
-      .when('/clothes/:action', {
+      .when('/clothes/add', {
         pageName: 'clothes',
-        templateUrl: 'views/clothes.html',
+        templateUrl: 'views/clothes_add.html',
         controller: 'ClothesCtrl'
       })
-      .when('/clothes/:id/:action', {
+      .when('/clothes/:category/:slug/edit', {
         pageName: 'clothes',
-        templateUrl: 'views/clothes.html',
+        templateUrl: 'views/clothes_add.html',
         controller: 'ClothesCtrl'
+      })
+      .when('/clothes/:category/:slug/upload', {
+        pageName: 'clothes',
+        templateUrl: 'views/clothes_upload.html',
+        controller: 'ClothesUploadCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -46,4 +51,4 @@ angular.module('adminApp')
   });
 
 
-angular.module('adminApp').constant('APIBASE', 'http://benzex.com');
+angular.module('adminApp').constant('APIBASE', '/');

@@ -57,7 +57,7 @@ angular.module('frontendApp', [
     });
   });
 
-angular.module('frontendApp').constant('APIBASE', 'http://benzex.com');
+angular.module('frontendApp').constant('APIBASE', '/');
 
 angular.module('frontendApp').value('CLOTHES', [{
       id: 1,

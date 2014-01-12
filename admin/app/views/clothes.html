@@ -1,83 +1,15 @@
-  <form ng-if="action=='add'" role="form">
-
-    <div class="form-group">
-      <div class="input-group">
-        <span class="input-group-addon">#</span>
-        <input id="clothes-name" class="form-control" ng-model="clothes.name" placeholder="名称">
-      </div>
-    </div>
-    <div class="form-inline">
-      <div class="form-group">
-        <input class="form-control" type="text" ng-model="clothes.category" placeholder="category" />
-      </div>
-      <span>/</span>
-      <div class="form-group">
-        <input class="form-control" type="text" ng-model="clothes.slug" placeholder="slug" />
-      </div>
-      <span>￥</span>
-      <div class="form-group">
-        <input type="number" id="clothes-price" class="form-control" ng-model="clothes.price" placeholder="价格">
-      </div>
-    </div>
-
-    <hr/>
-
-    <div class="row">
-      <div class="form-group col-md-5">
-        <input type="text" min="0" id="clothes-variants" class="form-control" ng-model="clothes.variants" placeholder="规格">
-      </div>
-      <div class="form-group col-md-5">
-        <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.inventory" placeholder="数量">
-      </div>
-      <div class="form-group col-md-2">
-        <button ng-click="addVariant()" class="btn btn-primary" type="submit">增加规格</button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div ng-repeat="variant in variants">
-          {{variant}}
-        </div>
-      </div>
-    </div>
-
-
-    <div class="form-group">
-      <textarea placeholder="描述" ng-model="clothes.description" class="form-control"></textarea>
-    </div>
-
-    <div class="pull-right btn-group">
-      <button class="btn btn-default" ng-click="cancel()">返回</button>
-      <button class="btn btn-primary" ng-click="addClothes()">增加</button>
-    </div>
-  </form>
-  <div ng-if="action=='upload'">
-    <div class="row">
-      <div class="col-md-6" id="images" ng-controller="uploadCtrl">
-
-        <input name="cover.jpg" type="file" ng-file-select="onFileSelect($files, 'cover.jpg')">
-        <input name="main.jpg" type="file" ng-file-select="onFileSelect($files, 'main.jpg')">
-
-        <button upload-submit>upload with ngUpload</button>
-      </div>
-      <div class="col-md-6">
-        upload main
-      </div>
-    </div>
+<div>
+  <div class="col-md-12">
+    <a class="pull-right btn btn-sm btn-primary" href="#/clothes/add">增加</a>
   </div>
-  <div ng-if="action=='list'">
-    <div class="col-md-12">
-      <a class="pull-right btn btn-sm btn-primary" href="#/clothes/add">增加</a>
-    </div>
-    <ul class="list-group">
-      <li ng-repeat="product in products" class="col-md-12 list-group-item">
-      <p>{{product.name}}
+  <ul class="list-group">
+    <li ng-repeat="product in products" class="col-md-12 list-group-item">
+    <p>{{product.name}}
       <span class="op pull-right">
-        <a class="btn btn-success btn-sm" ng-href="/#/clothes/{{product.id}}">Edit</a>
+        <a class="btn btn-success btn-sm" ng-href="/#/clothes/{{product.id}}/edit">Edit</a>
         <a class="btn btn-danger btn-sm" ng-click="deleteClothes(product)">delete</a>
       </span>
-      </p>
-      </li>
-    </ul>
-  </div>
+    </p>
+    </li>
+  </ul>
+</div>

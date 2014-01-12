@@ -51,7 +51,9 @@ class Data
       resp.sendSlice @load 'index.json'
 
     app.get '/video', (req, resp) =>
-      resp.sendSlice @load 'video.json'
+      fileStream = @load 'video.json'
+      fileStream = [] unless fileStream
+      resp.sendSlice fileStream
 
     app.get /^\/(\w+\/\w+)\/?$/,fibrous.middleware, (req,resp) =>
       p = Product.loadProduct req.params[0]
