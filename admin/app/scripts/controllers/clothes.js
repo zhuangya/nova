@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('adminApp')
-  .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams, APIBASE) {
+  .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.clothes = {};
 
     if ($routeParams.category && $routeParams.slug) {
       $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
 
-      $http.get(APIBASE + '/data/' + $scope.productId).success(function(clothes) {
+      $http.get('/data/' + $scope.productId).success(function(clothes) {
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
@@ -39,7 +39,7 @@ angular.module('adminApp')
       delete $scope.clothes.category;
       delete $scope.clothes.slug;
 
-      $http.post(APIBASE + '/api/admin/data', $scope.clothes).success(function(wat) {
+      $http.post('/api/admin/data', $scope.clothes).success(function(wat) {
         $location.path('clothes/' + wat.id + '/upload');
       }).error(function(error) {
         console.error(error);
@@ -50,7 +50,7 @@ angular.module('adminApp')
       $location.path('clothes');
     };
 
-    $http.get(APIBASE + '/data').success(function(products) {
+    $http.get('/data').success(function(products) {
       $scope.products = products;
     });
 
@@ -69,9 +69,9 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, APIBASE) {
+  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload) {
     var _id = [$routeParams.category, $routeParams.slug].join('/');
-    var url = APIBASE + '/api/admin/data/' + _id + '/upload';
+    var url = '/api/admin/data/' + _id + '/upload';
     console.log(url);
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
@@ -87,7 +87,7 @@ angular.module('adminApp')
           console.log('percent: %s', parseInt(100.0 * event.loaded / event.total));
         }).success(function(resp) {
           console.log(resp);
-          $http.post(APIBASE + '/api/admin/data/reload').success(function(resp) {
+          $http.post('/api/admin/data/reload').success(function(resp) {
             console.log(resp);
           });
         });
