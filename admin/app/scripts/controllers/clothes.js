@@ -16,8 +16,6 @@ angular.module('adminApp')
 
     }
 
-
-
     var _id = $routeParams.id || '';
 
     _id = _id.replace(/\|/, '/');
@@ -52,6 +50,9 @@ angular.module('adminApp')
 
     $http.get('/data').success(function(products) {
       $scope.products = products;
+    }).error(function(error) {
+      $scope.errmsg = error.errmsg;
+      console.log(error);
     });
 
     $scope.variants = [];
