@@ -8,8 +8,8 @@ angular.module('frontendApp')
       restrict: 'A',
       controller: function ($scope, $http, $location) {
         $scope.logout = function() {
-          $http.post('/auth/logout').success(function () {
-            $location.path('/');
+          $http.get('/auth/logout').success(function () {
+            window.location = '/';
           });
         };
         $http.get('/api/user').success(function(who) {
