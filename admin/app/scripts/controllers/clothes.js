@@ -65,7 +65,19 @@ angular.module('adminApp')
         quantity: $scope.clothes.inventory
       });
 
-      //TODO: clear the variant and inventory in the $http success callback.
+      _.each($scope.variants, function(v) {
+        console.log(v);
+      });
+
+
+      $scope.clothes.variant = '';
+      $scope.clothes.inventory = '';
+    };
+
+    $scope.deleteVariant = function (evil) {
+      $scope.variants = _.reject($scope.variants, function (variant) {
+        return _.isEqual(variant, evil);
+      });
     };
   });
 

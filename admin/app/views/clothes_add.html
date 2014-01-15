@@ -35,8 +35,8 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div ng-repeat="(key, val) in clothes.variants">
-        {{key}} : {{val}}
+      <div ng-repeat="var in variants">
+        {{var.variant}} : {{var.quantity}} <a ng-click="deleteVariant(var)">&times;</a>
       </div>
     </div>
   </div>
