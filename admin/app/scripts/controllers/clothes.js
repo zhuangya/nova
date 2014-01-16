@@ -11,7 +11,6 @@ angular.module('adminApp')
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
-        console.log($scope.clothes);
       });
 
     }
@@ -56,7 +55,13 @@ angular.module('adminApp')
     });
 
     $scope.variants = [];
-    $scope.addVariant = function() {
+    $scope.addVariant = function(id) {
+
+      var dataToSend = {};
+
+      $http.post('/api/admin/data/' + id, dataToSend).success(function(wat) {
+        console.log(wat);
+      });
 
       //TODO: send http request here.
 
@@ -66,7 +71,6 @@ angular.module('adminApp')
       });
 
       _.each($scope.variants, function(v) {
-        console.log(v);
       });
 
 
