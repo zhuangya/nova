@@ -23,21 +23,28 @@
 
   <div class="row">
     <div class="form-group col-md-5">
-      <input type="text" min="0" id="clothes-variants" class="form-control" ng-model="clothes.variant" placeholder="规格">
+      <input type="text" id="clothes-variants-slug" class="form-control" ng-model="variant.slug" placeholder="规格 id">
     </div>
     <div class="form-group col-md-5">
-      <input type="number" min="0" id="clothes-quantity" class="form-control" ng-model="clothes.inventory" placeholder="数量">
+      <input type="text" id="clothes-variants-name" class="form-control" ng-model="variant.name" placeholder="规格显示名称">
     </div>
     <div class="form-group col-md-2">
-      <button ng-click="addVariant(clothes.id)" class="btn btn-primary" type="submit">增加规格</button>
+      <button ng-click="addVariant()" class="btn btn-primary" type="submit">增加规格</button>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div ng-repeat="var in variants">
-        {{var.variant}} : {{var.quantity}} <a ng-click="deleteVariant(var)">&times;</a>
-      </div>
+  <div class="row" ng-repeat="invt in clothes.inventory">
+    <div class="col-md-6 form-group">
+      <div class="">{{invt.slug}}/{{invt.name}}</div>
+      <div class="">S:<input class="form-control" ng-model="invt.s" type="number" min="0"></div>
+      <div class="">M:<input class="form-control" ng-model="invt.m" type="number" min="0"></div>
+      <div class="">L:<input class="form-control" ng-model="invt.l" type="number" min="0"></div>
+      <div class="">XL:<input class="form-control" ng-model="invt.xl" type="number" min="0"></div>
+    </div>
+    <div class="col-md-6">
+      <p>S:{{invt.s}}</p>
+      <p>M:{{invt.m}}</p>
+      <p>L:{{invt.l}}</p>
+      <p>XL:{{invt.xl}}</p>
     </div>
   </div>
 
@@ -48,6 +55,6 @@
 
   <div class="pull-right btn-group">
     <button class="btn btn-default" ng-click="cancel()">返回</button>
-    <button class="btn btn-primary" ng-click="addClothes()">增加</button>
+    <button class="btn btn-primary" ng-click="addClothes()">保存</button>
   </div>
 </form>

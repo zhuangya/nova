@@ -3,6 +3,7 @@
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.clothes = {};
+    $scope.inventory = [];
 
     if ($routeParams.category && $routeParams.slug) {
       $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
@@ -11,6 +12,7 @@ angular.module('adminApp')
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
+        $scope.clothes.inventory = [];
       });
 
     }
@@ -33,6 +35,17 @@ angular.module('adminApp')
     $scope.addClothes = function () {
       $scope.clothes.id = idlize($scope.clothes.category, $scope.clothes.slug);
 
+      var inventory = {};
+
+      _.each($scope.clothes.inventory, function(invt) {
+        var slug = invt.slug;
+        inventory[invt.slug] = invt;
+        delete inventory[invt.slug].$$hashKey;
+        delete inventory[invt.slug].slug;
+      });
+
+      $scope.clothes.inventory = inventory;
+
       delete $scope.clothes.category;
       delete $scope.clothes.slug;
 
@@ -54,42 +67,33 @@ angular.module('adminApp')
       console.log(error);
     });
 
-    $scope.variants = [];
-    $scope.addVariant = function(id) {
+    $scope.addVariant = function () {
+      // var newVariant = _.object([$scope.variant.slug], [$scope.variant.name]);
+      var newVariant = {
+        slug: $scope.variant.slug,
+        name: $scope.variant.name
+      };
 
-      var dataToSend = {};
+      var repeatId = _.indexOf($scope.clothes.inventory, _.find($scope.clothes.inventory, function(inv) {
+        return inv.slug === $scope.variant.slug;
+      }));
 
-      $http.post('/api/admin/data/' + id, dataToSend).success(function(wat) {
-        console.log(wat);
-      });
+      // now we find out the repeat one, update it!
 
-      //TODO: send http request here.
+      if (repeatId !== -1) {
+        $scope.clothes.inventory[repeatId] = newVariant;
+      } else {
+        $scope.clothes.inventory.push(newVariant);
+      }
 
-      $scope.variants.push({
-        variant: $scope.clothes.variant,
-        quantity: $scope.clothes.inventory
-      });
-
-      _.each($scope.variants, function(v) {
-      });
-
-
-      $scope.clothes.variant = '';
-      $scope.clothes.inventory = '';
     };
 
-    $scope.deleteVariant = function (evil) {
-      $scope.variants = _.reject($scope.variants, function (variant) {
-        return _.isEqual(variant, evil);
-      });
-    };
   });
 
 angular.module('adminApp')
   .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload) {
     var _id = [$routeParams.category, $routeParams.slug].join('/');
     var url = '/api/admin/data/' + _id + '/upload';
-    console.log(url);
     $scope.onFileSelect = function($files, name) {
       angular.forEach($files, function(file) {
         $scope.upload = $upload.upload({
