@@ -3,7 +3,6 @@
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.clothes = {};
-    $scope.inventory = [];
 
     if ($routeParams.category && $routeParams.slug) {
       $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
@@ -12,7 +11,7 @@ angular.module('adminApp')
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
-        $scope.clothes.inventory = [];
+        //$scope.clothes.inventory = [];
       });
 
     }
