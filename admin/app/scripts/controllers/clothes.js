@@ -3,6 +3,7 @@
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.clothes = {};
+    $scope.clothes.inventory = [];
 
     if ($routeParams.category && $routeParams.slug) {
       $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
