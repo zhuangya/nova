@@ -48,7 +48,15 @@ class Data
       next()
 
     app.get '/', (req, resp) =>
-      resp.sendSlice @load 'index.json'
+
+      file = @load 'index.json'
+
+      if file
+        resp.sendSlice file
+      else
+        resp.send 404,
+          errno: 404
+          errmsg: 'Not found'
 
     app.get '/video', (req, resp) =>
       fileStream = @load 'video.json'

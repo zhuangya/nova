@@ -1,12 +1,15 @@
 <div>
   <div class="col-md-12">
+    <div ng-if="errmsg" class="alert alert-danger">
+      {{errmsg}}
+    </div>
     <a class="pull-right btn btn-sm btn-primary" href="#/clothes/add">增加</a>
   </div>
   <ul class="list-group">
     <li ng-repeat="product in products" class="col-md-12 list-group-item">
     <p>{{product.name}}
       <span class="op pull-right">
-        <a class="btn btn-success btn-sm" ng-href="/#/clothes/{{product.id}}/edit">Edit</a>
+        <a class="btn btn-success btn-sm" ng-href="#/clothes/{{product.id}}/edit">Edit</a>
         <a class="btn btn-danger btn-sm" ng-click="deleteClothes(product)">delete</a>
       </span>
     </p>

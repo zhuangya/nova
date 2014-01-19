@@ -8,6 +8,12 @@ angular.module('frontendApp')
       },
       templateUrl: 'views/directives/usercard.html',
       restrict: 'A',
+      controller: function ($scope, $http) {
+        $http.get('/api/user').success(function(user) {
+          $scope.user = user.profile._json;
+          console.log($scope.user);
+        });
+      },
       link: function postLink(scope, element, attrs) {
 
       }
