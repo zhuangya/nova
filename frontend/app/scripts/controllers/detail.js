@@ -31,15 +31,17 @@ angular.module('frontendApp')
     });
 
     $scope.selectVariant = function(size) {
-      console.log($scope.currentInventory.slug, size.name);
+      $scope.itemToBuy = [$scope.detailId, $scope.currentInventory.slug, size.name].join('/');
     };
 
-    $scope.addToCart = function (clothes) {
+    $scope.addToCart = function ($event, clothes) {
+      $event.preventDefault();
       $http.post('/api/cart', {
-        //TODO: fix this request payload.
-        name: clothes.name,
-        unit_price: clothes.price
+        name: $scope.itemToBuy,
+        quantity: $scope.quantity,
+        unit_price: $scope.clothes.price
       }).success(function (resp) {
+        console.log(resp);
       }).error(function (error) {
       });
     };

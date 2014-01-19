@@ -23,11 +23,14 @@
             </div>
             <div class="clothes-misc">
               <span ng-click="updateVariant(invt)" ng-repeat="invt in clothes.inventory">{{invt.name}}</span>
-              <a ng-click="addToCart(clothes)">加入购物车</a>
+              <a ng-click="addToCart($event, clothes)">加入购物车</a>
             </div>
             <div class="clothes-variant-info">
               <span ng-click="selectVariant(size)" class="size" ng-repeat="size in currentInventory.sizes">{{size.name}}: {{size.quantity}}</span>
             </div>
+            <input type="number" min="0" ng-model="quantity">
+            <div>price: {{quantity * clothes.price || '0'}}</div>
+            <div>{{itemToBuy}}</div>
           </div>
         </div>
       </div>
