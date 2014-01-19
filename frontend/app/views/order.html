@@ -4,7 +4,26 @@
       <div navbar orientation="vertical"></div>
     </div>
     <div class="col-xs-10">
-      <pre><code>{{cart|json}}</code></pre>
+      <div>usercard</div>
+      <div>
+        <li>address
+        <li>mobile phone
+        <li>email
+      </div>
+      <hr/>
+      <!-- order -->
+      <div class="cart">
+        <ul>
+          <li ng-repeat="c in cart">
+          <pre><code>{{c | json}}</code></pre>
+          </li>
+        </ul>
+      </div>
+      <div> total </div>
+      <div>
+        <a href="/#/new">继续购物</a>
+        <a href="/#/checkout">现在结帐</a>
+      </div>
     </div>
     <div class="col-xs-1">
       <div class="pull-right" social-account></div>
