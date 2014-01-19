@@ -38,7 +38,7 @@ angular.module('frontendApp')
       $event.preventDefault();
       $http.post('/api/cart', {
         name: $scope.itemToBuy,
-        quantity: $scope.quantity,
+        count: $scope.quantity,
         unit_price: $scope.clothes.price
       }).success(function (resp) {
         console.log(resp);
