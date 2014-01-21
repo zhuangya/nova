@@ -38,23 +38,23 @@
   <hr/>
 
   <div class="form-group">
-    <div ng-init="inventory = {}" class="panel panel-default">
+    <div ng-init="variant = {}" class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="form-inline pull-left">
           <div class="form-group">
-            <input ng-model="inventory.slug" type="text" class="form-control" placeholder="slug">
+            <input ng-model="variant.name" type="text" class="form-control" placeholder="slug">
           </div>
           <div class="form-group">
-            <input ng-model="inventory.name" type="text" class="form-control" placeholder="分类显示名称">
+            <input ng-model="variant.screen_name" type="text" class="form-control" placeholder="分类显示名称">
           </div>
         </div>
-        <a ng-click="addInventory()" class="btn btn-primary pull-right">增加分类</a>
+        <a ng-click="addVariant()" class="btn btn-primary pull-right">增加分类</a>
       </div>
 
       <div class="panel-body">
         <table class="table">
           <thead>
-            <tr>
+            <tr ng-init="variant.sizes = {}">
               <th>S</th>
               <th>M</th>
               <th>L</th>
@@ -63,10 +63,10 @@
           </thead>
           <tbody>
           <tr class="form-group">
-            <td><input ng-model="inventory.s" placeholder="s" type="text" class="form-control input-sm"></td>
-            <td><input ng-model="inventory.m" placeholder="m" type="text" class="form-control input-sm"></td>
-            <td><input ng-model="inventory.l" placeholder="l" type="text" class="form-control input-sm"></td>
-            <td><input ng-model="inventory.xl" placeholder="xl" type="text" class="form-control input-sm"></td>
+            <td><input ng-model="variant.sizes.s" placeholder="s" type="number" class="form-control input-sm"></td>
+            <td><input ng-model="variant.sizes.m" placeholder="m" type="number" class="form-control input-sm"></td>
+            <td><input ng-model="variant.sizes.l" placeholder="l" type="number" class="form-control input-sm"></td>
+            <td><input ng-model="variant.sizes.xl" placeholder="xl" type="number" class="form-control input-sm"></td>
           </tr>
           </tbody>
         </table>
@@ -83,12 +83,9 @@
         </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="invt in clothes.inventory">
+      <tr ng-repeat="invt in clothes.variants">
         <td>{{invt.name}}</td>
-        <td>{{invt.s}}</td>
-        <td>{{invt.m}}</td>
-        <td>{{invt.l}}</td>
-        <td>{{invt.xl}}</td>
+        <td ng-repeat="size in invt.sizes">{{size.inventory}}</td>
       </tr>
       </tbody>
     </table>

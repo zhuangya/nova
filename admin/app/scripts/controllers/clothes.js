@@ -3,7 +3,7 @@
 angular.module('adminApp')
   .controller('ClothesCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.clothes = {};
-    $scope.clothes.inventory = [];
+    $scope.clothes.variants = [];
 
     if ($routeParams.category && $routeParams.slug) {
       $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
@@ -34,16 +34,24 @@ angular.module('adminApp')
     $scope.addClothes = function () {
       $scope.clothes.id = idlize($scope.clothes.category, $scope.clothes.slug);
 
-      var inventory = {};
-
       _.each($scope.clothes.inventory, function(invt) {
         var slug = invt.slug;
         inventory[invt.slug] = invt;
+        inventory.price = $scope.clothes.price;
         delete inventory[invt.slug].$$hashKey;
         delete inventory[invt.slug].slug;
       });
 
-      $scope.clothes.inventory = inventory;
+      $scope.clothes.variants = _.reduce($scope.clothes.variants, function(last, next) {
+        next.sizes = _.reduce(next.sizes, function(last, next) {
+          last[next.name] = next;
+          return last;
+        }, {});
+        last[next.name] = next;
+        return last;
+      }, {});
+
+      //$scope.clothes.variants = inventory;
 
       delete $scope.clothes.category;
       delete $scope.clothes.slug;
@@ -66,9 +74,16 @@ angular.module('adminApp')
       console.log(error);
     });
 
-    $scope.addInventory = function() {
-      $scope.clothes.inventory.push($scope.inventory);
-      $scope.inventory = {};
+    $scope.addVariant = function() {
+      $scope.variant.sizes = _.map($scope.variant.sizes, function(count, key) {
+        return {
+          name: key,
+          price: $scope.clothes.price,
+          inventory: count
+        };
+      });
+      $scope.clothes.variants.push($scope.variant);
+      $scope.variant = {};
     };
 
     //$scope.addVariant = function () {
