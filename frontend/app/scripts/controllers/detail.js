@@ -28,6 +28,7 @@ angular.module('frontendApp')
 
       $scope.clothes = clothes;
       $scope.currentInventory = clothes.inventory[0];
+      $scope.itemToBuy = [$scope.detailId, clothes.inventory[0].slug, clothes.inventory[0].sizes[0].name].join('/');
     });
 
     $scope.selectVariant = function(size) {
