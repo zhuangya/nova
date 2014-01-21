@@ -12,7 +12,6 @@ angular.module('adminApp')
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
-        //$scope.clothes.inventory = [];
       });
 
     }
@@ -67,26 +66,31 @@ angular.module('adminApp')
       console.log(error);
     });
 
-    $scope.addVariant = function () {
-      // var newVariant = _.object([$scope.variant.slug], [$scope.variant.name]);
-      var newVariant = {
-        slug: $scope.variant.slug,
-        name: $scope.variant.name
-      };
-
-      var repeatId = _.indexOf($scope.clothes.inventory, _.find($scope.clothes.inventory, function(inv) {
-        return inv.slug === $scope.variant.slug;
-      }));
-
-      // now we find out the repeat one, update it!
-
-      if (repeatId !== -1) {
-        $scope.clothes.inventory[repeatId] = newVariant;
-      } else {
-        $scope.clothes.inventory.push(newVariant);
-      }
-
+    $scope.addInventory = function() {
+      $scope.clothes.inventory.push($scope.inventory);
+      $scope.inventory = {};
     };
+
+    //$scope.addVariant = function () {
+      //// var newVariant = _.object([$scope.variant.slug], [$scope.variant.name]);
+      //var newVariant = {
+        //slug: $scope.variant.slug,
+        //name: $scope.variant.name
+      //};
+
+      //var repeatId = _.indexOf($scope.clothes.inventory, _.find($scope.clothes.inventory, function(inv) {
+        //return inv.slug === $scope.variant.slug;
+      //}));
+
+      //// now we find out the repeat one, update it!
+
+      //if (repeatId !== -1) {
+        //$scope.clothes.inventory[repeatId] = newVariant;
+      //} else {
+        //$scope.clothes.inventory.push(newVariant);
+      //}
+
+    //};
 
   });
 

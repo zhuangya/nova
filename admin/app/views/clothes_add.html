@@ -1,11 +1,27 @@
 <form role="form">
   <div class="form-group">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-3">
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
           <input id="clothes-name" class="form-control" ng-model="clothes.name" placeholder="名称">
         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-addon">s</span>
+          <input placeholder="衣服 slug " id="clothes-slug" class="form-control" ng-model="clothes.slug">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-addon">c</span>
+          <input placeholder="分类" id="clothes-category" class="form-control" ng-model="clothes.category">
+        </div>
+      </div>
+
+      <div class="col-md-3">
       </div>
       <div class="col-md-3">
         <div class="input-group">
@@ -22,25 +38,23 @@
   <hr/>
 
   <div class="form-group">
-    <a ng-click="addVariant()" class="btn btn-primary">增加分类</a>
-    <div class="panel panel-default">
-
-      <div class="panel-heading">
-        <div class="form-inline">
+    <div ng-init="inventory = {}" class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <div class="form-inline pull-left">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="slug">
+            <input ng-model="inventory.slug" type="text" class="form-control" placeholder="slug">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="分类显示名称">
+            <input ng-model="inventory.name" type="text" class="form-control" placeholder="分类显示名称">
           </div>
         </div>
+        <a ng-click="addInventory()" class="btn btn-primary pull-right">增加分类</a>
       </div>
 
       <div class="panel-body">
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
               <th>S</th>
               <th>M</th>
               <th>L</th>
@@ -49,19 +63,36 @@
           </thead>
           <tbody>
           <tr class="form-group">
-            <td><i class="fa fa-plus-circle" style="line-height:33px; font-size:28px; cursor:pointer"></i></td>
-            <td><input placeholder="s" type="text" class="form-control input-sm"></td>
-            <td><input placeholder="m" type="text" class="form-control input-sm"></td>
-            <td><input placeholder="l" type="text" class="form-control input-sm"></td>
-            <td><input placeholder="xl" type="text" class="form-control input-sm"></td>
+            <td><input ng-model="inventory.s" placeholder="s" type="text" class="form-control input-sm"></td>
+            <td><input ng-model="inventory.m" placeholder="m" type="text" class="form-control input-sm"></td>
+            <td><input ng-model="inventory.l" placeholder="l" type="text" class="form-control input-sm"></td>
+            <td><input ng-model="inventory.xl" placeholder="xl" type="text" class="form-control input-sm"></td>
           </tr>
           </tbody>
         </table>
       </div>
     </div>
-
+    <table class="table">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
+          <th>XL</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="invt in clothes.inventory">
+        <td>{{invt.name}}</td>
+        <td>{{invt.s}}</td>
+        <td>{{invt.m}}</td>
+        <td>{{invt.l}}</td>
+        <td>{{invt.xl}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-
   <hr/>
 
   <div class="form-group">
