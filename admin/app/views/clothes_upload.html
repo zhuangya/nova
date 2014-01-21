@@ -1,12 +1,31 @@
 <div class="row">
-  <div class="col-md-6" id="images">
-
-    <input name="cover.jpg" type="file" ng-file-select="onFileSelect($files, 'cover.jpg')">
-    <input name="main.jpg" type="file" ng-file-select="onFileSelect($files, 'main.jpg')">
-
-    <button upload-submit>upload with ngUpload</button>
-  </div>
-  <div class="col-md-6">
-    upload main
+  <div class="col-md-12" id="images">
+    <div class="row">
+      <div class="col-md-12">
+        <a ng-click="slot()" class="pull-right btn btn-primary">确认</a>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong> 上传封面图片 </strong>
+          </div>
+          <div class="panel-body">
+            <img width="100%" class="thumbnail" ng-src="{{coverPreview}}">
+            <input name="cover.jpg" type="file" ng-file-select="onFileSelect($files, 'cover.jpg')">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong> 上传详细图片 </strong>
+          </div>
+          <div class="panel-body">
+            <img width="100%" class="thumbnail" ng-src="{{mainPreview}}">
+            <input name="main.jpg" type="file" ng-file-select="onFileSelect($files, 'main.jpg')">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

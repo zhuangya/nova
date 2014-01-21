@@ -12,6 +12,7 @@ angular.module('adminApp')
         $scope.clothes = clothes;
         $scope.clothes.slug = $routeParams.slug;
         $scope.clothes.category = $routeParams.category;
+        $scope.clothes.price = clothes.variants[0].sizes[0].price;
       });
 
     }
@@ -86,6 +87,12 @@ angular.module('adminApp')
       $scope.variant = {};
     };
 
+    $scope.deleteVariant = function(waste) {
+      $scope.clothes.variants = _.reject($scope.clothes.variants, function(vant) {
+        return _.isEqual(waste, vant);
+      });
+    };
+
     //$scope.addVariant = function () {
       //// var newVariant = _.object([$scope.variant.slug], [$scope.variant.name]);
       //var newVariant = {
@@ -110,7 +117,7 @@ angular.module('adminApp')
   });
 
 angular.module('adminApp')
-  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload) {
+  .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, $location) {
     var _id = [$routeParams.category, $routeParams.slug].join('/');
     var url = '/api/admin/data/' + _id + '/upload';
     $scope.onFileSelect = function($files, name) {
@@ -126,11 +133,19 @@ angular.module('adminApp')
         }).progress(function(event) {
           console.log('percent: %s', parseInt(100.0 * event.loaded / event.total));
         }).success(function(resp) {
-          console.log(resp);
-          $http.post('/api/admin/data/reload').success(function(resp) {
-            console.log(resp);
-          });
+          if (name === 'cover.jpg') {
+            $scope.coverPreview = '/data' + resp.path;
+          } else {
+            $scope.mainPreview = '/data' + resp.path;
+          }
+
         });
+
+        $scope.slot = function() {
+          $http.post('/api/admin/data/reload').success(function(resp) {
+            $location.path('clothes');
+          });
+        };
       });
     };
   });

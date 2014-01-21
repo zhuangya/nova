@@ -80,12 +80,14 @@
           <th>M</th>
           <th>L</th>
           <th>XL</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="invt in clothes.variants">
-        <td>{{invt.name}}</td>
-        <td ng-repeat="size in invt.sizes">{{size.inventory}}</td>
+      <tr ng-repeat="vant in clothes.variants">
+        <td>{{vant.screen_name}}</td>
+        <td ng-repeat="size in vant.sizes">{{size.inventory}}</td>
+        <td><a ng-click="deleteVariant(vant)"><i class="fa fa-times-circle-o"></i></a></td>
       </tr>
       </tbody>
     </table>
