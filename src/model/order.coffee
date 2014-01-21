@@ -25,7 +25,7 @@ schema.methods.updateInventory = ->
     .map (item) ->
       p = Product.loadItem item.name
       if p.getInventory() < item.count
-        throw "Out of stock: #{item.name}"
+        throw new Error "Out of stock: #{item.name}"
       else
         p.updateInventory(-item.count)
       p
