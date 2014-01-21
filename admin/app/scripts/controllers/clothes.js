@@ -118,6 +118,13 @@ angular.module('adminApp')
 
 angular.module('adminApp')
   .controller('ClothesUploadCtrl', function($scope, $http, $routeParams, $upload, $location) {
+
+      $scope.productId = [$routeParams.category, $routeParams.slug].join('/');
+      $http.get('/data/' + $scope.productId).success(function(clothes) {
+        $scope.coverPreview = ['/data', $scope.productId, 'cover.jpg'].join('/');
+        $scope.mainPreview = ['/data', $scope.productId, 'main.jpg'].join('/');
+      });
+
     var _id = [$routeParams.category, $routeParams.slug].join('/');
     var url = '/api/admin/data/' + _id + '/upload';
     $scope.onFileSelect = function($files, name) {
