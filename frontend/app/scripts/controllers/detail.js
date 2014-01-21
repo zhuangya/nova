@@ -42,7 +42,6 @@ angular.module('frontendApp')
         count: $scope.quantity,
         unit_price: $scope.clothes.price
       }).success(function (resp) {
-        console.log(resp);
       }).error(function (error) {
       });
     };
