@@ -17,6 +17,7 @@ class Cart
     for item in items
       product = Product.loadItem item.name
       item.unit_price = product.getPrice()
+      item.snapshot = product.toObject()
       console.info item
       if item.count
         cart.items[item.name] = item
