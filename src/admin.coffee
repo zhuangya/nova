@@ -85,9 +85,15 @@ app.post '/data/:cat/:id/upload', (req,resp) ->
     ).pipe fs.createWriteStream dst
 
 app.get '/order', (req,resp) ->
+  resp.json Order.sync.find()
 
 app.get '/order/:id', (req,resp) ->
+  resp.json Order.sync.findById req.params.id
 
 app.post '/order/:id', (req,resp) ->
+  order = Order.sync.findById req.params.id
+  for k,v of req.body
+    order[k]=v
+  resp.json order.sync.save()
 
 module.exports = app

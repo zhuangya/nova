@@ -15,7 +15,10 @@ loadData = (name) ->
   #console.info product
   product.validate(name)
   #console.info product
-  product.toCachedObject()
+  #console.warn name
+  obj = product.toCachedObject()
+  #console.warn obj
+  return obj
   #product
 
 readline = require('readline')
@@ -42,13 +45,12 @@ rl.on 'line', (line) ->
     catch
       result.push
         id: name
-        error: _error
+        error: _error.toString()
       return null
 
 
 rl.on 'close', ->
   fibrous.run ->
-    data = fibrous.wait waits
-    data = _.filter data, notNull
+    data = _.compact fibrous.wait waits
     console.info JSON.stringify data,false,'  '
     console.warn JSON.stringify result,false,'  '

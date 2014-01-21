@@ -30,27 +30,52 @@ eg.: `/photo/tee/pure_color/white_main.jpg?schema=cover120`
 product
 ---
 ```
-id: tees/pure_color
+id: tee/pure_color
 name: Pure Color T-Shirts
 description: |
-	I am a T-Shirt
-	DO NOT typo as T-Shit
+    I am a T-Shirt
+    DO NOT typo as T-Shit
 variants:
-	white: White Tee
-	black: Black Tee
-price:
-	white: 133.22
-	black: 122.34
-inventory:
-	white:
-		s:0
-		m:10
-		l:2
-		xl:20
-	black:
-		s:0
-		m:0
-		xl:10
+	-
+    	name: white
+        screen_name: White Tee
+        sizes:
+            -
+            	name: s
+                price: 233
+                inventory: 0
+            -
+            	name: m
+                price: 233
+                inventory: 10
+            -
+            	name: l
+                price: 233
+                inventory: 30
+            -	
+            	name: xl
+                price: 234
+                inventory: 20
+    -
+    	name: black
+        screen_name: Black Tee
+        sizes:
+            -
+            	name: s
+                price: 233
+                inventory: 0
+            -
+            	name: m
+                price: 233
+                inventory: 10
+            -
+            	name: l
+                price: 233
+                inventory: 30
+            -	
+            	name: xl
+                price: 234
+                inventory: 20
 ```
 
 cart
@@ -148,27 +173,52 @@ POST /api/admin/data
 create new product
 
 ```
-id: tees/pure_color
+id: tee/pure_color
 name: Pure Color T-Shirts
 description: |
-	I am a T-Shirt
-	DO NOT typo as T-Shit
+    I am a T-Shirt
+    DO NOT typo as T-Shit
 variants:
-	white: White Tee
-	black: Black Tee
-price:
-	white: 133.22
-	black: 122.34
-inventory:
-	white:
-		s:0
-		m:10
-		l:2
-		xl:20
-	black:
-		s:0
-		m:0
-		xl:10
+	-
+    	name: white
+        screen_name: White Tee
+        sizes:
+            -
+            	name: s
+                price: 233
+                inventory: 0
+            -
+            	name: m
+                price: 233
+                inventory: 10
+            -
+            	name: l
+                price: 233
+                inventory: 30
+            -	
+            	name: xl
+                price: 234
+                inventory: 20
+    -
+    	name: black
+        screen_name: Black Tee
+        sizes:
+            -
+            	name: s
+                price: 233
+                inventory: 0
+            -
+            	name: m
+                price: 233
+                inventory: 10
+            -
+            	name: l
+                price: 233
+                inventory: 30
+            -	
+            	name: xl
+                price: 234
+                inventory: 20
 ```
 
 POST /api/admin/data/:id
@@ -178,9 +228,6 @@ post fileds you need to update:
 
 ```
 name: Changed Name
-price: 100000000.0
-inventory: 100
-
 ```
 
 POST /api/admin/data/:id/upload

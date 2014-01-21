@@ -51,26 +51,13 @@ class Product
     fs.writeFileSync Product.getMetadataPath(@id), @dumpMetadata()
 
   getPrice: (variant=@_variant,size=@_size) ->
-    return @price if typeof @price is 'number'
-    return @price[size] if typeof @price[size] is 'number'
-    return @price[variant] if typeof @price[variant] is 'number'
-    return @price[variant][size] || throw "Unable to fetch price of #{@id}/#{variant}/#{size}"
+    return @variants[variant].sizes[size].price
 
   getInventory: (variant=@_variant,size=@_size) ->
-    return @inventory if typeof @inventory is 'number'
-    return @inventory[size] if typeof @inventory[size] is 'number'
-    return @inventory[variant] if typeof @inventory[variant] is 'number'
-    return @inventory[variant][size] || throw "Unable to fetch inventory of #{@id}/#{variant}/#{size}"
+    return @variants[variant].sizes[size].inventory
 
   updateInventory: (count,variant=@variant,size=@_size) ->
-    if typeof @inventory is 'number'
-      @inventory += count
-    else if typeof @inventory[size] is 'number'
-      @inventory[size] += count
-    else if typeof @inventory[variant] is 'number'
-      @inventory[variant] += count
-    else
-      @inventory[variant][size] += count
+    return @variants[variant].sizes[size].inventory += count
 
   getPath: (x) ->
     path.join config.baseDir, 'data', @id, x
@@ -91,12 +78,18 @@ class Product
 
   validate: (id=@id,with_image=true) ->
 
-    throw "Id mismatch: '#{@id}', should be '#{id}'" unless id is @id
-    throw "Missing name field: #{@id}"       unless @name
-    throw "Missing desciption field: #{@id}" unless @description
-    #throw "Missing variants field: #{@id}"   unless @variants instanceof Object
-    throw "Missing price field: #{@id}"      unless typeof @price is 'number' or @price instanceof Object
-    #throw "Missing inventory field: #{@id}"  unless typeof @inventory is 'number' or @inventory instanceof Object
+    throw new Error "Id mismatch: '#{@id}', should be '#{id}'" unless id is @id
+    throw new Error "Missing name field: #{@id}"       unless @name
+    throw new Error "Missing desciption field: #{@id}" unless @description
+    throw new Error "Missing variants field: #{@id}"   unless @variants instanceof Object
+    for k,v of @variants
+      #throw "Variant name mismatch: #{@id}/#{k}" unless v.name is k
+      throw new Error "Missing screen_name field: #{@id}/#{k}" unless v.screen_name
+      throw new Error "Missing sizes field: #{@id}/#{k}" unless v.sizes instanceof Object
+      for sk,sv of v.sizes
+        #throw "size name mismatch: #{@id}/#{k}/#{sv}" unless sv.name is sk
+        throw new Error "Missing price field: #{@id}/#{k}/#{sv}" unless typeof sv.price is 'number'
+        throw new Error "Missing inventory field: #{@id}/#{k}/#{sv}" unless typeof sv.inventory is 'number'
 
     if with_image
       @getImagePath 'cover.jpg'
@@ -114,23 +107,40 @@ class Product
           width: parseInt str[0]
           height: parseInt str[1]
 
+  toJSON: ->
+    obj = _.pick(this,['name','description'])
+    #console.warn (new Error).stack
+    #console.warn @variants
+    obj.variants = _.map(@variants,(v,k) ->
+      nv = _.clone v
+      nv.name = k
+      nv.sizes = _.map(v.sizes, (s,k)->
+        ns = _.clone s
+        ns.name = k
+        return ns
+      )
+      return nv
+    )
+    return obj
+
   toObject: ->
+    obj = @toJSON()
     cover_name = @getImagePath 'cover.jpg'
     cover_info = @sync._getImageSize @getPath cover_name
     main_name  = @getImagePath 'main.jpg'
     main_info  = @sync._getImageSize @getPath main_name
-    @cover_name = cover_name
-    @cover_size =
+    obj.cover_name = cover_name
+    obj.cover_size =
       width: cover_info.width
       height: cover_info.height
-    @main_name = main_name
-    @main_size =
+    obj.main_name = main_name
+    obj.main_size =
       width: main_info.width
       height: main_info.height
 
-    return this
+    return obj
 
   toCachedObject: ->
-    _.omit @toObject(),'inventory'
+    @toObject()
 
 module.exports = Product
