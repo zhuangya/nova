@@ -6,33 +6,27 @@ angular.module('frontendApp')
     $scope.detailId = [$routeParams.category, $routeParams.slug].join('/');
 
     $http.get('/data/' + $scope.detailId).success(function(clothes) {
-      clothes.image = ['/data', clothes.id,  clothes.main_name].join('/');
-      clothes.inventory = _.map(clothes.inventory, function(invt, slug) {
-        invt.slug = slug;
-        invt.sizes = _.compact(_.map(invt, function(value, key) {
-          if (/^(?:s|m|x?l)$/.test(key)) {
-            return {
-              'name': key,
-              'quantity': value
-            };
-          }
-          return null;
-        }));
-        delete invt.s;
-        delete invt.m;
-        delete invt.l;
-        delete invt.xl;
 
-        return invt;
-      });
+      clothes.image = ['/data', clothes.id,  clothes.main_name].join('/');
+      clothes.price = clothes.variants[0].sizes[0].price;
 
       $scope.clothes = clothes;
-      $scope.currentInventory = clothes.inventory[0];
-      $scope.itemToBuy = [$scope.detailId, clothes.inventory[0].slug, clothes.inventory[0].sizes[0].name].join('/');
     });
 
-    $scope.selectVariant = function(size) {
-      $scope.itemToBuy = [$scope.detailId, $scope.currentInventory.slug, size.name].join('/');
+    $scope.updateVariant = function(vant) {
+      $scope.currentVariant = vant;
+    };
+
+    $scope.selectSize = function(size) {
+
+      console.log($scope.currentVariant);
+
+      $scope.inventory = _.find($scope.currentVariant.sizes, function(sizeItem) {
+        return sizeItem.name === size.name;
+      }).inventory;
+
+      //$scope.inventory =
+      $scope.itemToBuy = [$scope.detailId, $scope.currentVariant.name, size.name].join('/');
     };
 
     $scope.addToCart = function ($event, clothes) {
@@ -44,10 +38,6 @@ angular.module('frontendApp')
       }).success(function (resp) {
       }).error(function (error) {
       });
-    };
-
-    $scope.updateVariant = function(invt) {
-      $scope.currentInventory = invt;
     };
 
   });
