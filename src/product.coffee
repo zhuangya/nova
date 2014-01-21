@@ -42,8 +42,6 @@ class Product
       'name',
       'description',
       'variants',
-      'price',
-      'inventory',
     ]
 
   save: ->
@@ -108,7 +106,7 @@ class Product
           height: parseInt str[1]
 
   toJSON: ->
-    obj = _.pick(this,['name','description'])
+    obj = _.pick(this,['id', 'name', 'description'])
     #console.warn (new Error).stack
     #console.warn @variants
     obj.variants = _.map(@variants,(v,k) ->
