@@ -1,5 +1,8 @@
-<div id="waterfall">
-
+<div class="row">
+  <div water-fall zoom="showImg(img)" content="waterFall"></div>
 </div>
-<pre><code>
-{{shots | json }}
+
+<div class="img-zoom" ng-show="showZoom" ng-style="{'width': zoomImg.width, 'height': zoomImg.height}" class="zoom">
+  <img ng-src="{{zoomImg.src}}">
+  <span class="zoom-out" ng-click="showZoom=false"><i class="fa fa-times"></i></span>
+</div>
