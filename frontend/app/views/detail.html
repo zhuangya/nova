@@ -6,38 +6,48 @@
     <div class="col-xs-10 clear-fix">
       <div class="detail-wrapper row">
         <div class="col-xs-12 clothes-image clear-fix">
-          <img style="max-width: 100%;" class="thumbnail" ng-src="{{clothes.image}}">
+          <img style="max-width: 100%;" ng-src="{{clothes.image}}">
         </div>
-
       </div>
-
       <div id="gradient-bg" class="row clear-fix">
         <div class="col-xs-12">
           <p class="clothes-name"><i class="fa fa-tags"></i>{{clothes.name || 'GoodFellas T恤'}}</p>
         </div>
         <div class="col-xs-12">
-          <div class="clothes-meta">
-            <div class="clothes-price">
-              <p class="price">￥{{clothes.price || 349}}</p>
-              <p class="label">TOTAL/ITEM</p>
+          <div class="clothes-price col-xs-3">
+            <p class="price">￥{{clothes.price || 349}}</p>
+            <p class="label">TOTAL/ITEM</p>
+          </div>
+          <div class="clothes-misc col-xs-9">
+            <div ng-repeat="vant in clothes.variants">
+              <p> <span class="variant" ng-click="updateVariant(vant)">{{vant.screen_name}}</span> </p>
+              <span class="size" ng-click="selectSize(size)" ng-repeat="size in currentVariant.sizes"> {{size.name}} </span>
             </div>
-            <div class="clothes-misc">
-              <div ng-repeat="vant in clothes.variants">
-                <span class="variant" ng-click="updateVariant(vant)">{{vant.screen_name}}</span>
-                <span ng-click="selectSize(size)" ng-repeat="size in currentVariant.sizes">
-                  {{size.name}}
-                </span>
-              </div>
-              <p>库存 {{inventory}} 件</p>
-              <a class="add-cart" ng-click="addToCart($event, clothes)">加入购物车</a>
-            </div>
-            <input type="number" min="0" max="{{inventory}}" ng-model="quantity">
-            <div>price: {{quantity * clothes.price || '0'}}</div>
           </div>
         </div>
+
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-6">
+              <p>库存 {{inventory}} 件</p>
+            </div>
+            <div class="col-xs-6">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  购买件数
+                </span>
+                <input class="form-control" type="number" min="0" max="{{inventory}}" ng-model="quantity">
+              </div>
+            </div>
+          </div>
+
+          <div class="pull-right">
+            <div>总计： {{quantity * clothes.price || '0'}}</div>
+            <a class="add-cart" ng-click="addToCart($event, clothes)">加入购物车</a>
+          </div>
+        </div>
+
       </div>
-
-
     </div>
     <div class="col-xs-1">
       <div class="pull-right" social-account></div>

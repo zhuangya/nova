@@ -227,20 +227,6 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4fffffff',GradientType=0 ); /* IE6-9 */
 }
 
-.clothes-price {
-  width: 33.3333333%;
-  float: left;
-}
-
-.clothes-misc {
-  width: 66.666667%;
-  float: left;
-}
-
-.clothes-name .fa {
-  margin: 3px;
-}
-
 #waterfall {
   position: relative;
   min-height: 300px;
@@ -368,3 +354,11 @@ body {
   text-shadow: 0 0 3px black;
 }
 
+.size {
+  margin: 0 6px;
+  background-color: #f0f0f0;
+  padding: 8px;
+  line-height: 2;
+  border-radius: 2px;
+  cursor: pointer;
+}
