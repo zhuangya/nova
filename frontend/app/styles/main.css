@@ -287,7 +287,10 @@ body {
 
 .dir-clothes-price .size li {
   display: inline-block;
-  margin: 0 8px;
+}
+
+.clothes-misc {
+  margin-top: 20px;
 }
 
 .clothes-price {
@@ -308,10 +311,14 @@ body {
 }
 
 .variant {
-  padding: 3px 8px;
+  padding: 8px 20px;
   background-color: #ffe00a;
   border-radius: 2px;
   cursor: pointer;
+}
+
+.variant.highlight {
+  background-color: #e0ff0a;
 }
 
 .variant:hover {
@@ -320,10 +327,11 @@ body {
 
 .add-cart {
   color: #ffe00a;
-  border: 1px solid black;
   font-size: 16px;
   padding: 6px;
-  border-radius: 3px;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  background-color: white;
 }
 
 .add-cart:hover {
@@ -355,10 +363,13 @@ body {
 }
 
 .size {
-  margin: 0 6px;
+  margin: 0 2px;
   background-color: #f0f0f0;
-  padding: 8px;
+  padding: 8px 20px;
   line-height: 2;
   border-radius: 2px;
   cursor: pointer;
+  text-align: center;
 }
+
+
