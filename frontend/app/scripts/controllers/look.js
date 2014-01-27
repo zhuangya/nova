@@ -3,7 +3,7 @@
 angular.module('frontendApp')
   .controller('LookCtrl', function ($scope, $http, $q, $compile) {
 
-    $scope.waterFall = [
+    window.waterFallLooks = [
       { "height": 401, "width": 600, "src": "images/tees/lb001.jpg" },
       { "height": 899, "width": 600, "src": "images/tees/lb003.jpg" },
       { "height": 899, "width": 600, "src": "images/tees/lb002.jpg" },
@@ -14,6 +14,8 @@ angular.module('frontendApp')
       { "height": 900, "width": 600, "src": "images/tees/lb006.jpg" },
       { "height": 401, "width": 600, "src": "images/tees/lb009.jpg" }
     ];
+
+    $scope.waterFall = waterFallLooks;
 
     $scope.showImg = function (img) {
       $scope.showZoom = true;
