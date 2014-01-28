@@ -18,9 +18,6 @@ angular.module('frontendApp')
     };
 
     $scope.selectSize = function(size) {
-
-      console.log($scope.currentVariant);
-
       $scope.inventory = _.find($scope.currentVariant.sizes, function(sizeItem) {
         return sizeItem.name === size.name;
       }).inventory;
@@ -36,6 +33,12 @@ angular.module('frontendApp')
         count: $scope.quantity,
         unit_price: $scope.clothes.price
       }).success(function (resp) {
+        var msg = '已成功加入购物车';
+        smoke.signal(msg, function (event) {
+        }, {
+          duration: 1754,
+          classname: "custom-class"
+        });
       }).error(function (error) {
       });
     };
