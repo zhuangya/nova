@@ -15,11 +15,11 @@
       <div class="cart">
         <ul>
           <li ng-repeat="c in cart">
-          <img ng-src="/data/{{c.snapshot.id}}/cover.jpg">
-
+          <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
           <i class="fa fa-tags"></i><span class="name">{{c.snapshot.name}}</span>
           <span>{{c.count}}</span>
           <span class="price">{{c.unit_price}}<small>TOTAL/ITEM</small></span>
+          <span>{{c.size}}</span>
           </li>
         </ul>
       </div>
