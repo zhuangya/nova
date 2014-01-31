@@ -9,12 +9,19 @@ angular.module('frontendApp')
     };
 
     $scope.deleteClothes = function (clothes) {
-      console.log('delete this');
+      var _name = [clothes.category, clothes.name, clothes.variant, clothes.size].join('/');
+
+      //TODO send delete request here.
+
+      $scope.cart = _.reject($scope.cart, function (c) {
+        return c._name === _name;
+      });
     };
 
     $http.get('/api/cart').success(function (cart) {
       $scope.cart = _.map(cart, function (item) {
         parseClothesName(item.name).then(function (parsed) {
+          item._name = item.name;
           angular.extend(item, parsed);
         });
         return item;
