@@ -13,6 +13,11 @@ angular.module('frontendApp')
 
       //TODO send delete request here.
 
+      $http.post('/api/cart/delete', {
+        name: _name
+      }).success(function (resp) {
+      });
+
       $scope.cart = _.reject($scope.cart, function (c) {
         return c._name === _name;
       });

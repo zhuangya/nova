@@ -22,7 +22,7 @@ app.get '/user', fibrous.middleware, (req,resp) ->
 
 app.get    '/cart', fibrous.middleware, cart.get
 app.post   '/cart', fibrous.middleware, cart.update
-app.delete '/cart', fibrous.middleware, cart.remove
+app.post   '/cart/delete', fibrous.middleware, cart.remove
 
 app.get    '/order', fibrous.middleware, order.list
 app.post   '/order', fibrous.middleware, order.create
