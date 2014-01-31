@@ -20,7 +20,10 @@ class Cart
       item.snapshot = product.toObject()
       console.info item
       if item.count
-        cart.items[item.name] = item
+        if cart.items[item.name]
+          cart.items[item.name].count += item.count
+        else
+          cart.items[item.name] = item
       else
         delete cart.items[item.name]
     resp.json cart
