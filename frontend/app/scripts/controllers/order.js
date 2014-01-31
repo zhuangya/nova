@@ -21,6 +21,15 @@ angular.module('frontendApp')
       $scope.cart = _.reject($scope.cart, function (c) {
         return c._name === _name;
       });
+
+      $scope.updateTotal();
+    };
+
+    $scope.checkout = function () {
+
+      //TODO: checkout
+      console.log($scope.address, $scope.email, $scope.mobile, $scope.cart);
+
     };
 
     $http.get('/api/cart').success(function (cart) {
