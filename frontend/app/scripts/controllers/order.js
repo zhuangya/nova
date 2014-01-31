@@ -2,6 +2,13 @@
 
 angular.module('frontendApp')
   .controller('OrderCtrl', function ($scope, $http, $q) {
+    $scope.lessCount = function (count) {
+      count = count - 1;
+    };
+
+    $scope.moreCount = function (count) {
+      count = count + 1;
+    };
     $http.get('/api/cart').success(function (cart) {
       $scope.cart = _.map(cart, function (item) {
         parseClothesName(item.name).then(function (parsed) {

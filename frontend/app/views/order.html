@@ -13,11 +13,15 @@
       <hr/>
       <!-- order -->
       <div class="cart">
-        <ul>
-          <li ng-repeat="c in cart">
-          <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
+        <ul class="cart-list">
+          <li class="cart-item" ng-repeat="c in cart">
+          <a ng-href="#/detail/{{c.category}}/{{c.name}}">
+            <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
+          </a>
           <i class="fa fa-tags"></i><span class="name">{{c.snapshot.name}}</span>
+          <a ng-click="lessCount(c.count)">-</a>
           <span>{{c.count}}</span>
+          <a ng-click="moreCount(c.count)">+</a>
           <span class="price">{{c.unit_price}}<small>TOTAL/ITEM</small></span>
           <span>{{c.size}}</span>
           </li>
