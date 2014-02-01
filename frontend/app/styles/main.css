@@ -403,3 +403,11 @@ body {
 .top-spacing {
   padding-top: 80px;
 }
+
+.waterfall-spacing {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 10px;
+  border: 1px dotted #d3d1d1;
+}

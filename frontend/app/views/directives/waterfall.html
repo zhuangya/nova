@@ -1,6 +1,6 @@
 <div style="position: relative;" class="water-fall">
   <div ng-init="pin(c)" ng-repeat="c in content">
-    <div ng-style="{'position': 'absolute', 'left': left, 'top': top, 'width': width, 'height': height}">
+    <div class="waterfall-spacing" ng-style="{'position': 'absolute', 'left': left, 'top': top, 'width': width, 'height': height}">
       <img style="cursor: pointer" ng-click="zoom({img: c})" ng-src="{{c.src}}" width="100%">
     </div>
   </div>
