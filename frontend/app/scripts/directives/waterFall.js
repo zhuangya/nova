@@ -23,14 +23,14 @@ angular.module('frontendApp')
         $scope.pin = function (wat) {
           var minIndex = _.indexOf(posArray, _.min(posArray));
 
-          this.left = minIndex * 240;
+          this.left = minIndex * 200;
           this.top = posArray[minIndex];
 
-          var shrinkedHeight = 240 / wat.width * wat.height;
+          var shrinkedHeight = 200 / wat.width * wat.height;
 
           posArray[minIndex] = posArray[minIndex] + shrinkedHeight;
 
-          this.width = 240;
+          this.width = 200;
           this.height = shrinkedHeight;
         };
       }

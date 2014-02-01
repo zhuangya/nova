@@ -1,5 +1,15 @@
-<div class="row">
-  <div water-fall zoom="showImg(img)" content="waterFall"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1">
+      <div navbar orientation="vertical"></div>
+    </div>
+    <div class="col-xs-10">
+      <div water-fall zoom="showImg(img)" content="waterFall"></div>
+    </div>
+    <div class="col-xs-1">
+      <div class="pull-right" social-account></div>
+    </div>
+  </div>
 </div>
 
 <div class="img-zoom" ng-show="showZoom" ng-style="{'width': zoomImg.width, 'height': zoomImg.height}" class="zoom">
