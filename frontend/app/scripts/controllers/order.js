@@ -4,6 +4,7 @@ angular.module('frontendApp')
   .controller('OrderCtrl', function ($scope, $http, $q) {
     $scope.updateTotal = function () {
       $scope.total = _.reduce($scope.cart, function (price, c) {
+        if (c.count < 0) c.count = 0;
         return price + c.unit_price * c.count;
       }, 0);
     };
