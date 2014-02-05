@@ -1,6 +1,17 @@
+@font-face {
+    font-family: 'bebas';
+    src: url('../fonts/BebasNeue-webfont.eot');
+    src: url('../fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/BebasNeue-webfont.woff') format('woff'),
+         url('../fonts/BebasNeue-webfont.ttf') format('truetype'),
+         url('../fonts/BebasNeue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
   -webkit-font-smoothing: subpixel-antialiased;
-  font-family: "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+  font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
   font-size: 14px;
   line-height: 1.4;
   min-height: 100%;
@@ -12,17 +23,12 @@ body {
   background-size: cover;
   -moz-background-size: cover;
   -webkit-background-size: cover;
+  font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+  
 }
 
-@font-face {
-    font-family: 'bebas';
-    src: url('font/BebasNeue-webfont.eot');
-    src: url('font/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/BebasNeue-webfont.woff') format('woff'),
-         url('font/BebasNeue-webfont.ttf') format('truetype'),
-         url('font/BebasNeue-webfont.svg#bebas_neueregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
 }
 
 a {
