@@ -64,6 +64,12 @@ angular.module('adminApp')
       });
     };
 
+    $scope.deleteClothes = function (clothes) {
+      $http.post('/api/admin/data/' + clothes.id + '/delete').success(function (resp) {
+        console.log(resp);
+      });
+    }
+
     $scope.cancel = function () {
       $location.path('clothes');
     };
