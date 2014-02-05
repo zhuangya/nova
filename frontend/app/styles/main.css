@@ -27,8 +27,47 @@ body {
   
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+.container {
+  width: 1024px;
+  position: relative;
+  margin: auto;
+}
+
+.main {
+  width: 814px;
+  float: left;
+  outline: 1px solid green; /** for test **/
+}
+
+.dark-header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, .75);
+  height: 196px;
+  padding-top: 53px;
+}
+
+.dark-header h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+}
+
+.dark-header .divider {
+  width: 70px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, .2);
+  margin: auto;
+}
+
+.dark-header .slogan {
+  text-align: center;
+  color: white;
+  width: 220px;
+  height: 20px;
+  margin: auto;
+  font-size: 20px;
+  line-height: 20px;
+  margin-top: 10px;
 }
 
 a {
@@ -153,12 +192,14 @@ body {
 }
 
 .vertical-list {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
+  width: 105px;
+  float: left;
 }
 
 .usercard {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   line-height: 2;
   width: 150px;

@@ -25,16 +25,20 @@
         <div class="col-xs-9">
           <ul class="cart-list">
             <li class="cart-item" ng-repeat="c in cart">
-            <a ng-href="#/detail/{{c.category}}/{{c.name}}">
-              <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
-            </a>
-            <i class="fa fa-tags"></i><span class="name">{{c.snapshot.name}}</span>
-            <span ng-click="c.count = c.count - 1;updateTotal();">-1</span>
-            <input ng-change="updateTotal()" class="form-contrl" type="text" ng-model="c.count">
-            <span ng-click="c.count = c.count + 1;updateTotal();">+1</span>
-            <span>尺寸： {{c.size}}</span>
-            <span class="price">单价：{{c.unit_price}}</span>
-            <span ng-click="deleteClothes(c)"><i class="fa fa-times"></i></span>
+              <a class="pull-left" ng-href="#/detail/{{c.category}}/{{c.name}}">
+                <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
+              </a>
+              <div style="margin-left: 10px;" class="pull-left order-detail">
+                <i class="fa fa-tags"></i><span class="name">{{c.snapshot.name}}</span>
+                <span ng-click="c.count = c.count - 1;updateTotal();">-1</span>
+                <input ng-change="updateTotal()" class="form-contrl" type="text" ng-model="c.count">
+                <span ng-click="c.count = c.count + 1;updateTotal();">+1</span>
+                <br/>
+                <span class="price">￥{{c.unit_price}}</span>
+                <span>尺寸： {{c.size}}</span>
+                <span ng-click="deleteClothes(c)"><i style="cursor: pointer;" class="fa fa-times"></i></span>  
+              </div>
+            
             </li>
           </ul>
         </div>

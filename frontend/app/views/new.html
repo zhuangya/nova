@@ -1,21 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-1">
-      <div navbar orientation="vertical"></div>
-    </div>
-    <div class="col-xs-10 new-header clear-fix">
-      <div class="clear-fix">
-        <h2 class="logo-md">benzex</h2>
-        <div class="pull-right" usercard who="weiboUser"></div>
-      </div>
-      <div class="row new-gallery">
-        <div class="col-xs-4 goods" ng-repeat="good in goods track by $index">
-          <a ng-href="/#/detail/{{good.id}}"><img width="100%" ng-src="{{good.coverImage}}"></a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-1">
-      <div class="pull-right" social-account></div>
+<div navbar orientation="vertical"></div>
+
+<div class="main">
+  <div  class="dark-header">
+    <h2 class="logo-md">benzex</h2>
+    <div class="divider"></div>
+    <p class="slogan">Join a weird trip</p>
+    <div class="pull-right" usercard who="weiboUser"></div>
+  </div>
+
+  <div class="row new-gallery">
+    <div class="col-xs-4 goods" ng-repeat="good in goods track by $index">
+      <a ng-href="/#/detail/{{good.id}}"><img width="100%" ng-src="{{good.coverImage}}"></a>
     </div>
   </div>
 </div>
