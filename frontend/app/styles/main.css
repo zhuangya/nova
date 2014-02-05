@@ -36,7 +36,7 @@ body {
 .main {
   width: 814px;
   float: left;
-  outline: 1px solid green; /** for test **/
+  margin-top: 10px;
 }
 
 .dark-header {
@@ -193,7 +193,7 @@ body {
 
 .vertical-list {
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 2.1428;
   width: 105px;
   float: left;
 }

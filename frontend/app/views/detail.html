@@ -1,60 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-1">
-      <div navbar orientation="vertical"></div>
-    </div>
-    <div class="col-xs-10 clear-fix">
-      <div class="detail-wrapper row">
-        <div class="col-xs-12 clothes-image clear-fix">
-          <img style="max-width: 100%;" ng-src="{{clothes.image}}">
-        </div>
-      </div>
-      <div id="gradient-bg" class="row clear-fix">
-        <div class="col-xs-12">
-          <p class="clothes-name"><i class="fa fa-tags"></i>{{clothes.name || 'GoodFellas T恤'}}</p>
-        </div>
-        <div class="col-xs-12">
-          <div class="clothes-misc col-xs-9">
-            <span>类别：</span>
-            <span ng-repeat="variant in clothes.variants">
-              <span ng-class="{highlight: currentVariant == variant}" class="variant" ng-click="updateVariant(variant)">{{variant.screen_name}}</span>
-            </span>
-            <hr/>
-            <div class="variant-size">
-              <span>尺码：</span>
-              <span class="size" ng-click="selectSize(size)" ng-repeat="size in currentVariant.sizes"> {{size.name}} </span>
-            </div>
-          </div>
 
-          <div class="clothes-price col-xs-3">
-            <p class="price">￥{{clothes.price || 349}}</p>
-            <p class="label">TOTAL/ITEM</p>
-          </div>
+<div navbar orientation="vertical"></div>
 
-        </div>
-
-        <div class="col-xs-12">
-          <div class="row">
-            <div style="text-align: right" class="col-xs-4 pull-right">
-              <p>库存 {{inventory}} 件</p>
-              <div class="input-group">
-                <span class="input-group-addon">
-                  数量
-                </span>
-                <input class="form-control" type="number" min="0" max="{{inventory}}" ng-model="quantity">
-              </div>
-              <p>总计： {{quantity * clothes.price || '0'}}</p>
-              <br/>
-              <a class="add-cart" ng-click="addToCart($event, clothes)">加入购物车</a>
-              <a class="go-cart" href="/#/order">前往购物车</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="col-xs-1">
-      <div class="pull-right" social-account></div>
+<div class="col-xs-10 clear-fix">
+  <div class="detail-wrapper row">
+    <div class="col-xs-12 clothes-image clear-fix">
+      <img style="max-width: 100%;" ng-src="{{clothes.image}}">
     </div>
   </div>
+  <div id="gradient-bg" class="row clear-fix">
+    <div class="col-xs-12">
+      <p class="clothes-name"><i class="fa fa-tags"></i>{{clothes.name || 'GoodFellas T恤'}}</p>
+    </div>
+    <div class="col-xs-12">
+      <div class="clothes-misc col-xs-9">
+        <span>类别：</span>
+        <span ng-repeat="variant in clothes.variants">
+          <span ng-class="{highlight: currentVariant == variant}" class="variant" ng-click="updateVariant(variant)">{{variant.screen_name}}</span>
+        </span>
+        <hr/>
+        <div class="variant-size">
+          <span>尺码：</span>
+          <span class="size" ng-click="selectSize(size)" ng-repeat="size in currentVariant.sizes"> {{size.name}} </span>
+        </div>
+      </div>
+
+      <div class="clothes-price col-xs-3">
+        <p class="price">￥{{clothes.price || 349}}</p>
+        <p class="label">TOTAL/ITEM</p>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12">
+      <div class="row">
+        <div style="text-align: right" class="col-xs-4 pull-right">
+          <p>库存 {{inventory}} 件</p>
+          <div class="input-group">
+            <span class="input-group-addon">
+              数量
+            </span>
+            <input class="form-control" type="number" min="0" max="{{inventory}}" ng-model="quantity">
+          </div>
+          <p>总计： {{quantity * clothes.price || '0'}}</p>
+          <br/>
+          <a class="add-cart" ng-click="addToCart($event, clothes)">加入购物车</a>
+          <a class="go-cart" href="/#/order">前往购物车</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+<div class="col-xs-1">
+  <div class="pull-right" social-account></div>
+</div>
+ 
