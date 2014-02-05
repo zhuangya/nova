@@ -417,3 +417,11 @@ body {
   padding: 10px;
   border: 1px dotted #d3d1d1;
 }
+
+.c-wrapper {
+  margin: 100px;
+  background-color: rgba(0, 0, 0, .6);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
