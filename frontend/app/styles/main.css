@@ -239,10 +239,38 @@ body {
   padding: 34px 31px 10px 31px;
   width: 205px;
   height: 207px;
+  position: relative;
 }
 
 .new-gallery .zero {
   display: none;
+}
+
+.new-gallery .clothes:hover .zero {
+  display: block;
+}
+
+.new-gallery .clothes .info {
+  position: absolute;
+  bottom: 10px;
+  left: 31px;
+  background-color: rgba(0, 0, 0, .75);
+  height: 36px;
+  width: 205px;
+  color: white;
+  padding: 12px 0;
+}
+
+.new-gallery .clothes .op {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.new-gallery .detail {
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .detail-wrapper {

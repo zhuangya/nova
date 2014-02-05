@@ -13,8 +13,12 @@
       <a ng-href="/#/detail/{{good.id}}">
         <img width="100%" ng-src="{{good.coverImage}}">
       </a>
-      <div class="zero">
-        clothes info goes here.
+      <div class="zero info">
+        <p class="detail"><span class="name">{{good.name}}</span> <span class="price">{{good.price}}</span></p>
+        <p class="op">
+          <a ng-href="#/detail/{{good.id}}"><i class="fa fa-eye"></i>详情</a>
+          <a ng-href="#/detail/{{good.id}}"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+        </p>
       </div>
     </div>
   </div>
