@@ -22,7 +22,7 @@ angular.module('adminApp')
     _id = _id.replace(/\|/, '/');
 
     function normalize(wat) {
-      return wat.replace(/\s+/g, '-');
+      return wat.replace(/[\s-]+/g, '_');
     }
 
     function idlize(category, slug) {
