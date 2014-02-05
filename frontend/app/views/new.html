@@ -8,9 +8,14 @@
     <div class="pull-right" usercard who="weiboUser"></div>
   </div>
 
-  <div class="row new-gallery">
-    <div class="col-xs-4 goods" ng-repeat="good in goods track by $index">
-      <a ng-href="/#/detail/{{good.id}}"><img width="100%" ng-src="{{good.coverImage}}"></a>
+  <div class="new-gallery">
+    <div class="clothes" ng-repeat="good in goods track by $index">
+      <a ng-href="/#/detail/{{good.id}}">
+        <img width="100%" ng-src="{{good.coverImage}}">
+      </a>
+      <div class="zero">
+        clothes info goes here.
+      </div>
     </div>
   </div>
 </div>

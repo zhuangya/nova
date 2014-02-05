@@ -235,6 +235,16 @@ body {
   min-height: 300px;
 }
 
+.new-gallery .clothes {
+  padding: 34px 31px 10px 31px;
+  width: 205px;
+  height: 207px;
+}
+
+.new-gallery .zero {
+  display: none;
+}
+
 .detail-wrapper {
   background-color: transparent;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .23);
