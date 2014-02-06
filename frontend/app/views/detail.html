@@ -18,9 +18,12 @@
       </div>
       <div style="float: left; line-height: 55px; padding: 0 20px; color: #e7e7e7" class="diamond">&diams;</div>
       <div style="float: left;" id="clothes-op">
-        S M L XL <br/>
-        <i class="fa fa-shopping-cart"></i>加入购物车
-        <i class="fa fa-arrow-circle-o-right"></i>下一件
+        <span class="clothes-sizes">S</span>
+        <span class="clothes-sizes">M</span>
+        <span class="clothes-sizes">L</span>
+        <span class="clothes-sizes">XL</span> <br/>
+        <a style="color: black; cursor: pointer;" ng-click=""><i class="fa fa-shopping-cart"></i>加入购物车</a>
+        <a style="color: black; cursor: pointer;" ng-click="next()"><i class="fa fa-arrow-circle-o-right"></i>下一件</a>
       </div>
     </div>    
   </div>
@@ -29,6 +32,11 @@
     
   </div>
   <style type="text/css" media="screen">
+  .clothes-sizes {
+    font-size: 18px;
+    margin: 0 10px;
+  }
+  
   #user {
     padding: 0 40px;
     background-color: white;
