@@ -11,7 +11,11 @@ angular.module('frontendApp')
       controller: function ($scope, $http) {
         $http.get('/api/user').success(function(user) {
           $scope.user = user.profile._json;
-          console.log($scope.user);
+        }).error(function (error) {
+          console.log(error);
+          if (error.errno === 403) {
+            $scope.needLogin = true
+          }
         });
       },
       link: function postLink(scope, element, attrs) {

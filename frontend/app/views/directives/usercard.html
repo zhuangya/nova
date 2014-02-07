@@ -1,8 +1,11 @@
 <div class="usercard">
-  <div ng-if="user" class="avatar">
-    <img width="98px" ng-src="{{user.avatar_large}}"><br/>
+  <div ng-if="needLogin">
+    <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
   </div>
+  <div ng-if="!needLogin" class="avatar">
+    <img width="98px" ng-src="{{user.avatar_large}}"><br/>
   <strong>BENZEX</strong><br/>
   <a href="/#/order">我的订单</a>
   <a href="/#/me">个人中心</a>
+  </div>
 </div>
