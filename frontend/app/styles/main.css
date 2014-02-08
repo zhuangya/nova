@@ -508,6 +508,9 @@ body {
 .me-wrapper {
   background-color: rgba(0, 0, 0, .65);
   margin-top: 100px;
+  width: 607px;
+  margin-left: 103px;
+  margin-right: 103px;
   color: white;
   box-sizing: border-box;
   padding: 20px;
@@ -515,6 +518,6 @@ body {
 
 .me-wrapper .items {
   float: left;
-  width: 470px;
+  width: 410px;
   border-right: 1px solid white;
 }

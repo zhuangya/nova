@@ -5,6 +5,20 @@
   <div class="items">
     <div clothes-price></div>
   </div>
+  <div class="me-sidebar">
+    <div usercard></div>
+    <div class="total">
+      <center style="font-size: 28px;"><strong>TOTAL: <span style="color: yellow">￥{{total || 0}}</span></strong></center>
+      <center>&diams;</center>
+      <center><a href="#/new"><i class="fa fa-gift"></i>继续购物</a></center>
+      <center><a href="#/order"><i class="fa fa-money"></i>现在结帐</a></center>
+    </div>
+  </div>
+  <style type="text/css" media="screen">
+  .me-wrapper .me-sidebar {
+    float: left;
+  }
+  </style>
 </div>
 
 <div social-account></div>
