@@ -4,7 +4,7 @@ angular.module('frontendApp')
   .directive('usercard', function () {
     return {
       scope: {
-        who: '='
+        mini: '@'
       },
       templateUrl: 'views/directives/usercard.html',
       restrict: 'A',
@@ -28,6 +28,7 @@ angular.module('frontendApp')
         });
       },
       link: function postLink(scope, element, attrs) {
+        console.log(attrs.mini);
 
       }
     };

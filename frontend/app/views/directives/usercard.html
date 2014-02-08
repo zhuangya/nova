@@ -1,13 +1,66 @@
-<div class="usercard">
+<div ng-if="!mini" class="usercard">
   <div ng-if="needLogin">
     <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
   </div>
   <div ng-if="!needLogin" class="avatar">
     <img width="98px" ng-src="{{user.avatar_large}}"><br/>
-  <strong>BENZEX</strong><br/>
-  <a href="/#/order">我的订单</a>
-  <a href="/#/me">个人中心</a>
-  <br/>
-  <center><a style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a></center>
+    <strong>BENZEX</strong><br/>
+    <a href="#/order">我的订单</a>
+    <a href="#/me">个人中心</a>
+    <br/>
+    <center><a style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a></center>
   </div>
 </div>
+
+<div ng-if="mini" class="usercard-mini">
+  <div ng-if="needLogin">
+    <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
+  </div>
+  <div ng-if="!needLogin" class="avatar">
+    <img width="40px" ng-src="{{user.avatar_large}}">
+  </div>
+  <div class="op">
+    <strong>BENZEX</strong><a style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a><br/>
+    <a href="#/order">我的订单</a>
+    <a href="#/me">个人中心</a>
+  </div>
+
+  <style type="text/css" media="screen">
+  .usercard-mini {
+    position: absolute;
+    width: 160px;
+    height: 45px;
+  }
+  
+  .usercard-mini:after {
+    display: block;
+    visibility: hidden;
+    clear:both;
+    content: '\0020';
+  }
+  .usercard-mini .avatar {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .usercard-mini .op {
+    float: left;
+    font-size: 12px;
+  }
+  </style>
+
+  <script type="text/javascript" charset="utf-8">
+  function updateMiniUsercardPosition() {
+    
+    $('.usercard-mini').css({
+      top: $(window).innerHeight() - 80
+    });
+  }
+  
+  $(window).resize(function () {
+    updateMiniUsercardPosition();
+  })
+  updateMiniUsercardPosition();
+  </script>
+</div>
+
