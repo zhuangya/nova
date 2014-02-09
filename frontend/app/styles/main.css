@@ -241,6 +241,7 @@ body {
   width: 205px;
   height: 207px;
   position: relative;
+  float: left;
 }
 
 .new-gallery .zero {
