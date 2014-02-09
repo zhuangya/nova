@@ -57,6 +57,18 @@ angular.module('adminApp')
       delete $scope.clothes.category;
       delete $scope.clothes.slug;
 
+      $scope.clothes.variants.default = {
+        name: 'default',
+        screen_name: '默认',
+        sizes: _.map($scope.variant.sizes, function (count, key) {
+          return {
+            name: key,
+            price: $scope.clothes.price,
+            inventory: count
+          };
+        })
+      };
+
       $http.post('/api/admin/data', $scope.clothes).success(function(wat) {
         $location.path('clothes/' + wat.id + '/upload');
       }).error(function(error) {

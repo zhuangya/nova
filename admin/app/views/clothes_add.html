@@ -40,7 +40,10 @@
   <div class="form-group">
     <div ng-init="variant = {}" class="panel panel-default">
       <div class="panel-heading clearfix">
-        <div class="form-inline pull-left">
+        <p>各尺寸数量</p>
+        <input ng-model="variant.name" type="hidden" value="default">
+        <input ng-model="variant.screen_name" type="hidden" value="默认">
+        <!-- <div class="form-inline pull-left">
           <div class="form-group">
             <input ng-model="variant.name" type="text" class="form-control" placeholder="slug">
           </div>
@@ -48,7 +51,7 @@
             <input ng-model="variant.screen_name" type="text" class="form-control" placeholder="分类显示名称">
           </div>
         </div>
-        <a ng-click="addVariant()" class="btn btn-primary pull-right">增加分类</a>
+        <a ng-click="addVariant()" class="btn btn-primary pull-right">增加分类</a> -->
       </div>
 
       <div class="panel-body">
@@ -72,25 +75,7 @@
         </table>
       </div>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>名称</th>
-          <th>S</th>
-          <th>M</th>
-          <th>L</th>
-          <th>XL</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="vant in clothes.variants">
-        <td>{{vant.screen_name}}</td>
-        <td ng-repeat="size in vant.sizes">{{size.inventory}}</td>
-        <td><a ng-click="deleteVariant(vant)"><i class="fa fa-times-circle-o"></i></a></td>
-      </tr>
-      </tbody>
-    </table>
+  
   </div>
   <hr/>
 
