@@ -3,7 +3,10 @@
 
 <div class="main me-wrapper">
   <div class="items">
-    <div clothes-price></div>
+    <div ng-if="!hasClothes">
+      <p>您还未挑选任何衣服，<a href="#/new">随便看看</a>。</P>
+    </div>
+    <div ng-if="hasClothes" clothes-price></div>
   </div>
   <div class="me-sidebar">
     <div usercard></div>
