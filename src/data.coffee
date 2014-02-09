@@ -65,11 +65,20 @@ class Data
 
     app.get /^\/(\w+\/\w+)\/?$/,fibrous.middleware, (req,resp) =>
       p = Product.loadProduct req.params[0]
-      resp.send p.toObject()
+      o = p.toObject()
+      o.next = @findNext(o.id)
+      resp.json o
 
     app.use express.static @options.basePath, {redirect:false}
     return app
 
+  @findNext = (id) ->
+    a = @load 'index.json'
+    return null unless a
+    ids = _.pluck a,'id'
+    while id isnt ids[0]
+      ids.shift()
+    return ids[1]
 
   @realFilename = (fn) ->
     path.join @options.basePath, fn
