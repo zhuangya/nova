@@ -18,12 +18,11 @@
       </div>
       <div style="float: left; line-height: 55px; padding: 0 20px; color: #e7e7e7" class="diamond">&diams;</div>
       <div style="float: left;" id="clothes-op">
-        <span class="clothes-sizes">S</span>
-        <span class="clothes-sizes">M</span>
-        <span class="clothes-sizes">L</span>
-        <span class="clothes-sizes">XL</span> <br/>
-        <a style="color: black; cursor: pointer;" ng-click=""><i class="fa fa-shopping-cart"></i>加入购物车</a>
-        <a style="color: black; cursor: pointer;" ng-click="next()"><i class="fa fa-arrow-circle-o-right"></i>下一件</a>
+        <span ng-click="selectSize(size)" class="clothes-sizes" ng-repeat="size in clothes.variants[0].sizes">{{size.name}}</span>
+
+<br>
+        <a style="color: black; cursor: pointer;" ng-click="addToCart($event, clothes)"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+        <a style="color: black; cursor: pointer;" href="#/detail/{{clothes.next}}"><i class="fa fa-arrow-circle-o-right"></i>下一件</a>
       </div>
     </div>    
   </div>
