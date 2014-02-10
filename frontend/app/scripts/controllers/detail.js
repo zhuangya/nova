@@ -26,7 +26,7 @@ angular.module('frontendApp')
       $event.preventDefault();
       $http.post('/api/cart', {
         name: $scope.itemToBuy,
-        count: $scope.quantity,
+        count: $scope.quantity || 1,
         unit_price: $scope.clothes.price
       }).success(function (resp) {
         var msg = '已成功加入购物车';
