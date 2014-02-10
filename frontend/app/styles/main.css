@@ -301,7 +301,13 @@ body {
   float:right;
   width: 50%;
 }
-
+.clothes-sizes {
+  cursor: pointer;
+  padding: 0 6px;
+}
+.clothes-sizes.selected {
+  background-color: #ffe300;
+}
 #gradient-bg {
   height: 1000px;
   margin-bottom: -30px;

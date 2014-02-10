@@ -18,12 +18,8 @@ angular.module('frontendApp')
     };
 
     $scope.selectSize = function(size) {
-      $scope.inventory = _.find($scope.currentVariant.sizes, function(sizeItem) {
-        return sizeItem.name === size.name;
-      }).inventory;
-
-      //$scope.inventory =
-      $scope.itemToBuy = [$scope.detailId, $scope.currentVariant.name, size.name].join('/');
+      $scope.currentSize = size;
+      $scope.itemToBuy = [$scope.detailId, 'default', size.name].join('/');
     };
 
     $scope.addToCart = function ($event, clothes) {

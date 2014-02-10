@@ -26,10 +26,6 @@ angular.module('frontendApp')
             $scope.needLogin = true
           }
         });
-      },
-      link: function postLink(scope, element, attrs) {
-        console.log(attrs.mini);
-
       }
     };
   });

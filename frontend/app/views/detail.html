@@ -18,7 +18,7 @@
       </div>
       <div style="float: left; line-height: 55px; padding: 0 20px; color: #e7e7e7" class="diamond">&diams;</div>
       <div style="float: left;" id="clothes-op">
-        <span ng-click="selectSize(size)" class="clothes-sizes" ng-repeat="size in clothes.variants[0].sizes">{{size.name}}</span>
+        <span ng-click="selectSize(size)" ng-class="{selected: currentSize === size}" class="clothes-sizes" ng-repeat="size in clothes.variants[0].sizes">{{size.name}}</span>
 
 <br>
         <a style="color: black; cursor: pointer;" ng-click="addToCart($event, clothes)"><i class="fa fa-shopping-cart"></i>加入购物车</a>
