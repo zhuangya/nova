@@ -9,14 +9,14 @@
     </div>
   </div>
   <hr/>
-  <div ng-repeat="c in cart">
-    <img width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}">
-    <i class="fa fa-tags"></i>{{c.snapshot.name}}
-    ￥{{c.unit_price}} &times; {{c.count}}
-    {{c.size}}
+  <div class="clear-fix" ng-repeat="c in cart">
+    <img class="order-thumbnail" width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}">
+    <div class="order-detail">
+      <p class="order-name"><i class="fa fa-tags"></i>{{c.snapshot.name}}</p>
+      <p class="order-misc"><span class="order-price">￥{{c.unit_price}}</span> &times; {{c.count}} {{c.size}}</p>
+    </div>
   </div>
 </div>
-
 <div social-account></div>
 
 <style type="text/css" media="screen">
@@ -32,6 +32,34 @@
   display: block;
   height: 0;
 }
+
+.order-thumbnail {
+  float: left;
+}
+
+.order-detail {
+  float: left;
+  margin-left: 20px;
+}
+
+.order-detail .order-name,
+.order-detail .order-misc {
+  color: white;
+  font-size: 18px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.order-detail .order-price {
+  color: #ffe300;
+  font-size: 22px;
+}
+
+.order-detail .order-name {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
 .transparent-input {
   margin: 0;
 }
