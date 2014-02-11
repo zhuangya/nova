@@ -38,12 +38,12 @@ angular.module('frontendApp', [
         templateUrl: 'views/c.html',
         controller: 'CCtrl'
       })
-      .when('/order', {
+      .when('/me', { //NOTICE!!! `me` page and `order` page switched.
         pageClass: 'order',
         templateUrl: 'views/order.html',
         controller: 'OrderCtrl'
       })
-      .when('/me', {
+      .when('/order', { //NOTICE!!! `me` page and `order` page switched.
         pageClass: 'me',
         templateUrl: 'views/me.html',
         controller: 'MeCtrl'
