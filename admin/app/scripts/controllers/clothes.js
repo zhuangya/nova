@@ -82,6 +82,7 @@ angular.module('adminApp')
     $scope.deleteClothes = function (clothes) {
       $http.post('/api/admin/data/' + clothes.id + '/delete').success(function (resp) {
         $http.post('/api/admin/data/reload').success(function(resp) {
+          $scope.products = resp;
         });
       });
     }
