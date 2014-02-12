@@ -24,7 +24,7 @@ body {
   -moz-background-size: cover;
   -webkit-background-size: cover;
   font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
-  
+
 }
 
 .container {
@@ -50,7 +50,7 @@ body {
 .dark-header h2 {
   margin: 0;
   padding: 0;
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .dark-header .divider {
