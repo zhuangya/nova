@@ -4,7 +4,8 @@ angular.module('frontendApp')
   .directive('usercard', function () {
     return {
       scope: {
-        mini: '@'
+        mini: '@',
+        color: '@'
       },
       templateUrl: 'views/directives/usercard.html',
       restrict: 'A',
@@ -18,7 +19,6 @@ angular.module('frontendApp')
             }
           })
         };
-        
         $http.get('/api/user').success(function(user) {
           $scope.user = user.profile._json;
         }).error(function (error) {
