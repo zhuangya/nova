@@ -24,6 +24,14 @@ angular.module('frontendApp')
       }, 0);
     };
 
+    $scope.deleteOrder = function (junk) {
+      junk.name = junk._name;
+      $http.post('/api/cart/delete', junk).success(function (resp) {
+        $scope.cart = resp;
+        $scope.updateTotal();
+      });
+    };
+
     $http.get('/api/cart').success(function (cart) {
       $scope.cart = _.map(cart, function (item) {
         parseClothesName(item.name).then(function (parsed) {

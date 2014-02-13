@@ -515,7 +515,7 @@ body {
 .me-wrapper {
   background-color: rgba(0, 0, 0, .65);
   margin-top: 100px;
-  width: 607px;
+  width: 670px;
   margin-left: 103px;
   margin-right: 103px;
   color: white;
@@ -525,8 +525,24 @@ body {
 
 .me-wrapper .items {
   float: left;
-  width: 410px;
+  width: 470px;
   border-right: 1px solid white;
+}
+
+.me-sidebar {
+  padding: 0 25px;
+  width: 109px;
+}
+
+.order-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.order-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .order-wrapper {
@@ -536,7 +552,7 @@ body {
 
 .order-main {
   float: left;
-  width: 410px;
+  width: 470px;
 }
 
 .order-sidebar {
@@ -612,4 +628,5 @@ body {
 
 .fa {
   margin-right: 6px;
+  margin-left: 6px;
 }
