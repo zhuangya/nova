@@ -9,14 +9,13 @@
       <div ng-if="hasClothes">
         <div class="order-main">
           <div class="clear-fix" ng-repeat="c in cart">
-            <img class="order-thumbnail" width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}">
+            <a ng-href="#/detail/{{c.snapshot.id}}"><img class="order-thumbnail" width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}"></a>
             <div class="order-detail">
-              <p class="order-name"><i class="fa fa-tags"></i>{{c.snapshot.name}}</p>
+              <p class="order-name"><a ng-href="#/detail/{{c.snapshot.id}}"><i class="fa fa-tags"></i>{{c.snapshot.name}}</a></p>
               <p class="order-misc"><span class="order-price">￥{{c.unit_price}}</span> &times; {{c.count}} {{c.size}}</p>
             </div>
           </div>
         </div>
-      
       </div>
     </div>
     <div class="me-sidebar">
