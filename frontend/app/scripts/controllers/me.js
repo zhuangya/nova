@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontendApp')
-  .controller('MeCtrl', function ($scope, $http) {
+  .controller('MeCtrl', function ($scope, $http, $q) {
 
     function parseClothesName (name) {
       var deferred = $q.defer();
@@ -24,9 +24,7 @@ angular.module('frontendApp')
       }, 0);
     };
 
-    $http.get('/api/cart').success(function (clothes) {
-
-
+    $http.get('/api/cart').success(function (cart) {
       $scope.cart = _.map(cart, function (item) {
         parseClothesName(item.name).then(function (parsed) {
           item._name = item.name;
@@ -35,9 +33,6 @@ angular.module('frontendApp')
         return item;
       });
       $scope.updateTotal();
-
-
-      $scope.hasClothes = !!clothes.length;
-
+      $scope.hasClothes = !!cart.length;
     });
   });
