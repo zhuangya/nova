@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('adminApp')
-  .controller('VideoCtrl', function ($scope, $http, $q, APIBASE) {
+  .controller('VideoCtrl', function ($scope, $http, $q) {
 
-    $http.get(APIBASE + '/data/video').success(function(videos) {
+    $http.get('/data/video').success(function(videos) {
       $scope.videoList = videos;
     });
 
     $scope.addVideo = function() {
-      $http.post(APIBASE + '/api/admin/video', $scope.video).success(function(videos) {
+      $http.post('/api/admin/video', $scope.video).success(function(videos) {
         $scope.videoList = videos;
       });
       $scope.video = {};
