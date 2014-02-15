@@ -72,7 +72,7 @@ passport.use new Facebook
       token: token
       secret: secret
     OAuthProfile.createOrUpdate profile,done
-
+###
 passport.use new LocalStrategy
   usernameField: 'email'
   passwordField: 'password'
@@ -83,7 +83,7 @@ passport.use new LocalStrategy
       return done(null, false, "No such user") unless obj
       return done(null, false, "Bad password") unless password == obj.password
       return done(null, {_id:"local/#{obj._id}", _user: obj._id, provider: 'local'})
-###
+
 
 checkUserFlag = (flag) ->
   return (req,resp,next) ->
