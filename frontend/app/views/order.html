@@ -1,93 +1,12 @@
 <div navbar orientation="vertical"></div>
 <div class="main order-wrapper">
-  <div style="float: left"><div usercard></div></div>
-  <div style="float: left">
-    <p class="transparent-input"><input placeholder="haha" type="text" ng-model="name"></p>
-    <p class="transparent-input"><input placeholder="haha" type="text" ng-model="address"></p>
-    <p class="transparent-input"><input placeholder="haha" type="text" ng-model="mobile"></p>
+  <div class="clear-fix">
+    <div style="float: left"><div usercard></div></div>
+    <div style="float: left">
+      <p class="transparent-input"><input placeholder="您的姓名" type="text" ng-model="name"></p>
+      <p class="transparent-input"><input placeholder="发货地址" type="text" ng-model="address"></p>
+      <p class="transparent-input"><input placeholder="手机号码" type="text" ng-model="mobile"></p>
+    </div>
   </div>
 </div>
-
 <div social-account></div>
-
-<style type="text/css" media="screen">
-.order-wrapper {
-  box-sizing: border-box;
-  padding: 80px 100px;
-}
-
-.order-wrapper:after {
-  clear: both;
-  content: '\0020';
-  visibility: hidden;
-  display: block;
-  height: 0;
-}
-.transparent-input {
-  margin: 0;
-}
-.transparent-input input {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  padding: 6px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: white;
-}
-</style>
-
-<!--   <div class="row">
-    <div class="col-xs-1">
-    </div>
-    <div class="white top-spacing col-xs-10">
-      <div class="row">
-        <div class="col-xs-3" usercard></div>
-        <div class="col-xs-9">
-          <ul class="buyer-info">
-            <li>地址：<input class="form-control" ng-model="address" type="text">
-            <li>手机：<input class="form-control" ng-model="mobile" type="text">
-            <li>邮箱：<input class="form-control" ng-model="email" type="email">
-          </ul>
-        </div>
-      </div>
-      <div class="pull-right">
-        <p style="margin: 0; line-height: 41px; margin: 0 20px">
-        我的订单
-        </p>
-      </div>
-      <hr/>
-      <div class="cart row">
-        <div class="col-xs-9">
-          <ul class="cart-list">
-            <li class="cart-item" ng-repeat="c in cart">
-              <a class="pull-left" ng-href="#/detail/{{c.category}}/{{c.name}}">
-                <img width="64px" ng-src="/data/{{c.snapshot.id}}/cover.jpg">
-              </a>
-              <div style="margin-left: 10px;" class="pull-left order-detail">
-                <i class="fa fa-tags"></i><span class="name">{{c.snapshot.name}}</span>
-                <span ng-click="c.count = c.count - 1;updateTotal();">-1</span>
-                <input ng-change="updateTotal()" class="form-contrl" type="text" ng-model="c.count">
-                <span ng-click="c.count = c.count + 1;updateTotal();">+1</span>
-                <br/>
-                <span class="price">￥{{c.unit_price}}</span>
-                <span>尺寸： {{c.size}}</span>
-                <span ng-click="deleteClothes(c)"><i style="cursor: pointer;" class="fa fa-times"></i></span>  
-              </div>
-            
-            </li>
-          </ul>
-        </div>
-        <div class="col-xs-3">
-          <div class="pull-right">
-            <p> 总计： {{total}}</p>
-            <a class="btn btn-success btn-xs" href="/#/new">继续购物</a>
-            <btn class="btn btn-primary btn-xs" ng-click="checkout()">现在结帐</btn>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-1">
-      <div class="pull-right" social-account></div>
-    </div>
-  </div> -->

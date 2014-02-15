@@ -60,13 +60,16 @@ angular.module('adminApp')
       $scope.clothes.variants.default = {
         name: 'default',
         screen_name: '默认',
-        sizes: _.map($scope.variant.sizes, function (count, key) {
-          return {
-            name: key,
-            price: $scope.clothes.price,
-            inventory: count
+        sizes: _.reduce($scope.variant.sizes, function (result, count, wat) {
+          result[wat] = {
+            name: wat,
+            inventory: count,
+            price: $scope.clothes.price
           };
-        })
+
+          return result;
+        }, {})
+
       };
 
       $http.post('/api/admin/data', $scope.clothes).success(function(wat) {
@@ -79,6 +82,7 @@ angular.module('adminApp')
     $scope.deleteClothes = function (clothes) {
       $http.post('/api/admin/data/' + clothes.id + '/delete').success(function (resp) {
         $http.post('/api/admin/data/reload').success(function(resp) {
+          $scope.products = resp;
         });
       });
     }

@@ -24,7 +24,7 @@ body {
   -moz-background-size: cover;
   -webkit-background-size: cover;
   font-family: bebas, "Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
-  
+
 }
 
 .container {
@@ -50,7 +50,7 @@ body {
 .dark-header h2 {
   margin: 0;
   padding: 0;
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .dark-header .divider {
@@ -301,7 +301,13 @@ body {
   float:right;
   width: 50%;
 }
-
+.clothes-sizes {
+  cursor: pointer;
+  padding: 0 6px;
+}
+.clothes-sizes.selected {
+  background-color: #ffe300;
+}
 #gradient-bg {
   height: 1000px;
   margin-bottom: -30px;
@@ -509,9 +515,9 @@ body {
 .me-wrapper {
   background-color: rgba(0, 0, 0, .65);
   margin-top: 100px;
-  width: 607px;
-  margin-left: 103px;
-  margin-right: 103px;
+  width: 670px;
+  margin-left: 72px;
+  margin-right: 72px;
   color: white;
   box-sizing: border-box;
   padding: 20px;
@@ -519,6 +525,108 @@ body {
 
 .me-wrapper .items {
   float: left;
-  width: 410px;
+  width: 470px;
   border-right: 1px solid white;
+}
+
+.me-sidebar {
+  padding: 0 25px;
+  width: 109px;
+}
+
+.order-item {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.order-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.order-wrapper {
+  box-sizing: border-box;
+  padding: 80px 100px;
+}
+
+.order-main {
+  float: left;
+  width: 470px;
+}
+
+.order-sidebar {
+  float: left;
+}
+
+.order-sidebar .total {
+  color: white;
+  font-size: 28px;
+  line-height: 2;
+  margin: 0;
+}
+
+.order-sidebar .total .price {
+  color: #ffe300;
+}
+
+.order-sidebar .divide {
+  text-align: center;
+  color: white;
+  margin: 20px 0;
+}
+
+.order-wrapper:after {
+  clear: both;
+  content: '\0020';
+  visibility: hidden;
+  display: block;
+  height: 0;
+}
+
+.order-thumbnail {
+  float: left;
+}
+
+.order-detail {
+  float: left;
+  margin-left: 20px;
+}
+
+.order-detail .order-name,
+.order-detail .order-misc {
+  color: white;
+  font-size: 18px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.order-detail .order-price {
+  color: #ffe300;
+  font-size: 22px;
+}
+
+.order-detail .order-name {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.transparent-input {
+  margin: 0;
+}
+.transparent-input input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: white;
+  margin: 10px 0;
+  width: 360px;
+}
+
+.fa {
+  margin-right: 6px;
+  margin-left: 6px;
 }

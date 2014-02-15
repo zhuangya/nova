@@ -18,19 +18,15 @@ angular.module('frontendApp')
     };
 
     $scope.selectSize = function(size) {
-      $scope.inventory = _.find($scope.currentVariant.sizes, function(sizeItem) {
-        return sizeItem.name === size.name;
-      }).inventory;
-
-      //$scope.inventory =
-      $scope.itemToBuy = [$scope.detailId, $scope.currentVariant.name, size.name].join('/');
+      $scope.currentSize = size;
+      $scope.itemToBuy = [$scope.detailId, 'default', size.name].join('/');
     };
 
     $scope.addToCart = function ($event, clothes) {
       $event.preventDefault();
       $http.post('/api/cart', {
         name: $scope.itemToBuy,
-        count: $scope.quantity,
+        count: $scope.quantity || 1,
         unit_price: $scope.clothes.price
       }).success(function (resp) {
         var msg = '已成功加入购物车';

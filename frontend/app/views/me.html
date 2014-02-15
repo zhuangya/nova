@@ -1,20 +1,32 @@
-
 <div navbar orientation="vertical"></div>
-
 <div class="main me-wrapper">
   <div class="items">
     <div ng-if="!hasClothes">
       <p>您还未挑选任何衣服，<a href="#/new">随便看看</a>。</P>
+      </div>
+      <div ng-if="hasClothes">
+        <div class="order-main">
+          <div class="clear-fix order-item" ng-repeat="c in cart">
+            <a ng-href="#/detail/{{c.snapshot.id}}"><img class="order-thumbnail" width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}"></a>
+            <div class="order-detail">
+              <p class="order-name"><a ng-href="#/detail/{{c.snapshot.id}}"><i class="fa fa-tags"></i>{{c.snapshot.name}}</a></p>
+              <i ng-click="deleteOrder(c)" class="order-delete fa fa-times"></i>
+              <p class="order-misc"><span class="order-price">￥{{c.unit_price}}</span>
+              <i ng-click="c.count = c.count - 1;updateTotal();" class="fa fa-minus-circle"></i>{{c.count}}<i ng-click="c.count = c.count + 1;updateTotal();" class="fa fa-plus-circle"></i>
+              {{c.size}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div ng-if="hasClothes" clothes-price></div>
-  </div>
-  <div class="me-sidebar">
-    <div usercard></div>
-    <div class="total">
-      <center style="font-size: 28px;"><strong>TOTAL: <span style="color: yellow">￥{{total || 0}}</span></strong></center>
-      <center>&diams;</center>
-      <center><a href="#/new"><i class="fa fa-gift"></i>继续购物</a></center>
-      <center><a href="#/order"><i class="fa fa-money"></i>现在结帐</a></center>
+    <div class="me-sidebar">
+      <div style="margin-left: -16px;" usercard></div>
+      <div class="total">
+        <center style="font-size: 28px;"><strong>TOTAL: <span style="color: yellow">￥{{total || 0}}</span></strong></center>
+        <center>&diams;</center>
+        <center><a href="#/new"><i class="fa fa-gift"></i>继续购物</a></center>
+        <center><a href="#/order"><i class="fa fa-money"></i>现在结帐</a></center>
+      </div>
     </div>
   </div>
   <style type="text/css" media="screen">

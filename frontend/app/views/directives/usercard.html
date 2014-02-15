@@ -4,11 +4,11 @@
   </div>
   <div ng-if="!needLogin" class="avatar">
     <img width="98px" ng-src="{{user.avatar_large}}"><br/>
-    <strong style="color: white;">BENZEX</strong><br/>
-    <a href="#/order">我的订单</a>
-    <a href="#/me">个人中心</a>
+    <strong style="color: white;">{{user.screen_name}}</strong><br/>
+    <a ng-style="{color: color}" style="margin-right: 3px;" href="#/order">我的订单</a>
+    <a ng-style="{color: color}" href="#/me">个人中心</a>
     <br/>
-    <center><a style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a></center>
+    <center><a ng-style="{color: color}" style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a></center>
   </div>
 </div>
 
@@ -20,9 +20,9 @@
     <img width="40px" ng-src="{{user.avatar_large}}">
   </div>
   <div class="op">
-    <strong>BENZEX</strong><a style="cursor: pointer;" ng-click="logout()"><i class="fa fa-power-off"></i></a><br/>
-    <a href="#/order">我的订单</a>
-    <a href="#/me">个人中心</a>
+    <strong>{{user.screen_name}}</strong><a ng-style="{color: color}" style="cursor: pointer;" ng-click="logout()"><i style="margin-left: 3px;" class="fa fa-power-off"></i></a><br/>
+    <a ng-style="{color: color}" style="margin-right: 3px;" href="#/order">我的订单</a>
+    <a ng-style="{color: color}" href="#/me">个人中心</a>
   </div>
 
   <style type="text/css" media="screen">
@@ -31,7 +31,7 @@
     width: 160px;
     height: 45px;
   }
-  
+
   .usercard-mini:after {
     display: block;
     visibility: hidden;
@@ -43,20 +43,25 @@
     margin-right: 10px;
   }
 
+  .usercard-mini .avatar img {
+    border-radius: 100%;
+  }
+
   .usercard-mini .op {
     float: left;
     font-size: 12px;
   }
+
   </style>
 
   <script type="text/javascript" charset="utf-8">
   function updateMiniUsercardPosition() {
-    
+
     $('.usercard-mini').css({
       top: $(window).innerHeight() - 80
     });
   }
-  
+
   $(window).resize(function () {
     updateMiniUsercardPosition();
   })
