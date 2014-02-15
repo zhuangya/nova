@@ -1,0 +1,142 @@
+<% include section/header %>
+        <title>Register - Fanformed</title>
+        <% include section/placeholder_cleanup %>
+    </head>
+    <body>
+        <div class="registerWrap" id="registerWrap">
+            <h2 class="registerTitle">
+                <div class="registerTitleInner">
+                    <!--img src="/images/icons/bluePeople.png" alt="" /--><span>Create your profile</span>
+                </div>
+            </h2>
+            <div class="centerClear">
+                <div class="registerInfo">
+                    <% if(!profile)profile = {name:"",email:""}; %>
+                    <div class="registerAvatar">
+                        <a href="https://en.gravatar.com/" target="_blank">
+                            <img src="<%= profile.icon_url || "/images/icons/addPhotoBg.png" %>" alt="Change your profile photo"/>
+                        </a>
+                    </div>
+                    <div class="infoInput">
+                        <form method="POST" action="/register<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>" id="createAccountForm">
+                        <input name="name" type="text" class="inputText regUserName" placeholder="Your Name" value="<%=profile.name%>" />
+                        <input name="email" type="text" class="inputText resUserEmail" placeholder="Email Address" value="<%=profile.email%>"/>
+                        <input name="password" type="password" class="inputText resUserPw" placeholder="Password" maxLength="16"/>
+                        <div class="megBox"><% if(error){ %>
+                            <%= error %>
+                        <% } %></div>
+                        <span class="line"></span>
+                        <!--input type="text" class="inputText" placeholder="First Name"/-->
+                        <!--input type="text" class="inputText" placeholder="Last Name"/-->
+                        <!--div class="registerSelect">
+                            <span class="currentSelection">Your Gender</span>
+                            <ul class="fancySelectList">
+                                <li><span>Male</span></li>
+                                <li><span>Female</span></li>
+                                <li><span>Unspecified</span></li>
+                            </ul>
+                        </div>
+                        <div class="registerSelect">
+                            <span class="currentSelection">Location</span>
+                            <ul class="fancySelectList">
+                                <li><span>Afghanistan</span></li>
+                                <li><span>Albania</span></li>
+                                <li><span>Algeria</span></li>
+                                <li><span>American Samoa</span></li>
+                                <li><span>Andorra</span></li>
+                                <li><span>Angola</span></li>
+                                <li><span>Bahamas</span></li>
+                                <li><span>Bahrain</span></li>
+                                <li><span>Bangladesh</span></li>
+                                <li><span>Barbados</span></li>
+                                <li><span>Belarus</span></li>
+                            </ul>
+                        </div-->
+                        <div class="termsOfService">
+                            By creating an account, I accept FanFormed's<br>
+                            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy.</a>
+                        </div>
+                        <div class="createAccount">
+                            <a id="createAccountBtn" class="createAccountBtn">Create Account</a>
+                        </div>
+                        </form>
+                        <div class="linkToSignUp">
+                            Already a member? <a href="/login">Login now.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% include section/footer %>
+        </div>
+        <script>
+            $(function(){
+                function isEmail(str){
+                   var reg = /^[\w-.]+@[\w-]+(\.[\w-]+)+$/;
+                   return reg.test(str);
+                   }
+
+                var isServerSuccess1 = 'false';
+                var isServerSuccess2 = 'false';
+                var isServerSuccess3 = 'false';
+                $('input.regUserName').blur(function(){
+                    var regUerNameVal = $("input.regUserName").val();
+                    if(regUerNameVal !== ""){
+                        var regUserData = 'name' + '=' + regUerNameVal;
+                        $.post('/register/check',regUserData,function(data){
+                            var returnVal = data;
+                            if(returnVal.ok == 1){
+                                isServerSuccess1 = 'true';
+                            }
+                            else{
+                                $("div.megBox").html(returnVal.err);
+                            }
+                        });
+                    }
+                    else{
+                        $("div.megBox").html("Name can not be blank");
+                    }
+                });
+
+                $('input.resUserEmail').blur(function(){
+                    var regUserEmailVal = $("input.resUserEmail").val();
+                    if(regUserEmailVal !== ""){
+                        if(isEmail(regUserEmailVal)){
+                            var regUserData = 'email' + '=' + regUserEmailVal;
+                            $.post('/register/check',regUserData,function(data){
+                                var returnVal = data;
+                                if(returnVal.ok == 1){
+                                    isServerSuccess2 = 'true';
+                                }
+                                else{
+                                    $("div.megBox").html(returnVal.err);
+                                }
+                            });
+                        }
+                        else{
+                            $("div.megBox").html("Invalid email address");
+                        }
+                    }
+                    else{
+                        $("div.megBox").html("Email Address is required to register!");
+                    }
+                });
+
+                $('input.resUserPw').blur(function(){
+                    var regUserPwVal = $("input.resUserPw").val();
+                    if(regUserPwVal === ""){
+                        $("div.megBox").html("Password is required!");
+                    }
+                    else{
+                        isServerSuccess3 = 'true';
+                    }
+                });
+
+                $("#createAccountBtn").click(function(){
+                    //if(isServerSuccess1 == "true" && isServerSuccess2 == "true" && isServerSuccess3 == "true"){
+                    $("#createAccountForm").submit();
+                    //}
+                });
+            });
+        </script>
+    </body>
+</html>

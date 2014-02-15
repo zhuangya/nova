@@ -22,7 +22,7 @@ app = express()
 app.enable 'trust proxy'
 
 app.set 'views', templates
-app.set 'view engine', 'jade'
+app.set 'view engine', 'ejs'
 app.set 'view options',
   layout: false
 

@@ -1,0 +1,47 @@
+<% include section/header %>
+        <title>Welcome to Fanformed.com</title>
+        <% if(redirect_url) { %>
+            <meta http-equiv="refresh" content="5; url=<%=redirect_url%>" />
+        <% } %>
+    </head>
+    <body>
+        <% include section/nav %>
+		<div class="registerSuccess">
+			<div class="center880">
+				<div class="mainSubHeader880">
+					<h3><span>Thank you for
+						<br />
+						registering!</span></h3>
+				</div>
+			</div>
+            <div class="center612">
+				<div class="registerSuccessCont">
+                <% if(redirect_url) { %>
+                    <h4><span>Thank you for registering at fanformed.com.</span></h4>
+                    <h4><span>You will be redirected soon. Click <a href="<%=redirect_url%>">here</a> if it doesn't work.</span></h4>
+                <% }else{ %>
+					<h4><span>During our beta launch we have<br>two product challenges running.</span></h4>
+					<h2 class="registerSuccessContClear"><span>select one and lets<br>get started!</span></h2>
+                <% } %>
+				</div>
+				<ul class="featuredProductsList">
+                    <%if(products.featured) {
+                        var list = products.featured;
+                        for(i in list) {
+                            p = list[i];
+                    %>
+                    <li>
+                        <a href="/project/<%= p.id %>" class="">
+                        <img src="<%= p.picture + '?schema=homeImg280x280' %>" alt="<% p.title %>" width="280" height="280" onload="javascript:DrawImage(this,280,280);"/>
+                        <p class="featuredProductTitle">
+                            <span class="fpSpanLeft"><%=p.title %><em><%=p.descr%></em></span>
+                        </p>
+                        </a>
+                    </li>
+                    <% } } %>
+                </ul>
+			</div>
+			<% include section/footer %>
+		</div>
+	</body>
+</html>

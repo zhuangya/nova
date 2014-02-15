@@ -1,0 +1,23 @@
+<% include section/header %>
+        <title>Welcome to Fanformed.com</title>
+    </head>
+	<body>
+ 	    <div class="findPassword">
+			<div class="findPasswordCont">
+                <h2 class="findPassWordTitle">Thank you</h2>
+                <% if(!request.query.resend) { %>
+				<h3>You should receive an email soon.</h3>
+				<p>
+					If not, please <a href="/auth/verify_email?resend=true"><span>click here</span></a>
+					to send a new email.
+                </p>
+                <% } else { %>
+                <h3>Another email has been sent to you. </h3>
+                <p>Still having troubles signing in? please <a href=mailto:sa@fanformed.com><span>contact us</span></a>.</p>
+                <% } %>
+			</div>
+			<% include section/footer %>
+		</div>
+	</body>
+</html>
+

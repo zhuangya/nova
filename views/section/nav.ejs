@@ -1,0 +1,55 @@
+<div class="header" id="header">
+    <div class="versionInfo">
+    	<img src="/images/icons/betaIcon.png" alt="" />
+    </div>
+    <div class="logo">
+        <a href="/" ><img src="/images/icons/logo85x46.png" alt="" /></a>
+    </div>
+    <div class="sysmsgBox">
+    	<div class="sysmsgBoxInner">
+    		
+    	</div>    	
+    </div>
+    <ul class="nav">
+        <!--li class="first">
+            <a href="/" class="selected">Communities</a>
+        </li-->
+        <!--li class="first">
+            <a href="/">Challenges</a>
+        </li-->
+        <li>
+            <a href="/about">About Us</a>
+        </li>
+        <li class="last">
+            <% if(request.user){ %>
+            <a href="/profile"><span class="haveLogin"><%=request.user.name%></span></a>
+            <div class="sionOutWrap">
+				<a href="/profile" id="navEditProfileBtn">Edit Profile</a>
+				<a href="/logout" id="signOutBtn">Sign Out</a>
+			</div>
+            <% } else if (request.url=='/') { %>
+            <a href="/login" id="login_link" >
+                <span style="color:white;">Login</span><img src="/images/icons/bluePeople.png" alt="" />
+            </a>
+            <% } else { %>
+            <a href="/login?url=<%=encodeURIComponent(request.url) %>" id="login_link" >
+                <span style="color:white;">Login</span><img src="/images/icons/bluePeople.png" alt="" />
+            </a>
+            <% } %>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function(){
+		var sysmsg = window.sysmsg;
+		if(sysmsg){
+			$("div.sysmsgBox").fadeIn(function(){
+				$("div.sysmsgBoxInner").html(sysmsg);
+			}).click(function(){
+				$(this).fadeOut("3000",function(){
+					$(this).html("");
+				});				
+			});			
+		}		
+	});	
+</script>

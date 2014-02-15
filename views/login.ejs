@@ -1,0 +1,38 @@
+<% include section/header %>
+        <title>Login -Fanformed.com</title>
+        <% include section/placeholder_cleanup %>
+	</head>
+	<body>
+		<div class="loginWrap" id="loginWrap">
+		    <center>
+		        <h3 class="welcomeTo">Login with</h3>
+                <h1 class="logo560"><a href="/"><img src="/images/icons/logo560.png" alt="Fanformed" /></a></h1>
+		        <div class="thirdPartyLogin">
+		            <div class="centerClear">
+		            	<a href="/auth/twitter<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>" class="twitterBtn"></a>
+		                <a href="/auth/facebook<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>" class="faceBookBtn"></a>		                
+		                <a href="/auth/google<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>" class="googleBtn"></a>
+		                <p class="lineStyle"></p>
+		            </div>
+		            <div class="centerClear">
+		                <% if(request.info) { %>
+		                <span class="errMsg" style="display:block;"><%= request.info %></span>
+		                <% } %>
+			            <form method="POST" action="/login<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>">
+		                    <input type="text" class="inputText inputText1" name="email" placeholder="Email" value="<%=request.body.email || "" %>"/>
+			                <input type="password" class="inputText" value="" name="password" placeholder="Password"/>  
+			                <input type="submit" class="loginBtn80" value="Login"/>
+			                <a href="/auth/reset_password" class="forgotPassword">Forgot your password?</a>
+			            </form>
+			            <div class="linkToSignUp">
+			            	Not a member yet? <a href="/oauth<%- (request.query.url ? '?url='+encodeURIComponent(request.query.url) : '') %>">Sign up now.</a>
+			            </div>	                          
+		            </div>             
+		        </div>
+		        <!--div class="loginFooter">
+		        </div-->
+		    </center>
+			<% include section/footer %>
+		</div>
+	</body>
+</html>

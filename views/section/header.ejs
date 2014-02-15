@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Syncopate:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700' rel='stylesheet' type='text/css'>
+		<!--link rel="stylesheet" href="/css/pika.css" type="text/css" media="screen" title="no title" charset="utf-8"/-->
+        <link rel="stylesheet" href="/css/main.css?v=<%=config.version%>" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<![endif]-->
+		<script src="/js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/libs/drawImage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/libs/retina.js" type="text/javascript" charset="utf-8"></script>
+        <% if(config.analytics) { %>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount','<%=config.analytics.account%>']);
+          _gaq.push(['_setDomainName','<%=config.analytics.domain%>']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        <% } %>

@@ -1,0 +1,51 @@
+!!!5
+script(src="/js/libs/jquery.min.js")
+p
+  select#method
+    option(value="GET") GET
+    option(value="POST") POST
+    option(value="PUT") PUT
+    option(value="DELETE") DELETE
+  input#uri(value='/api/project',size="100")
+  input#submit(type="submit",value="Go")
+
+p
+  textarea#content(cols=80,rows=10,style="display:none;")
+
+p
+  pre#output
+
+a(href="/login")
+  Login
+
+form(action="/api/photo",method="POST",enctype="multipart/form-data")
+  input(type="file",name="photo")
+  input(type="submit")
+
+:coffeescript
+  $ ->
+    $('#method').on 'change', ()->
+      if @value == "POST" or @value == "PUT"
+        $('#content').show()
+      else
+        $('#content').hide()
+    $('#submit').click ()->
+      data = $('#content').val() if $('#method').val() == "POST"
+      $.ajax
+        url: $('#uri').val()
+        type: $('#method').val()
+        data: data
+        dataType: 'json'
+        contentType: 'application/json'
+      .done (data)->
+        $('#output').html JSON.stringify data,null,'  '
+      .fail (resp)->
+        #console.info err
+        try
+          err = JSON.stringify (JSON.parse resp.responseText), null, '  '
+        catch e
+          err = resp.responseText
+        err = "HTTP/#{resp.status} #{resp.statusText}\n#{err}"
+        $('#output').html err,null,'  '
+          
+

@@ -1,0 +1,14 @@
+        <script>
+            $(function(){
+                $(':text,:password').focus(function(){
+                    var self = $(this);
+                    self.prop('placeholder','');
+                }).blur(function(){
+                    var self = $(this);
+                    self.prop('placeholder',self.prop('x-placeholder'));
+                }).each(function(i,x){
+                    var self = $(x);
+                    self.prop('x-placeholder',self.prop('placeholder') || "");
+                });
+            });
+        </script>
