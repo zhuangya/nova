@@ -186,7 +186,8 @@ auth = (app)->
       #add oauth asscoation
       uid = req.oauthProfile._user
       if not uid
-        req.user.alias.push req.oauthProfile.id
+        req.user.alias = req.oauthProfile.id
+        req.user.profile = req.oauthProfile._id
         req.user.sync.save()
 
         req.oauthProfile._user = req.user._id
@@ -203,8 +204,9 @@ auth = (app)->
     else #not registered
       #resp.redirect '/register'
       user = new User
-        name: req.oauthProfile.id
-        alias: [req.oauthProfile.id]
+        name: req.oauthProfile.name
+        alias: req.oauthProfile.id
+        profile: req.oauthProfile._id
       user.sync.save()
       
       req.oauthProfile._user = user._id
@@ -261,7 +263,7 @@ auth = (app)->
       return cb {err:"#{field} already in use",field: field} if arr
       return cb null
 
-  checkRegisterFiels = (body,cb) ->
+  checkRegisterFields = (body,cb) ->
     keys = Object.keys body
     f = forEach keys, (key,next) ->
       checkRegisterField key, body[key], next
@@ -269,11 +271,11 @@ auth = (app)->
     f cb
 
   app.post '/register/check', (req,resp) ->
-    checkRegisterFiels req.body, (err) ->
+    checkRegisterFields req.body, (err) ->
       resp.send err or {ok:1}
 
   app.post '/register', saveURL, (req,resp) ->
-    checkRegisterFiels req.body, (err) ->
+    checkRegisterFields req.body, (err) ->
       if err
         resp.render 'register',
           profile: req.body
@@ -281,7 +283,7 @@ auth = (app)->
       else
         user = new User req.body
         if req.oauthProfile and req.oauthProfile.provider isnt 'local'
-          user.alias.push req.oauthProfile.id
+          user.alias = req.oauthProfile.id
 
         user.save (err,obj)->
           if err

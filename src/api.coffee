@@ -12,9 +12,11 @@ admin = require './admin'
 
 app.get '/user', fibrous.middleware, (req,resp) ->
   if req.user
-    obj = req.user.toJSON()
-    obj.profile = _.omit req.oauthProfile.toJSON(), ['_id','__v','token','_user']
-    resp.json obj
+    #console.info req.user
+    req.user.populate('profile', (err,user) ->
+      #console.info err
+      resp.json user
+    )
   else
     resp.send 403,
       errno: 403,

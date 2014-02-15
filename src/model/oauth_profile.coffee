@@ -2,6 +2,7 @@ db = require 'mongoose'
 timestamps = require 'mongoose-timestamp'
 #gravatar = require 'gravatar'
 config = require '../../config'
+_ = require 'underscore'
 
 schema = db.Schema
   id:
@@ -37,7 +38,8 @@ schema.virtual('name').get ()->
     when "twitter" then @_json.name
     when "google" then @_json.name
     when "facebook" then @_json.name
-    else ""
+    when "weibo" then @_json.name
+    else @id
 
 schema.virtual('email').get ()->
   switch @provider
@@ -51,6 +53,11 @@ schema.virtual('profile_image').get ()->
     when "google" then @_json.picture
     else ""
 
+schema.methods.toJSON = ->
+  id: @id
+  provider: @provider
+  name: @name
+  _json: @_json
 
 module.exports = db.model 'OAuthProfile', schema
 

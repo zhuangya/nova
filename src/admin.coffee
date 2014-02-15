@@ -6,6 +6,7 @@ fs = require 'fs'
 
 Data = require './data'
 Product = require './product'
+{User} = require './model'
 
 app = new express
 
@@ -95,5 +96,14 @@ app.post '/order/:id', (req,resp) ->
   for k,v of req.body
     order[k]=v
   resp.json order.sync.save()
+
+app.get '/users', (req,resp) ->
+  page = req.query.page || 0
+  size = req.query.size || 30
+
+  User.find().skip(page*size).limit(size).populate('profile').exec((err,obj) ->
+    return resp.json 500,err if err
+    resp.json obj
+  )
 
 module.exports = app

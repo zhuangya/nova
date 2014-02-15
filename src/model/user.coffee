@@ -24,12 +24,16 @@ schema = db.Schema
     index: true
     spare: true
   alias:
-    type: [String]
+    type: String
     index: true
     #unique: true
-  points: Number
+  profile:
+    type: db.Schema.Types.ObjectId
+    ref: 'OAuthProfile'
+  
+  #points: Number
   #descr: String
-  _icon_url: String
+  #_icon_url: String
 
 schema.plugin(timestamps)
 
@@ -90,10 +94,11 @@ schema.methods.toJSON = ->
   id: @_id
   name: @name
   email: @email
-  icon_url: @icon_url
-  icon_url_large: @icon_url_large
+  #icon_url: @icon_url
+  #icon_url_large: @icon_url_large
   alias: @alias
   flags: @flags
+  profile: @profile
 
 module.exports = db.model 'User', schema
 

@@ -259,6 +259,10 @@ POST /api/admin/order/:id
 update order
 
 
+GET /api/admin/users?page=0&size=30
+---
+returns a list of users
+
 
 MISC
 ---
