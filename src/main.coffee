@@ -28,6 +28,7 @@ app.set 'view options',
 
 app.use express.favicon()
 app.use express.logger 'dev'
+app.use express.errorHandler()
 
 app.use express.static webroot
 
@@ -56,6 +57,10 @@ db = require './db'
 app.use '/api', (require './api')()
 app.use '/data', (require './data')()
 app.use '/photo', (require './photo')()
+
+alipay = require './alipay'
+alipay.route app
+
 
 host = config.httpd.bind or "127.0.0.1"
 port = process.env.PORT or config.httpd.port or 3000
