@@ -29,7 +29,7 @@ class Cart
     resp.json cart
 
   @remove: (req, resp) =>
-    console.log req
+    #console.log req
     item = req.body
     cart = @load req
     delete cart.items[item.name]
