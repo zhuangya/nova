@@ -1,5 +1,6 @@
 !!!5
-script(src="/js/libs/jquery.min.js")
+script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+//script(src="/js/libs/jquery.min.js")
 p
   select#method
     option(value="GET") GET
@@ -23,6 +24,7 @@ form(action="/api/photo",method="POST",enctype="multipart/form-data")
   input(type="submit")
 
 :coffeescript
+  htmlEncode = (value) -> $('<div/>').text(value).html()
   $ ->
     $('#method').on 'change', ()->
       if @value == "POST" or @value == "PUT"
@@ -38,13 +40,13 @@ form(action="/api/photo",method="POST",enctype="multipart/form-data")
         dataType: 'json'
         contentType: 'application/json'
       .done (data)->
-        $('#output').html JSON.stringify data,null,'  '
+        $('#output').html htmlEncode JSON.stringify data,null,'  '
       .fail (resp)->
         #console.info err
         try
-          err = JSON.stringify (JSON.parse resp.responseText), null, '  '
+          err = htmlEncode JSON.stringify (JSON.parse resp.responseText), null, '  '
         catch e
-          err = resp.responseText
+          err = htmlEncode resp.responseText
         err = "HTTP/#{resp.status} #{resp.statusText}\n#{err}"
         $('#output').html err,null,'  '
           

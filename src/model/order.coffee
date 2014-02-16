@@ -1,5 +1,8 @@
 db = require 'mongoose'
 timestamps = require 'mongoose-timestamp'
+_ = require 'underscore'
+Product = require '../product'
+
 
 schema = db.Schema
   ownner: #User ID
@@ -21,7 +24,7 @@ schema.statics.findByUser = (uid, cb) ->
   @find {'ownner': uid},cb
 
 schema.methods.updateInventory = ->
-  _.chain @content
+  _.chain(@content)
     .map (item) ->
       p = Product.loadItem item.name
       if p.getInventory() < item.count

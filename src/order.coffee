@@ -1,6 +1,11 @@
 {Order} = require './model'
 Cart = require './cart'
 
+alipay = require './alipay'
+utils = require './utils'
+
+_ = require 'underscore'
+
 class OrderManager
 
   list: (req,resp) ->
@@ -20,7 +25,11 @@ class OrderManager
       address: req.body.address
 
     order.updateInventory()
-    resp.json order.sync.save()
+    try
+      resp.json order.sync.save()
+    catch
+      console.info _error.stack
+      throw _error
 
   update: (req,resp)->
     order = Order.sync.findById req.params.id
@@ -31,5 +40,25 @@ class OrderManager
     order = Order.sync.findById req.params.id
     order.remove()
     resp.json order
+
+  sendToAlipay: (req,resp) ->
+    order = Order.sync.findById req.params.id
+    data = {
+      out_trade_no: order.id
+      subject: "Benzex Order "+order.id
+      price: order.total_price
+      quantity: 1
+      logistics_fee: "0"
+      logistics_type: "EXPRESS"
+      logistics_payment: "SELLER_PAY"
+      body: _.chain(order.content).pluck('name').join(";").value()
+      show_url: utils.getURL("/orders/#{order.id}")
+      receive_name    : ""
+      receive_address : ""
+      receive_zip     : ""
+      receive_phone   : ""
+      receive_mobile  : ""
+    }
+    alipay.create_partner_trade_by_buyer(data,resp)
 
 module.exports=new OrderManager

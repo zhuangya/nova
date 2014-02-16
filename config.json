@@ -13,5 +13,10 @@
         "key":"3284937108",
         "secret":"728f3bc94d086d2a2d51a0ef72938c05"
     }
+  },
+  "alipay":{
+    "partner":"2088112013489272",
+    "key":"6s8icmlbltaqrpowwuarthqojud5lo01",
+    "seller_email":"1147880393@qq.com"
   }
 }

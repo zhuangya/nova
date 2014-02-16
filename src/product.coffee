@@ -54,7 +54,8 @@ class Product
   getInventory: (variant=@_variant,size=@_size) ->
     return @variants[variant].sizes[size].inventory
 
-  updateInventory: (count,variant=@variant,size=@_size) ->
+  updateInventory: (count,variant=@_variant,size=@_size) ->
+    console.info variant
     return @variants[variant].sizes[size].inventory += count
 
   getPath: (x) ->
