@@ -7,6 +7,7 @@ JADE=node_modules/jade/bin/jade
 RJS=node_modules/requirejs/bin/r.js
 
 TARGETS_src = $(patsubst src/%.coffee,lib/%.js,$(shell find src -name \*.coffee))
+TARGETS_src += $(patsubst src/%,lib/%,$(shell find src/alipay -name \*.js))
 
 #WEBROOT_TEMPLATE=$(shell find webroot/js/templates)
 #WEBROOT_COFFEE=$(shell find webroot -name \*.coffee)
@@ -29,6 +30,10 @@ all: node_modules $(TARGETS)
 	make -C frontend
 	make -C admin
 	ln -s $(PWD)/admin/dist frontend/dist/admin
+
+lib/alipay/%.js: src/alipay/%.js
+	@mkdir -p $(shell dirname $@)
+	cp "$<" "$@"
 
 lib/%.js: src/%.coffee
 	@mkdir -p $(shell dirname $@)

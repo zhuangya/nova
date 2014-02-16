@@ -1,4 +1,5 @@
 crypto = require 'crypto'
+config = require '../config'
 
 #async foreach iterator, call fn on each object in arr
 #fn must accept signature (obj,next) where next is a function
@@ -47,3 +48,5 @@ genHash = @genHash = (string,salt = 'SaLtSecRet') ->
     throw new Error 'token expired' if expires < time
     fn.call this,extra
 
+@getURL = (path) ->
+  "http://"+config.hostname+path

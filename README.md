@@ -155,6 +155,12 @@ GET /api/order
 ---
 get orders of user
 
+POST /api/order/:id/submit
+---
+submit order to alipay,
+will return a piece of html form, which will redirect user to alipay's page
+
+
 
 admin api
 ===

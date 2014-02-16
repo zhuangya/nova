@@ -41,11 +41,12 @@ class Cart
     @items[name] for name of @items
 
   getTotalPrice: ->
-    _.chain @items
+    _.chain(@items)
      .map (item)->
        product = Product.loadItem item.name
        product.getPrice() * item.count
-     .reduce ((a,b)->a+b),0
+     .reduce(((a,b)->a+b),0)
+     .value()
 
 module.exports=Cart
 
