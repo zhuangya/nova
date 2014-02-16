@@ -27,11 +27,7 @@
     </div>
   </div>
 
-  <div id="user">
-    <div id="usercard-wrapper">
-      <div usercard mini="mini" color="black" ></div>
-    </div>
-  </div>
+  <div id="user"> </div>
 
   <style type="text/css" media="screen">
   .clothes-sizes {
@@ -47,7 +43,8 @@
   #user {
     padding: 0 40px;
     background-color: white;
-    min-height: 30px;
+    min-height: 100px;
+    height: 100px;
     background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%,  rgba(255,255,255,0) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -60,10 +57,32 @@
 
 </div>
 
-<div social-account></div>
+<div class="right-sidebar">
+  <div social-account></div>
+  <div id="usercard-wrapper">
+    <div usercard seek="no" mini="mini" color="white" ></div>
+  </div>
+</div>
 
 
 <style type="text/css" media="screen">
+
+.right-sidebar {
+  float: left;
+  width: 105px;
+}
+
+#usercard-wrapper {
+  margin-top: 20px;
+  position: relative;
+}
+
+#usercard-wrapper .usercard-mini {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .detail-wrapper {
   float: left;
   width: 584px;
