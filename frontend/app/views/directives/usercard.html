@@ -13,6 +13,7 @@
 </div>
 
 <div ng-if="mini" class="usercard-mini">
+  <div ng-style="usercardWrapperStyle" class="usercard-mini-wrapper">
   <div ng-if="needLogin">
     <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
   </div>
@@ -20,24 +21,12 @@
     <img width="40px" ng-src="{{user.avatar_large}}">
   </div>
   <div class="op">
-    <strong>{{user.screen_name}}</strong><a ng-style="{color: color}" style="cursor: pointer;" ng-click="logout()"><i style="margin-left: 3px;" class="fa fa-power-off"></i></a><br/>
+    <strong ng-style="{color: color}">{{user.screen_name}}</strong><a ng-style="{color: color}" style="cursor: pointer;" ng-click="logout()"><i style="margin-left: 3px;" class="fa fa-power-off"></i></a><br/>
     <a ng-style="{color: color}" style="margin-right: 3px;" href="#/order">我的订单</a>
     <a ng-style="{color: color}" href="#/me">个人中心</a>
   </div>
 
   <style type="text/css" media="screen">
-  .usercard-mini {
-    position: absolute;
-    width: 160px;
-    height: 45px;
-  }
-
-  .usercard-mini:after {
-    display: block;
-    visibility: hidden;
-    clear:both;
-    content: '\0020';
-  }
   .usercard-mini .avatar {
     float: left;
     margin-right: 10px;
@@ -51,21 +40,11 @@
     float: left;
     font-size: 12px;
   }
-
-  </style>
-
-  <script type="text/javascript" charset="utf-8">
-  function updateMiniUsercardPosition() {
-
-    $('.usercard-mini').css({
-      top: $(window).innerHeight() - 80
-    });
+  .usercard-mini-wrapper {
+    position: absolute;
   }
 
-  $(window).resize(function () {
-    updateMiniUsercardPosition();
-  })
-  updateMiniUsercardPosition();
-  </script>
+  </style>
+  </div>
 </div>
 

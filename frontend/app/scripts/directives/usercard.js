@@ -5,7 +5,8 @@ angular.module('frontendApp')
     return {
       scope: {
         mini: '@',
-        color: '@'
+        color: '@',
+        seek: '@'
       },
       templateUrl: 'views/directives/usercard.html',
       restrict: 'A',
@@ -26,6 +27,14 @@ angular.module('frontendApp')
             $scope.needLogin = true
           }
         });
+      },
+      link: function (scope, element, attrs) {
+        if (attrs.seek !== 'no') {
+          scope.usercardWrapperStyle = {
+            top: $(window).innerHeight() - 100,
+            left: '10px'
+          };
+        }
       }
     };
   });
