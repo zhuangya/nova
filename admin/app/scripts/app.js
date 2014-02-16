@@ -38,6 +38,10 @@ angular.module('adminApp', [
         templateUrl: 'views/clothes_upload.html',
         controller: 'ClothesUploadCtrl'
       })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
