@@ -12,3 +12,4 @@ cache
 tmp
 src/**/*.js
 update.sh
+htpasswd
