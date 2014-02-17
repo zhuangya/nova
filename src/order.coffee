@@ -24,12 +24,11 @@ class OrderManager
       status: 'new'
       address: req.body.address
 
-    order.updateInventory()
     try
+      order.updateInventory()
       resp.json order.sync.save()
     catch
-      console.info _error.stack
-      throw _error
+      resp.json 500, err:_error.toString()
 
   update: (req,resp)->
     order = Order.sync.findById req.params.id
