@@ -35,6 +35,7 @@ function Alipay(alipay_config){
 	for(var key in alipay_config){
 		this.alipay_config[key] = alipay_config[key];
 	}		
+    console.info(this.alipay_config);
 }
 
 /**
@@ -130,7 +131,7 @@ Alipay.prototype.create_partner_trade_by_buyer = function(data, res){
 		partner : this.alipay_config.partner,
 		payment_type: '1',
 		notify_url	: url.resolve(this.alipay_config.host, this.alipay_config.create_partner_trade_by_buyer_notify_url),
-		return_url : url.resolve(this.alipay_config.host , this.alipay_config.create_partner_trade_by_buyer_return_url),
+		return_url  : url.resolve(this.alipay_config.host, this.alipay_config.create_partner_trade_by_buyer_return_url),
 		seller_email	: this.alipay_config.seller_email, 
 		
 		out_trade_no	: data.out_trade_no,
@@ -201,7 +202,7 @@ Alipay.prototype.trade_create_by_buyer = function(data, res){
 		partner : this.alipay_config.partner,
 		payment_type: '1',
 		notify_url	: url.resolve(this.alipay_config.host, this.alipay_config.trade_create_by_buyer_notify_url),
-		return_url : url.resolve(this.alipay_config.host , this.alipay_config.trade_create_by_buyer_return_url),
+		return_url  : url.resolve(this.alipay_config.host, this.alipay_config.trade_create_by_buyer_return_url),
 		seller_email	: this.alipay_config.seller_email, 
 		
 		out_trade_no	: data.out_trade_no,
