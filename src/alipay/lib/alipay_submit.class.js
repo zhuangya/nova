@@ -87,6 +87,10 @@ AlipaySubmit.prototype.buildRequestParaToString = function(para_temp){
     return request_data;
 }
 
+AlipaySubmit.prototype.buildRequestToUrl = function (para_temp) {
+  var para = this.buildRequestParaToString(para_temp);
+  return this.alipay_gateway_new + para;
+};
 /**
  * 建立请求，以表单HTML形式构造（默认）
  * @param para_temp 请求参数数组

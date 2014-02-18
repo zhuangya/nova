@@ -151,7 +151,7 @@ Alipay.prototype.create_partner_trade_by_buyer = function(data, res){
 		_input_charset	: this.alipay_config['input_charset'].toLowerCase().trim()
 	};
 
-	var html_text = alipaySubmit.buildRequestForm(parameter,"get", "确认");
+	var html_text = alipaySubmit.buildRequestToUrl(parameter);
 	res.send(html_text);
 }
 
