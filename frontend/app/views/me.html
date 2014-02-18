@@ -6,6 +6,15 @@
       </div>
       <div ng-if="hasClothes">
         <div class="order-main">
+          <p class="transparent-input">
+          <input type="text" ng-model="buyer.address" placeholder="请输入地址"/>
+          </p>
+          <p class="transparent-input">
+          <input type="text" ng-model="buyer.name" placeholder="姓名"/>
+          </p>
+          <p class="transparent-input">
+          <input type="text" ng-model="buyer.mobile" placeholder="手机号码"/>
+          </p>
           <div class="clear-fix order-item" ng-repeat="c in cart">
             <a ng-href="#/detail/{{c.snapshot.id}}"><img class="order-thumbnail" width="64px" ng-src="/data/{{c.snapshot.id}}/{{c.snapshot.cover_name}}"></a>
             <div class="order-detail">
@@ -25,7 +34,7 @@
         <center style="font-size: 28px;"><strong>TOTAL: <span style="color: yellow">￥{{total || 0}}</span></strong></center>
         <center>&diams;</center>
         <center><a href="#/new"><i class="fa fa-gift"></i>继续购物</a></center>
-        <center><a href="#/order"><i class="fa fa-money"></i>现在结帐</a></center>
+        <center><a ng-click="sendOrder()" href="#/order"><i class="fa fa-money"></i>现在结帐</a></center>
       </div>
     </div>
   </div>

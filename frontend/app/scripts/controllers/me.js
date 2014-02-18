@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('frontendApp')
-  .controller('MeCtrl', function ($scope, $http, $q) {
+  .controller('MeCtrl', function ($scope, $http, $q, $location) {
+    $scope.buyer = {};
 
     function parseClothesName (name) {
       var deferred = $q.defer();
@@ -29,6 +30,14 @@ angular.module('frontendApp')
       $http.post('/api/cart/delete', junk).success(function (resp) {
         $scope.cart = resp;
         $scope.updateTotal();
+      });
+    };
+
+    $scope.sendOrder = function () {
+      $http.post('/api/order').success(function (order) {
+        $http.post('/api/order/' + order._id + '/submit').success(function (deal) {
+          window.location = deal;
+        });
       });
     };
 
