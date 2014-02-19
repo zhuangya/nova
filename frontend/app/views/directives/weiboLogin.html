@@ -1,7 +1,114 @@
-<a ng-if="!isAuth" href="/auth/weibo">weibo login</a>
+<a ng-if="!isAuth" href="" ng-click="toggleBox()">注册/登录 {{ showbox }}</a>
 <div ng-if="isAuth">
   <a ng-href="http://weibo.com/{{who.domain}}">
     <img ng-src="{{who.profile_image_url}}" height="14px"/><span>{{who.name}}</span>
   </a>
   <a ng-click="logout()">退出</a>
 </div>
+
+<div id="account-box" ng-show="!showBox">
+  <div id="account-content">
+    <a id="ac-close" href="" ng-click="showBox = false"><i class="fa fa-times"></i></a>
+    <h3>登录/注册</h3>
+    <div id="ac-login">
+      <p>我是 BENZEX.COM 的用户</p>
+      <p>
+      <input class="fancy-input" ng-model="loginemail" type="text" placeholder="email">
+      </p>
+      <p>
+      <input class="fancy-input" ng-model="loginpassword" type="password" placeholder="password">
+      </p>
+      <p>
+      <input class="fancy-input fancy-button" type="submit" ng-click="login()">
+      </p>
+      <span>或者</span>
+      <a href="/auth/weibo">微博登录</a>
+    </div>
+    <div id="ac-register">
+      <p>我想加入 BENZEX.COM </p>
+      <p>
+      <input class="fancy-input" ng-model="regemail" type="text" placeholder="email">
+      </p>
+      <p>
+      <input class="fancy-input" ng-model="regpassword" type="text" placeholder="password">
+      </p>
+      <p>
+      <input value="注册" type="submit" class="fancy-input fancy-button" ng-click="register()">
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+#account-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: 1px solid blue;
+  background-color: rgba(255, 255, 255, .8);
+  color: #333;
+  text-align: center;
+}
+
+#account-box:before {
+  content: '\0020';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#account-box a {
+  color: #333;
+}
+
+#account-content {
+  display: inline-block;
+  vertical-align: middle;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 0 4px -1px #444;
+}
+
+#ac-login {
+  width: 400px;
+  box-sizing: border-box;
+  float: left;
+}
+
+#ac-register {
+  width: 400px;
+  box-sizing: border-box;
+  float: left;
+}
+
+#ac-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.fancy-input {
+  padding: 6px 10px 6px 12px;
+  outline: none;
+  border: 1px solid #bbb;
+  width: 180px;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.fancy-input:focus {
+  border: 1px solid #ffe300;
+}
+
+.fancy-button:active {
+  background-color: #ffe300;
+  color: black;
+  border: 1px solid #ffe300;
+}
+</style>
