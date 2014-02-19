@@ -1,4 +1,15 @@
-<div ng-repeat="user in users">
-  <p class="name">{{user.name}}</p>
-  <pre><code>{{user | json}}</code></pre>
+<div class="row">
+  <div ng-repeat="user in users" class="col-md-3 col-xs-6">
+    <div class="thumbnail">
+      <img ng-src="{{user.profile._json.avatar_hd}}">
+      <div class="caption">
+        <hr/>
+        <div style="text-align: center;">
+          <a ng-href="http://weibo.com/{{user.domain}}">{{user.name}}</a>
+          <span>{{user.profile._json.location}}</span>
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
 </div>
