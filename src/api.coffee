@@ -1,6 +1,7 @@
 auth = require './auth'
 express = require 'express'
 fibrous = require 'fibrous'
+passport = require 'passport'
 _ = require 'underscore'
 
 app = express()
@@ -9,6 +10,8 @@ app = express()
 cart = require './cart'
 order = require './order'
 admin = require './admin'
+
+User = require './model/user'
 
 app.get '/user', fibrous.middleware, (req,resp) ->
   if req.user
@@ -21,6 +24,26 @@ app.get '/user', fibrous.middleware, (req,resp) ->
     resp.send 403,
       errno: 403,
       errmsg: 'Login required'
+
+app.post '/register', fibrous.middleware, (req,resp) ->
+  user = new User req.body
+  user.sync.save()
+  req.session.user = user._id
+  resp.json user
+
+app.post '/login',fibrous.middleware, (req,resp,next) ->
+  (passport.authenticate 'local', (err,user,info) ->
+    if user
+      req.sync.logIn user,{}
+      return resp.json
+        ok:true
+        user:user
+    else
+      return resp.json
+        ok:false
+        msg:info
+        err:err
+  )(req,resp,next)
 
 app.get '/', (req,resp) -> resp.render('api.jade')
 
