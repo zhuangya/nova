@@ -7,6 +7,22 @@ angular.module('frontendApp')
       restrict: 'A',
       controller: function ($scope, $http, $location) {
         $scope.showBox = false;
+        //$scope.reg = {};
+
+        $scope.register = function () {
+          $http.post('/api/register', $scope.reg).success(function () {
+            $scope.login({
+              email: $scope.reg.email,
+              password: $scope.reg.password
+            });
+          });
+        };
+
+        $scope.login = function (loginInfo) {
+          $http.post('/api/login', loginInfo).success(function () {
+            $location.url('/');
+          });
+        };
 
         $scope.toggleBox = function () {
           $scope.showBox = !$scope.showBox;

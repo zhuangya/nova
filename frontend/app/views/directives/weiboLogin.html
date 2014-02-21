@@ -6,7 +6,7 @@
   <a ng-click="logout()">退出</a>
 </div>
 
-<div id="account-box" ng-show="!showBox">
+<div id="account-box" ng-show="showBox">
   <div id="account-content">
     <a id="ac-close" href="" ng-click="showBox = false"><i class="fa fa-times"></i></a>
     <h3>登录/注册</h3>
@@ -27,10 +27,13 @@
     <div id="ac-register">
       <p>我想加入 BENZEX.COM </p>
       <p>
-      <input class="fancy-input" ng-model="regemail" type="text" placeholder="email">
+      <input class="fancy-input" ng-model="reg.name" type="text" placeholder="name">
       </p>
       <p>
-      <input class="fancy-input" ng-model="regpassword" type="text" placeholder="password">
+      <input class="fancy-input" ng-model="reg.email" type="text" placeholder="email">
+      </p>
+      <p>
+      <input class="fancy-input" ng-model="reg.password" type="password" placeholder="password">
       </p>
       <p>
       <input value="注册" type="submit" class="fancy-input fancy-button" ng-click="register()">
