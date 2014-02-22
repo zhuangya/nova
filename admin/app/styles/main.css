@@ -1,0 +1,7 @@
+.thumbnail {
+  max-height: 270px;
+}
+
+.thumbnail>img {
+  max-height: 180px;
+}
