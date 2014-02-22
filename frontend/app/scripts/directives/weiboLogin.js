@@ -20,7 +20,7 @@ angular.module('frontendApp')
 
         $scope.login = function (loginInfo) {
           $http.post('/api/login', loginInfo).success(function () {
-            $location.url('/');
+            window.location = '/';
           });
         };
 
