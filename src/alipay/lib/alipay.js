@@ -355,7 +355,7 @@ Alipay.prototype.create_partner_trade_by_buyer_return = function(req, res){
 		}
 		else{
 			//验证失败
-			self.emit("verify_fail");
+			self.emit("verify_fail", out_trade_no, trade_no, _GET);
 			res.send("fail");
 		}
 	});	
@@ -382,7 +382,7 @@ Alipay.prototype.create_partner_trade_by_buyer_notify = function(req, res){
 		}
 		else{
 			//验证失败
-			self.emit("verify_fail");
+			self.emit("verify_fail", out_trade_no, trade_no, _POST);
 			res.send("fail");
 		}
 	});	

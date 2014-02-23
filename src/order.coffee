@@ -68,4 +68,5 @@ alipay.on 'partner_trade_notify', (oid,txid,params) ->
       return console.info err.stack if err
       console.info "order #{oid} updated"
 
+alipay.on 'verify_fail', console.error.bind console,'verify fail'
 module.exports=new OrderManager

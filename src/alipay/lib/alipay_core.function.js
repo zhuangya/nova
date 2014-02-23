@@ -174,7 +174,6 @@ exports.getHttpResponseGET = function(url,cacert_url, callback){
             responseText += chunk
         });
         res.on('end', function(){
-            console.info('end');
             callback && callback(responseText);
         });
     });
