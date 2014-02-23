@@ -63,6 +63,7 @@ alipay.on 'partner_trade_notify', (oid,txid,params) ->
   order = Order.sync.findById oid
   #order.status = 'complete'
   order.payment = params
-  order.sync.save()
+  order.save (err,obj) ->
+    console.info "order #{oid} updated"
 
 module.exports=new OrderManager
