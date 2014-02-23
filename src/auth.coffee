@@ -183,6 +183,7 @@ auth = (app)->
       resp.redirect url
 
     if req.user
+      ###
       #add oauth asscoation
       uid = req.oauthProfile._user
       if not uid
@@ -201,6 +202,8 @@ auth = (app)->
       else
         resp.send 500,'OAuth account already used'
 
+      ###
+      resp.send 500,"Already loged in"
     else #not registered
       #resp.redirect '/register'
       user = new User
