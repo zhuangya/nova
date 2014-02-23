@@ -10,12 +10,11 @@ schema = db.Schema
     ref: "User"
     index: true
     required: true
-  address: db.Schema.Types.Mixed
-  status: String
   total_price: Number
   content:
     type: db.Schema.Types.Mixed
     required: true
+  payment: db.Schema.Types.Mixed
   
 schema.plugin(timestamps)
 

@@ -349,20 +349,8 @@ Alipay.prototype.create_partner_trade_by_buyer_return = function(req, res){
 			var trade_no = _GET['trade_no'];
 			//交易状态
 			var trade_status = _GET['trade_status'];
-			
-			if(trade_status  == 'WAIT_BUYER_PAY'){                
-				self.emit('create_partner_trade_by_buyer_wait_buyer_pay', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'WAIT_SELLER_SEND_GOODS'){                
-				self.emit('create_partner_trade_by_buyer_wait_seller_send_goods', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'WAIT_BUYER_CONFIRM_GOODS'){                
-				self.emit('create_partner_trade_by_buyer_wait_buyer_confirm_goods', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'TRADE_FINISHED'){                
-				self.emit('create_partner_trade_by_buyer_trade_finished', out_trade_no, trade_no);
-			}
-			
+
+			self.emit('partner_trade_return', out_trade_no, trade_no, _GET);
 			res.send("success");
 		}
 		else{
@@ -388,20 +376,8 @@ Alipay.prototype.create_partner_trade_by_buyer_notify = function(req, res){
 			var trade_no = _POST['trade_no'];
 			//交易状态
 			var trade_status = _POST['trade_status'];
-			
-			if(trade_status  == 'WAIT_BUYER_PAY'){                
-				self.emit('create_partner_trade_by_buyer_wait_buyer_pay', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'WAIT_SELLER_SEND_GOODS'){                
-				self.emit('create_partner_trade_by_buyer_wait_seller_send_goods', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'WAIT_BUYER_CONFIRM_GOODS'){                
-				self.emit('create_partner_trade_by_buyer_wait_buyer_confirm_goods', out_trade_no, trade_no);
-			}
-			else if(trade_status == 'TRADE_FINISHED'){                
-				self.emit('create_partner_trade_by_buyer_trade_finished', out_trade_no, trade_no);
-			}
-			
+		         
+			self.emit('partner_trade_notify', out_trade_no, trade_no, _POST);
 			res.send("success");
 		}
 		else{

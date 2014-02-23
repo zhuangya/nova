@@ -21,8 +21,6 @@ class OrderManager
       ownner: req.user
       content: cart.items
       total_price: price
-      status: 'new'
-      address: req.body.address
 
     try
       order.updateInventory()
@@ -59,5 +57,11 @@ class OrderManager
       receive_mobile  : ""
     }
     alipay.create_partner_trade_by_buyer(data,resp)
+
+alipay.on 'partner_trade_notify', (txid,oid,params) ->
+  order = Order.sync.findById oid
+  #order.status = 'complete'
+  order.payment = params
+  order.sync.save()
 
 module.exports=new OrderManager
