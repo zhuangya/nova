@@ -29,7 +29,7 @@ build: $(TARGETS)
 all: node_modules $(TARGETS)
 	make -C frontend
 	make -C admin
-	ln -s $(PWD)/admin/dist frontend/dist/admin
+	ln -sf $(PWD)/admin/dist frontend/dist/admin
 
 lib/alipay/%.js: src/alipay/%.js
 	@mkdir -p $(shell dirname $@)
