@@ -35,7 +35,6 @@ function Alipay(alipay_config){
 	for(var key in alipay_config){
 		this.alipay_config[key] = alipay_config[key];
 	}		
-    console.info(this.alipay_config);
 }
 
 /**

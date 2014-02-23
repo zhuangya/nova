@@ -59,7 +59,7 @@ class OrderManager
     alipay.create_partner_trade_by_buyer(data,resp)
 
 alipay.on 'partner_trade_notify', (oid,txid,params) ->
-  console.info "notify #{oid} - #{txid}",params
+  console.info "notify #{oid} - #{txid}"
   Order.findById oid, (err,order) ->
     return console.info err.stack if err
     #order.status = 'complete'
