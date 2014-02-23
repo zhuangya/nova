@@ -46,6 +46,7 @@ AlipayNotify.prototype.verifyNotify = function(_POST, callback){
     else{
         //生成签名结果
         var isSign = this.getSignVeryfy(_POST, _POST["sign"]);
+        console.info("isSign=",isSign);
         //获取支付宝远程服务器ATN结果（验证是否是支付宝发来的消息）
         var responseTxt = 'true';
         //验证
@@ -53,6 +54,7 @@ AlipayNotify.prototype.verifyNotify = function(_POST, callback){
         //isSign的结果不是true，与安全校验码、请求时的参数格式（如：带自定义参数等）、编码格式有关
         if (null != _POST["notify_id"]) {
             this.getResponse(_POST["notify_id"], function(responseTxt){
+                console.info("responseTxt=",responseTxt);
             	callback(responseTxt == 'true' && isSign);
             });
         }
