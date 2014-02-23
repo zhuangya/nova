@@ -341,7 +341,7 @@ Alipay.prototype.create_partner_trade_by_buyer_return = function(req, res){
 	var alipayNotify = new AlipayNotify(this.alipay_config);
 	//验证消息是否是支付宝发出的合法消息
 	alipayNotify.verifyReturn(_GET, function(verify_result){
-        console.info(verify_result);
+        //console.info(verify_result);
 		if(verify_result) {//验证成功
 			//商户订单号
 			var out_trade_no = _GET['out_trade_no'];
@@ -355,7 +355,7 @@ Alipay.prototype.create_partner_trade_by_buyer_return = function(req, res){
 		}
 		else{
 			//验证失败
-			self.emit("verify_fail", out_trade_no, trade_no, _GET);
+			self.emit("verify_fail", _GET);
 			res.send("fail");
 		}
 	});	
@@ -382,7 +382,7 @@ Alipay.prototype.create_partner_trade_by_buyer_notify = function(req, res){
 		}
 		else{
 			//验证失败
-			self.emit("verify_fail", out_trade_no, trade_no, _POST);
+			self.emit("verify_fail", _POST);
 			res.send("fail");
 		}
 	});	
