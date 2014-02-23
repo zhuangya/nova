@@ -60,10 +60,12 @@ class OrderManager
 
 alipay.on 'partner_trade_notify', (oid,txid,params) ->
   console.info "notify #{oid} - #{txid}",params
-  order = Order.sync.findById oid
-  #order.status = 'complete'
-  order.payment = params
-  order.save (err,obj) ->
-    console.info "order #{oid} updated"
+  Order.findById oid, (err,order) ->
+    return console.info err.stack if err
+    #order.status = 'complete'
+    order.payment = params
+    order.save (err,obj) ->
+      return console.info err.stack if err
+      console.info "order #{oid} updated"
 
 module.exports=new OrderManager
