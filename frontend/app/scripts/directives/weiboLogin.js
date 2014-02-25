@@ -19,6 +19,10 @@ angular.module('frontendApp')
         };
 
         $scope.login = function (loginInfo) {
+          loginInfo = loginInfo || {
+            email: $scope.loginemail,
+            password: $scope.loginpassword
+          };
           $http.post('/api/login', loginInfo).success(function () {
             window.location = '/';
           });
@@ -34,7 +38,11 @@ angular.module('frontendApp')
           });
         };
         $http.get('/api/user').success(function(who) {
-          $scope.who= who.profile._json;
+          if (who.profile) {
+            who = _.extend(who, who.profile);
+            delete who.profile;
+          }
+          $scope.who= who;
           $scope.isAuth = true;
         }).error(function(error) {
           $scope.isAuth = false;
