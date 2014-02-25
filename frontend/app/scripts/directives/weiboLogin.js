@@ -39,8 +39,12 @@ angular.module('frontendApp')
         };
         $http.get('/api/user').success(function(who) {
           if (who.profile) {
-            who = _.extend(who, who.profile);
+            who = _.extend(who, who.profile._json);
+            who.link = 'http://weibo.com/' + who.profile_url;
+            who.avatar = who.profile_image_url;
             delete who.profile;
+          } else {
+            who.avatar = 'http://gravatar.com/avatar/' + md5(who.email);
           }
           $scope.who= who;
           $scope.isAuth = true;

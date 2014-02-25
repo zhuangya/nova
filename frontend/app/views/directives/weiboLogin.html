@@ -1,7 +1,7 @@
 <a ng-if="!isAuth" href="" ng-click="toggleBox()">注册/登录 {{ showbox }}</a>
 <div ng-if="isAuth">
-  <a ng-href="http://weibo.com/{{who.domain}}">
-    <img ng-src="{{who.profile_image_url}}" height="14px"/><span>{{who.name}}</span>
+  <a ng-href="{{who.link}}">
+    <img ng-src="{{who.avatar}}" height="14px"/><span>{{who.name}}</span>
   </a>
   <a ng-click="logout()">退出</a>
 </div>
