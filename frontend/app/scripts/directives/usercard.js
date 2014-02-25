@@ -12,7 +12,7 @@ angular.module('frontendApp')
       restrict: 'A',
       controller: function ($scope, $location, $http) {
         $scope.logout = function () {
-          smoke.confirm('确定登出当前微博帐号吗？', function (event) {
+          smoke.confirm('确定登出当前帐号吗？', function (event) {
             if (event) {
               $http.get('/auth/logout').success(function (resp) {
                 $location.path('/');
@@ -21,7 +21,14 @@ angular.module('frontendApp')
           })
         };
         $http.get('/api/user').success(function(user) {
-          $scope.user = user.profile._json;
+          if (user.profile) {
+            user = _.extend(user, user.profile._json);
+            user.avatar = user.avatar_large;
+            delete user.profile._json;
+          } else {
+            user.avatar = 'http://gravatar.com/avatar/' + md5(user.email);
+          }
+          $scope.user = user;
         }).error(function (error) {
           if (error.errno === 403) {
             $scope.needLogin = true

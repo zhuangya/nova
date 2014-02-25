@@ -629,3 +629,86 @@ body {
   margin-right: 6px;
   margin-left: 6px;
 }
+
+#account-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: 1px solid blue;
+  background-color: rgba(255, 255, 255, .8);
+  color: #333;
+  text-align: center;
+}
+
+#account-box:before {
+  content: '\0020';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#account-box a {
+  color: #333;
+}
+
+#account-content {
+  display: inline-block;
+  vertical-align: middle;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 0 4px -1px #444;
+}
+
+#ac-login {
+  width: 400px;
+  box-sizing: border-box;
+  float: left;
+}
+
+#ac-register {
+  width: 400px;
+  box-sizing: border-box;
+  float: left;
+}
+
+#ac-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.fancy-input {
+  padding: 6px 10px 6px 12px;
+  outline: none;
+  border: 1px solid #bbb;
+  width: 180px;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.fancy-input:focus {
+  border: 1px solid #ffe300;
+}
+
+.fancy-button:active {
+  background-color: #ffe300;
+  color: black;
+  border: 1px solid #ffe300;
+}
+
+.button {
+  padding: 6px 10px 6px 12px;
+  outline: none;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #ddd;
+}

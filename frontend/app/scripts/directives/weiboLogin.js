@@ -51,6 +51,10 @@ angular.module('frontendApp')
         }).error(function(error) {
           $scope.isAuth = false;
         });
+      },
+      link: function (scope, element, attrs) {
+        scope.isButton = attrs.ui === 'button';
+        console.log(scope.isButton);
       }
     };
   });

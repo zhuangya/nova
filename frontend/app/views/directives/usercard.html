@@ -1,9 +1,9 @@
 <div ng-if="!mini" class="usercard">
   <div ng-if="needLogin">
-    <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
+    <div weibo-login ui="button"></div>
   </div>
   <div ng-if="!needLogin" class="avatar">
-    <img width="98px" ng-src="{{user.avatar_large}}"><br/>
+    <img width="98px" ng-src="{{user.avatar}}"><br/>
     <strong style="color: white;">{{user.screen_name}}</strong><br/>
     <a ng-style="{color: color}" style="margin-right: 3px;" href="#/order">我的订单</a>
     <a ng-style="{color: color}" href="#/me">个人中心</a>
@@ -18,7 +18,7 @@
     <p style="color: white;">请先<a href="/auth/weibo">登录</a></p>
   </div>
   <div ng-if="!needLogin" class="avatar">
-    <img width="40px" ng-src="{{user.avatar_large}}">
+    <img width="40px" ng-src="{{user.avatar}}">
   </div>
   <div class="op">
     <strong ng-style="{color: color}">{{user.screen_name}}</strong><a ng-style="{color: color}" style="cursor: pointer;" ng-click="logout()"><i style="margin: 0;" class="fa fa-power-off pull-right"></i></a><br/>
