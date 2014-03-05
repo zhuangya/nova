@@ -42,6 +42,10 @@ angular.module('adminApp', [
         templateUrl: 'views/users.html',
         controller: 'UsersCtrl'
       })
+      .when('/page', {
+        templateUrl: 'views/page.html',
+        controller: 'PageCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

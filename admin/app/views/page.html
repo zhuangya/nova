@@ -1,0 +1,20 @@
+<div class="row">
+  <div ng-repeat="page in pages" class="col-md-4">
+    <div class="panel panel-info">
+      <div class="panel-heading">{{page.display_name}}图片</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="thumbnail">
+              <img ng-src="{{page.image || 'http://placehold.it/400x300'}}">
+            </div>
+          </div>
+          <hr/>
+          <div class="col-md-12">
+            <a ng-click="uploadBg(page.name)" href="#" class="btn btn-default">upload</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
