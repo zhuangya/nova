@@ -5,16 +5,11 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-            <div ng-file-drag-over-class="hover" ng-file-drop="onFileSelect($files)" class="thumbnail">
+            <div ng-file-drag-over-class="hover" ng-file-drop="onFileSelect($files, page)" class="thumbnail">
               <img ng-src="{{page.image || 'http://placehold.it/400x300'}}">
             </div>
           </div>
           <hr/>
-          <div class="col-md-12">
-            {{page.name}}
-            <input type="file" name="background" ng-model="background">
-            <a ng-click="uploadBg(page.name)" href="#" class="btn btn-default">upload</a>
-          </div>
         </div>
       </div>
     </div>

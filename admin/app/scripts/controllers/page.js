@@ -10,41 +10,18 @@ angular.module('adminApp')
       name: 'detail'
     }];
 
-    $scope.onFileSelect = function(files) {
+    $scope.onFileSelect = function(files, page) {
       _.each(files, function(file) {
-      $scope.upload = $upload.upload({
-        url: '/api/admin/bg',
-        data: {
-          name: 'hell'
-        },
-        file: file,
-        fileFormDataName: 'background'
-      }).success(function(data) {
-        console.log(data);
-        console.log('bg uploaded');
-      });
-      });
-    };
-
-    $scope.uploadBg = function (slug) {
-      event.preventDefault();
-      $http({
-        method: 'POST',
-        url: '/api/admin/bg',
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        data: {
-          background: $scope.background,
-          name: slug
-        },
-        transformRequest: function(data) {
-          var fd = new FormData();
-          angular.forEach(data, function(value, key) {
-            fd.append(key, value);
-          });
-          return fd;
-        }
+        $scope.upload = $upload.upload({
+          url: '/api/admin/bg',
+          data: {
+            slug: page.name
+          },
+          file: file,
+          fileFormDataName: 'background'
+        }).success(function(data) {
+          page.image = data.path;
+        });
       });
     };
   });
