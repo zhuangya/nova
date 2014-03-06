@@ -20,7 +20,6 @@ app.post '/bg', (req, resp) ->
       resp.send
         path: bgPath.split('..')[1]
 
-
 app.post '/video', (req,resp) ->
   videos = (Data.load 'video.json') or []
   v = req.body

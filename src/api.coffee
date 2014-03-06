@@ -3,6 +3,7 @@ express = require 'express'
 fibrous = require 'fibrous'
 passport = require 'passport'
 _ = require 'underscore'
+exec = require('child_process').exec
 
 app = express()
 
@@ -61,6 +62,19 @@ app.delete '/order/:id', fibrous.middleware, order.remove
 app.post   '/order/:id/submit', fibrous.middleware, order.sendToAlipay
 
 app.use '/admin', admin
+
+app.get '/bg', (req, resp) ->
+  exec("cd #{__dirname}/../data/page-bgs/;find . -type f -print0", (err, bgs) ->
+    bgs = bgs.split '\0'
+    resp.send _.chain(bgs)
+      .filter (bg) ->
+        /(?:jpe?g|png|gif)/.test bg
+      .map (bg) ->
+        bg = bg.replace /\.\//, ''
+        name: bg.split('.')[0],
+        path: "/data/page-bgs/#{bg}"
+      .value()
+  )
 
 app.all '/test', (req,resp) ->
   resp.send method: req.method
