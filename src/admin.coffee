@@ -15,12 +15,11 @@ app.post '/bg', (req, resp) ->
   fs.readFile req.files.background.path, (err, image) ->
     throw err if err
     bgPath = "#{__dirname}/../data/page-bgs/#{req.body.slug}.jpg"
-
-    console.log bgPath
-
     fs.writeFile bgPath, image, (err) ->
       throw err if err
-      resp.send 'done'
+      resp.send
+        path: bgPath.split('..')[1]
+
 
 app.post '/video', (req,resp) ->
   videos = (Data.load 'video.json') or []
