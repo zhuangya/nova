@@ -5,3 +5,7 @@
 .thumbnail>img {
   max-height: 180px;
 }
+
+.hover {
+  background-color: rgba(0, 0, 0, .3);
+}
