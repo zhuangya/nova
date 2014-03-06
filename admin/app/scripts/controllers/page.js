@@ -2,13 +2,9 @@
 
 angular.module('adminApp')
   .controller('PageCtrl', function ($scope, $http, $upload) {
-    $scope.pages = [{
-      display_name: '首页',
-      name: 'homepage'
-    }, {
-      display_name: '详情',
-      name: 'detail'
-    }];
+    $http.get('/api/bg').success(function(pages) {
+      $scope.pages = pages;
+    });
 
     $scope.onFileSelect = function(files, page) {
       _.each(files, function(file) {
@@ -20,7 +16,7 @@ angular.module('adminApp')
           file: file,
           fileFormDataName: 'background'
         }).success(function(data) {
-          page.image = data.path;
+          page.path = [data.path, +new Date()].join('?');
         });
       });
     };
