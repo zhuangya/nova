@@ -65,6 +65,7 @@ app.use '/admin', admin
 
 app.get '/bg', (req, resp) ->
   exec("cd #{__dirname}/../data/page-bgs/;find . -type f -print0", (err, bgs) ->
+    throw err if err
     bgs = bgs.split '\0'
     resp.send(_.chain(bgs)
       .filter (bg) ->
