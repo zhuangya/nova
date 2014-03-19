@@ -66,14 +66,14 @@ app.use '/admin', admin
 app.get '/bg', (req, resp) ->
   exec("cd #{__dirname}/../data/page-bgs/;find . -type f -print0", (err, bgs) ->
     bgs = bgs.split '\0'
-    resp.send _.chain(bgs)
+    resp.send(_.chain(bgs)
       .filter (bg) ->
         /(?:jpe?g|png|gif)/.test bg
       .map (bg) ->
         bg = bg.replace /\.\//, ''
         name: bg.split('.')[0],
         path: "/data/page-bgs/#{bg}"
-      .value()
+      .value())
   )
 
 app.all '/test', (req,resp) ->
