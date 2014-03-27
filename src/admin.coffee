@@ -3,6 +3,7 @@ _ = require 'underscore'
 exec = require('child_process').exec
 config = require '../config'
 fs = require 'fs'
+yaml = require 'js-yaml'
 
 Data = require './data'
 Product = require './product'
@@ -106,6 +107,19 @@ app.post '/order/:id', (req,resp) ->
   for k,v of req.body
     order[k]=v
   resp.json order.sync.save()
+
+app.post '/wording', (req, resp) ->
+  v = req.body
+
+  content = yaml.dump _.pick v, [
+    'subtitle',
+    'contact',
+    'about'
+  ]
+
+  fs.writeFileSync "#{config.baseDir}/data/wording.yml", content
+  resp.json
+    'status': 'yeah'
 
 app.get '/users', (req,resp) ->
   page = req.query.page || 0

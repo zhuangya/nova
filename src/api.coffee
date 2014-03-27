@@ -4,6 +4,9 @@ fibrous = require 'fibrous'
 passport = require 'passport'
 _ = require 'underscore'
 exec = require('child_process').exec
+yaml = require 'js-yaml'
+fs = require 'fs'
+config = require '../config'
 
 app = express()
 
@@ -76,6 +79,12 @@ app.get '/bg', (req, resp) ->
         path: "/data/page-bgs/#{bg}"
       .value())
   )
+
+app.get '/wording', (req, resp) ->
+  wordingYml = "#{config.baseDir}/data/wording.yml"
+  content = fs.readFileSync wordingYml
+  resp.json yaml.safeLoad content.toString()
+
 
 app.all '/test', (req,resp) ->
   resp.send method: req.method
