@@ -54,7 +54,6 @@ angular.module('frontendApp')
       },
       link: function (scope, element, attrs) {
         scope.isButton = attrs.ui === 'button';
-        console.log(scope.isButton);
       }
     };
   });

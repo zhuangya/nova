@@ -27,10 +27,6 @@ angular.module('frontendApp')
     };
 
     $scope.checkout = function () {
-
-      //TODO: checkout
-      console.log($scope.address, $scope.email, $scope.mobile, $scope.cart);
-
     };
 
     $http.get('/api/cart').success(function (cart) {
@@ -43,7 +39,6 @@ angular.module('frontendApp')
       });
       $scope.updateTotal();
     }).error(function (error) {
-      console.log(error);
     });
 
     function parseClothesName (name) {
