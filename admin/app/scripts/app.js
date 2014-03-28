@@ -47,6 +47,14 @@ angular.module('adminApp', [
         templateUrl: 'views/page.html',
         controller: 'PageCtrl'
       })
+      .when('/wording', {
+        templateUrl: 'views/wording.html',
+        controller: 'WordingCtrl'
+      })
+      .when('/wording/:section', {
+        templateUrl: 'views/wording.html',
+        controller: 'WordingCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -61,3 +69,4 @@ angular.module('adminApp')
 
 
 angular.module('adminApp').constant('APIBASE', '/');
+

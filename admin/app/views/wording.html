@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+  <li ng-class="{active: sec == section}" ng-repeat="sec in sectionList"><a ng-href="#/wording/{{sec}}">{{sec}}</a></li>
+</ul>
+
+<form id="editorForm">
+<div text-angular ng-model="wordingContent"></div>
+</form>
+
+<style>
+#editorForm { margin-top: 20px;}
+#taTextElement {height: auto; min-height: 200px; margin-top: 20px;}
+</style>
+
+<hr/>
+<button class="btn btn-primary" ng-click="saveWording()">保存</button>
