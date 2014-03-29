@@ -26,7 +26,7 @@ app.set 'view engine', 'ejs'
 app.set 'view options',
   layout: false
 
-app.use express.favicon()
+app.use express.favicon("#{__dirname}/../frontend/app/favicon.ico")
 app.use express.logger 'dev'
 app.use express.errorHandler()
 
