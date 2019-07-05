@@ -1,6 +1,8 @@
 Test API
 ===
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zhuangya/nova.svg)](https://greenkeeper.io/)
+
 http://benzex.com/api
 
 
